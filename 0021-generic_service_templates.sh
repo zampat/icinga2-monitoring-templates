@@ -1,6 +1,7 @@
 #
 #Service template Level 1
-#
+# HowTo Export:
+# icingacli director service show generic_service --json --no-defaults
 
 RES=`icingacli director service exists "generic_service"`
 if [[ $RES =~ "does not exist" ]]

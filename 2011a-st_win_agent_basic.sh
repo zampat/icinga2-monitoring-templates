@@ -1,7 +1,7 @@
 # 
 #Services (as template)
 # HowTo Export:
-# # icingacli director service show Agent_WinSrv --json
+# icingacli director service show generic_service --json --no-defaults
 #
 
 
