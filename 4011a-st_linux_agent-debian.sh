@@ -11,10 +11,10 @@
 ######
 
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_Linux_APT-Update_available"`
+RES=`icingacli director service exists "Agent_Debian_APT-Update_available"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_Linux_APT-Update_available' does not exists"
+   echo "Service 'Agent_Debian_APT-Update_available' does not exists"
    icingacli director service create --json '
 {
     "check_command": "apt",

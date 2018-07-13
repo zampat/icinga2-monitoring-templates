@@ -11,10 +11,10 @@
 ######
 
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_Linux_Disk"`
+RES=`icingacli director service exists "Agent_Linux_Diskspace"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_Linux_Disk' does not exists"
+   echo "Service 'Agent_Linux_Diskspace' does not exists"
    icingacli director service create --json '
 {
     "check_command": "disk",
