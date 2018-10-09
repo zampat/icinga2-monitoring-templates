@@ -1,5 +1,7 @@
 #
-#host template Level 1
+# host template Level 1
+# How to export host template:
+# icingacli director host show "generic-host" --json --no-defaults
 #
 
 RES=`icingacli director host exists "generic-host"`
@@ -120,20 +122,40 @@ then
 '
 fi
 
-RES=`icingacli director host exists "generic-neteye-host"`
+RES=`icingacli director host exists "neteye-local-master"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Host 'generic-neteye-host' does not exists"
+   echo "Host 'neteye-local-master' does not exists"
 
    icingacli director host create --json '
-   {
-    "icon_image": "neteye.png",
-	"imports": [
+{
+    "has_agent": false,
+    "icon_image": "tux.png",
+    "imports": [
         "generic-host"
     ],
-    "object_name": "generic-neteye-host",
+    "object_name": "neteye-local-master",
     "object_type": "template"
-   }
+}'
+fi
+
+RES=`icingacli director host exists "neteye-satellite"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Host 'neteye-satellite' does not exists"
+
+   icingacli director host create --json '
+{
+    "accept_config": true,
+    "has_agent": true,
+    "imports": [
+        "neteye-local-master"
+    ],
+    "master_should_connect": true,
+    "object_name": "neteye-satellite",
+    "object_type": "template"
+}
+
 '
 fi
 
