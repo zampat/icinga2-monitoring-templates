@@ -30,7 +30,7 @@ The provided templates are suitable for a quick monitoring start for the followi
 - Icinga > 2.8
 
 1) Clone repository to local system. 
-   Path for NetEye /data/neteyeshare/Monitoring/monitoring-templates
+   Path for NetEye /neteye/shared/neteyeshare/monitoring/monitoring-templates
 ```
 git clone https://github.com/zampat/icinga2-monitoring-templates.git
 ```
