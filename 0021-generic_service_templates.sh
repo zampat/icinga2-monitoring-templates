@@ -109,5 +109,19 @@ then
 '
 fi
 
+#
+RES=`icingacli director service exists "generic_snmp"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service 'generic_snmp' does not exists"
+   icingacli director service create generic_snmp --json '
+{
+    "imports": [
+        "generic_service"
+    ],
+    "object_name": "generic_snmp",
+    "object_type": "template"
+}'
+fi
 
 echo "Service Templates created"

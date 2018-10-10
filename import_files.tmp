@@ -10,6 +10,8 @@
 1001c-ss_neteye_health.sh
 1011a-st_http.sh
 1011b-s2f_http.sql
+1101a-st_snmp_network_traffic.sh
+1101b-s2f_snmp_network_traffic.sql
 2011a-st_win_agent_basic.sh
 2011b-s2f_win_agent_basic.sql
 2011c-ss_win_agent_OS-Basic.sh

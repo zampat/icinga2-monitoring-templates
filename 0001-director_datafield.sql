@@ -101,7 +101,12 @@ INSERT IGNORE `director_datafield` VALUES
 (302,'snmp_interface','SNMP Interface',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (303,'snmp_warning','SNMP Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (304,'snmp_critical','SNMP Critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(305,'snmp_check_type','SNMP Check Type',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
+(305,'snmp_check_type','SNMP Check Type',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(310,'interfaces_community','Interfaces community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(311,'interfaces_regex','Interfaces Regex','Regex to match interfaces','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(312,'interfaces_exclude_regex','Interfaces exclude-regex','interface list negative regexp','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(313,'interfaces_perfdata','Interfaces Perfdata','last check perfdata','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(314,'interfaces_down_is_ok','Interfaces down-is-ok','Disables critical alerts for down interfaces','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
