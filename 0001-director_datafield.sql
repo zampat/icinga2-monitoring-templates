@@ -102,11 +102,26 @@ INSERT IGNORE `director_datafield` VALUES
 (303,'snmp_warning','SNMP Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (304,'snmp_critical','SNMP Critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (305,'snmp_check_type','SNMP Check Type',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(306,'snmp_enable_perfdata','SNMP Enable Perfdata',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(307,'snmp_timeout','SNMP Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(308,'snmp_protocol','SNMP Protocol version',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (310,'interfaces_community','Interfaces community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (311,'interfaces_regex','Interfaces Regex','Regex to match interfaces','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (312,'interfaces_exclude_regex','Interfaces exclude-regex','interface list negative regexp','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (313,'interfaces_perfdata','Interfaces Perfdata','last check perfdata','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(314,'interfaces_down_is_ok','Interfaces down-is-ok','Disables critical alerts for down interfaces','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
+(314,'interfaces_down_is_ok','Interfaces down-is-ok','Disables critical alerts for down interfaces','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(315,'interface_use64bit','SNMP use 64bit counters',Null,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(320,'interface_table_track_property','SNMP Interface Table List of tracked properties','ifAlias: the interface alias
+ifType: the type of the interface
+ifAdminStatus: the administrative status of the interface
+ifOperStatus: the operational status of the interface
+ifSpeedReadable: the speed of the interface
+ifStpState: the Spanning Tree state of the interface
+ifDuplexStatus: the operation mode of the interface (duplex mode)
+ifVlanNames: the vlan on which the interface was associated
+ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(321,'interface_table_warning_property','SNMP Interface Table  Number of property changes before leading to a warning alert',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(322,'interface_table_v2c','SNMP Interface Table version 2c',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
