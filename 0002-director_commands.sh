@@ -35,20 +35,50 @@ if [[ $RES =~ "does not exist" ]]
 then
    echo "Command 'check_vmware_api' does not exists"
    icingacli director command create check_vmware_api --json '
-object CheckCommand "check_vmware_api" {
-    import "plugin-check-command"
-    command = [ PluginDir + "/check_vmware_api" ]
-    arguments += {
-        "-H" = "$host.address$"
-        "-c" = "$esx_critical$"
-        "-f" = "$esx_authfile$"
-        "-l" = "$esx_command$"
-        "-o" = "$esx_optional$"
-        "-p" = "$esx_password$"
-        "-s" = "$esx_subcommand$"
-        "-u" = "$esx_username$"
-        "-w" = "$esx_warning$"
-    }
-}'
+{
+    "arguments": {
+        "-H": {
+            "set_if_format": "string",
+            "value": "$host.address$"
+        },
+        "-c": {
+            "set_if_format": "string",
+            "value": "$esx_critical$"
+        },
+        "-f": {
+            "set_if_format": "string",
+            "value": "$esx_authfile$"
+        },
+        "-l": {
+            "set_if_format": "string",
+            "value": "$esx_command$"
+        },
+        "-o": {
+            "set_if_format": "string",
+            "value": "$esx_optional$"
+        },
+        "-p": {
+            "set_if_format": "string",
+            "value": "$esx_password$"
+        },
+        "-s": {
+            "set_if_format": "string",
+            "value": "$esx_subcommand$"
+        },
+        "-u": {
+            "set_if_format": "string",
+            "value": "$esx_username$"
+        },
+        "-w": {
+            "set_if_format": "string",
+            "value": "$esx_warning$"
+        }
+    },
+    "command": "PluginDir + \/check_vmware_api",
+    "methods_execute": "PluginCheck",
+    "object_name": "check_vmware_api",
+    "object_type": "object"
+}
+'
 fi
 

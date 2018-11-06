@@ -10,6 +10,21 @@ if [ ! -f /usr/bin/dos2unix ]; then
     exit 3
 fi
 
+# Validation of pre-requisites
+
+# 1) The import of Icinga2 ITL
+#
+# Pre-Requisites: Command: Powershell and service template "generic_agent_powershell"
+RES=`icingacli director command exists "icinga"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "[-] Pre-Requisite validation failed: Import of Icinga2 ITL into Director."
+   echo "    The command 'icinga' ad not been found on this director installation."
+   echo "    Please make sure to perform the Director Kickstart Wizard before running this import."
+   exit 3
+fi
+
+
 echo ">> Start of import procedure. Date: " `date` >> $IMPORT_LOG 2>&1
 echo ">> Start of import procedure. Logs are written to $IMPORT_LOG."
 
@@ -20,7 +35,7 @@ while read ll
 do
 
 	#sanitize files after copy
-	`/usr/bin/dos2unix $ll >> $IMPORT_LOG 2>&1` > /dev/null
+	`/usr/bin/dos2unix $ll >> /dev/null` > /dev/null
 
 	#echo "reading line $ll"
 	if [[ $ll =~ ".sh" ]]
