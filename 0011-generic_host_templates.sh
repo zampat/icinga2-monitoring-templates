@@ -10,7 +10,7 @@ then
    echo "Host 'generic-host' does not exists"
 
    icingacli director host create --json '
-  {
+{
     "check_command": "hostalive",
     "check_interval": "300",
     "check_timeout": "60",
@@ -20,7 +20,7 @@ then
     "enable_passive_checks": true,
     "enable_perfdata": true,
     "icon_image": "device.png",
-    "max_check_attempts": "3",
+    "max_check_attempts": "2",
     "object_name": "generic-host",
     "object_type": "template",
     "retry_interval": "60",

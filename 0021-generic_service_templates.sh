@@ -11,34 +11,19 @@ then
 icingacli director service create generic_service --json '
 {
     "check_interval": "180",
-    "check_period": null,
     "check_timeout": "60",
     "disabled": false,
-    "display_name": null,
     "enable_active_checks": true,
     "enable_event_handler": true,
+    "enable_flapping": true,
     "enable_notifications": true,
     "enable_passive_checks": true,
     "enable_perfdata": true,
-    "event_command": null,
-    "icon_image": null,
-    "icon_image_alt": null,
-    "imports": [
-
-    ],
     "max_check_attempts": "3",
-    "notes": null,
-    "notes_url": null,
     "object_name": "generic_service",
     "object_type": "template",
     "retry_interval": "60",
-    "service_set": null,
-    "template_choice": null,
     "use_agent": false,
-    "use_var_overrides": null,
-    "vars": {
-
-    },
     "volatile": false
 }
 '
