@@ -11,6 +11,7 @@
 LOCK TABLES `director_datafield` WRITE;
 /*!40000 ALTER TABLE `director_datafield` DISABLE KEYS */;
 INSERT IGNORE `director_datafield` VALUES
+(40,'custom_analytics_dashboard','ITOA Custom Dashboard',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (50,'host_service','Host Service',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (51,'host_owner','Host Owner',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDirectorObject',NULL),
 (52,'host_os','Host OS',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
