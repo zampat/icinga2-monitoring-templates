@@ -123,7 +123,14 @@ ifDuplexStatus: the operation mode of the interface (duplex mode)
 ifVlanNames: the vlan on which the interface was associated
 ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (321,'interface_table_warning_property','SNMP Interface Table  Number of property changes before leading to a warning alert',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(322,'interface_table_v2c','SNMP Interface Table version 2c',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
+(322,'interface_table_v2c','SNMP Interface Table version 2c',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(332,'snmp_v3_username','SNMPv3 Username (-U)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(333,'snmp_v3_auth_protocol','SNMPv3 Auth Protocol (-a)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(334,'snmp_v3_auth_password','SNMPv3 Auth Password (-A)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(335,'snmp_v3_priv_protcol','SNMPv3 Priv Protocol (-x)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(336,'snmp_v3_priv_password','SNMPv3 Priv Password (-X)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(340,'fortinet_type','Fortinet Type (-T)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(341,'fortinet_slave','Fortinet Slave (-s)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
