@@ -17,7 +17,7 @@ INSERT IGNORE `director_datafield` VALUES
 (52,'host_os','Host OS',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (53,'host_parent','Host parent',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDirectorObject',NULL),
 (80,'notification_from','Notification From','Set from address. Requires GNU mailutils (Debian/Ubuntu) or mailx (RHEL/SUSE)','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),	
-(81,'notification_icomment','Notification Notes','Set additional notes for notification message','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),	
+(81,'notification_comment','Notification Notes','Set additional notes for notification message','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),	
 (90,'icingacli_businessprocess_config','BP configuration filename','Configuration file containing your business process without file extension','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (91,'icingacli_businessprocess_process','BP process name','Business process to monitor','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (92,'icingacli_businessprocess_details','BP show problem details',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
