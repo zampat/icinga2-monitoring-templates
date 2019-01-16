@@ -117,6 +117,43 @@ then
         "generic-host"
     ],
     "object_name": "generic-snmp",
+    "icon_image": "devices.gif",
+    "object_type": "template"
+}
+'
+fi
+
+
+RES=`icingacli director host exists "generic_switch"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Host 'generic_switch' does not exists"
+
+   icingacli director host create --json '
+{
+    "imports": [
+        "generic-snmp"
+    ],
+    "object_name": "generic_switch",
+    "icon_image": "switch-high.png",
+    "object_type": "template"
+}
+'
+fi
+
+
+RES=`icingacli director host exists "generic_cisco_device"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Host 'generic_cisco_device' does not exists"
+
+   icingacli director host create --json '
+{
+    "imports": [
+        "generic-snmp"
+    ],
+    "object_name": "generic_cisco_device",
+    "icon_image": "cisco3-high.png",
     "object_type": "template"
 }
 '
@@ -130,7 +167,7 @@ then
    icingacli director host create --json '
 {
     "has_agent": false,
-    "icon_image": "tux.png",
+    "icon_image": "neteye.png",
     "imports": [
         "generic-host"
     ],
@@ -148,6 +185,7 @@ then
 {
     "accept_config": true,
     "has_agent": true,
+    "icon_image": "neteye.png",
     "imports": [
         "neteye-local-master"
     ],
@@ -156,6 +194,27 @@ then
     "object_type": "template"
 }
 
+'
+fi
+
+
+
+RES=`icingacli director host exists "generic-ibm-aix"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Host 'generic-ibm-aix' does not exists"
+   icingacli director host create --json '
+{
+    "icon_image": "aix-high.png",
+    "imports": [
+        "generic-host"
+    ],
+    "object_name": "generic-ibm-aix",
+    "object_type": "template",
+    "vars": {
+        "host_os": "AIX"
+    }
+}
 '
 fi
 
