@@ -114,7 +114,7 @@ INSERT IGNORE `director_datafield` VALUES
 (313,'interfaces_perfdata','Interfaces Perfdata','last check perfdata','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (314,'interfaces_down_is_ok','Interfaces down-is-ok','Disables critical alerts for down interfaces','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (315,'interface_use64bit','SNMP use 64bit counters',Null,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(320,'interface_table_track_property','SNMP Interface Table List of tracked properties','ifAlias: the interface alias
+(320,'interface_table_track_property','Interf.Table: Define tracked properties','ifAlias: the interface alias
 ifType: the type of the interface
 ifAdminStatus: the administrative status of the interface
 ifOperStatus: the operational status of the interface
@@ -123,8 +123,8 @@ ifStpState: the Spanning Tree state of the interface
 ifDuplexStatus: the operation mode of the interface (duplex mode)
 ifVlanNames: the vlan on which the interface was associated
 ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(321,'interface_table_warning_property','SNMP Interface Table  Number of property changes before leading to a warning alert',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(322,'interface_table_v2c','SNMP Interface Table version 2c',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(321,'interface_table_warning_property','Interf. Table:  Max property changes warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(322,'interface_table_v2c','Interf. Table: Use SNMP vers. 2c',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (330,'snmp_nocrypt','SNMP Use version 1 or 2',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (331,'snmp_v3','SNMPv3 Use Protocol Version 3',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (332,'snmp_v3_use_authprotocol','SNMPv3 use authentication protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),

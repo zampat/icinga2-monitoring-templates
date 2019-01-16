@@ -12,6 +12,9 @@
 1011b-s2f_http.sql
 1101a-st_snmp_network_traffic.sh
 1101b-s2f_snmp_network_traffic.sql
+1110-snmp_interface_table_commands.sh
+1111a-st_snmp_interface_table.sh
+1111b-s2f_snmp_interface_table.sql
 2011a-st_win_agent_basic.sh
 2011b-s2f_win_agent_basic.sql
 2011c-ss_win_agent_OS-Basic.sh
@@ -26,7 +29,9 @@
 2031b-s2f_win_exchange.sql
 2031c-ss_win_exchange.sh
 2051a-st_win_agent_AX-AOS.sh
+3000-vmware_esx.sh
 3001a-st_vmware_esx.sh
+3001b-s2f_vmware_esx.sql
 4001a-st_linux_agent-OS-Basic.sh
 4011a-st_linux_agent-debian.sh
 5001-snmp_commands.sh
