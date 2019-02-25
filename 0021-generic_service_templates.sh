@@ -109,4 +109,27 @@ then
 }'
 fi
 
+# Generic Passive Service
+RES=`icingacli director service exists "generic_passive_service"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service 'generic_passive_service' does not exists"
+   icingacli director service create generic_passive_service --json '
+{
+    "check_command": "dummy",
+    "check_interval": "86400",
+    "enable_active_checks": false,
+    "imports": [
+        "generic_service"
+    ],
+    "max_check_attempts": "1",
+    "object_name": "generic_passive_service",
+    "object_type": "template"
+}
+'
+fi
+
+
+
+
 echo "Service Templates created"

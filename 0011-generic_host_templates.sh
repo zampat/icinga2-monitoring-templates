@@ -218,4 +218,32 @@ then
 '
 fi
 
+# Generic Passive Hosts
+RES=`icingacli director host exists "generic-passive-host"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Host 'generic-passive-host' does not exists"
+   icingacli director host create --json '
+{
+    "check_command": "dummy",
+    "check_interval": "86400",
+    "check_timeout": "10",
+    "enable_active_checks": false,
+    "enable_event_handler": true,
+    "enable_notifications": true,
+    "enable_passive_checks": true,
+    "enable_perfdata": true,
+    "imports": [
+        "generic-host"
+    ],
+    "max_check_attempts": "1",
+    "object_name": "generic-passive-host",
+    "object_type": "template",
+    "retry_interval": "30",
+    "volatile": false
+}
+'
+fi
+
+
 echo "Generic Host Templates created"
