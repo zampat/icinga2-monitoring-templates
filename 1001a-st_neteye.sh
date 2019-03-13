@@ -1,6 +1,7 @@
 #
 #Service template: NetEye "agentless" as we don't have any endpoint = host_name
-#
+# Contribute exporting services:
+# icingacli director service show "generic_neteye" --json --no-defaults
 
 #
 #Service template
@@ -82,6 +83,22 @@ then
         "generic_neteye"
     ],
     "object_name": "neteye_proc_influxdb",
+    "object_type": "template"
+}
+'
+fi
+
+RES=`icingacli director service exists "neteye_zone"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service 'neteye_zone' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "icinga",
+    "imports": [
+        "generic_neteye"
+    ],
+    "object_name": "neteye_zone",
     "object_type": "template"
 }
 '
