@@ -163,7 +163,6 @@ RES=`icingacli director host exists "neteye-local-master"`
 if [[ $RES =~ "does not exist" ]]
 then
    echo "Host 'neteye-local-master' does not exists"
-
    icingacli director host create --json '
 {
     "has_agent": false,
@@ -176,11 +175,10 @@ then
 }'
 fi
 
-RES=`icingacli director host exists "neteye-satellite"`
+RES=`icingacli director host exists "neteye-remote-satellite"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Host 'neteye-satellite' does not exists"
-
+   echo "Host 'neteye-remote-satellite' does not exists"
    icingacli director host create --json '
 {
     "accept_config": true,
@@ -190,13 +188,30 @@ then
         "neteye-local-master"
     ],
     "master_should_connect": true,
-    "object_name": "neteye-satellite",
+    "object_name": "neteye-remote-satellite",
     "object_type": "template"
 }
-
 '
 fi
 
+
+RES=`icingacli director host exists "neteye-cluster-satellite"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Host 'neteye-cluster-satellite' does not exists"
+   icingacli director host create --json '
+{
+    "accept_config": true,
+    "icon_image": "neteye.png",
+    "imports": [
+        "neteye-local-master"
+    ],
+    "master_should_connect": true,
+    "object_name": "neteye-cluster-satellite",
+    "object_type": "template"
+}
+'
+fi
 
 
 RES=`icingacli director host exists "generic-ibm-aix"`
