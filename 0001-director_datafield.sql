@@ -158,7 +158,13 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (431,'nwc_health_critical','NWC Critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (432,'nwc_health_criticalx','NWC Critical Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (433,'nwc_health_warning','NWC Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(434,'nwc_health_warningx','NWC Warning Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
+(434,'nwc_health_warningx','NWC Warning Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(501,'oracle_health_mode','Oracle Health mode',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(502,'oracle_health_sid','Oracle Health SID',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(505,'oracle_health_username','Oracle Health username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(506,'oracle_health_password','Oracle Health password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(510,'oracle_health_warning','Oracle Health warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(511,'oracle_health_critical','Oracle Health critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
