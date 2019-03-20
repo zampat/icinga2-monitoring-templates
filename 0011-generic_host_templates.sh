@@ -53,16 +53,20 @@ if [[ $RES =~ "does not exist" ]]
 then
    echo "Host 'generic-agent-linux' does not exists"
    icingacli director host create --json '
-   {
+{
     "accept_config": true,
     "has_agent": true,
+    "icon_image": "tux.png",
     "icon_image_alt": "tux.png",
     "imports": [
         "generic-agent"
     ],
     "master_should_connect": true,
     "object_name": "generic-agent-linux",
-    "object_type": "template"
+    "object_type": "template",
+    "vars": {
+        "host_os": "Linux"
+    }
 }
 '
 fi
