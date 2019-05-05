@@ -25,8 +25,6 @@ INSERT IGNORE `director_datafield` VALUES
 (101,'disk_partition','Disk Linux Partition',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (102,'disk_cfree','Disk Linux Critical','Exit with CRITICAL status if less than INTEGER units of disk are free or Exit with CRITCAL status if less than PERCENT of disk space is free','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (103,'disk_wfree','Disk Linux Warning','Exit with WARNING status if less than PERCENT of inode space is free','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(105,'nrpe_command','NRPE Command ','The nrpe command','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(106,'nrpe_arguments','NRPE Arguments',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
 (108,'ups_type','UPS Type',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (111,'load_cload1','Load crit load1','Exit with CRITICAL status if load average exceed CLOADn; the load average format is the same used by \'uptime\' and \'w\'','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (112,'load_cload15','Load crit load15','Exit with CRITICAL status if load average exceed CLOADn; the load average format is the same used by \'uptime\' and \'w\'','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -71,7 +69,6 @@ INSERT IGNORE `director_datafield` VALUES
 (167,'procs_critical','Process Critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (168,'procs_warning','Process Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (169,'procs_argument','Process Argument',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(170,'nrpe_address','NRPE Address',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (171,'nscp_arguments','NSCP Arguments',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
 (172,'nscp_modules','NSCP module',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (173,'nscp_counter_arguments','NSCP counter arguments',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -158,12 +155,19 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (431,'nwc_health_critical','NWC Critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (432,'nwc_health_criticalx','NWC Critical Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (433,'nwc_health_warning','NWC Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(434,'nwc_health_warningx','NWC Warning Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
+(434,'nwc_health_warningx','NWC Warning Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(501,'nrpe_command','NRPE Command ','The nrpe command','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(502,'nrpe_arguments','NRPE Arguments (multi value)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
+(503,'nrpe_no_ssl','NRPE Do not use SSL',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(651,'oracle_health_mode','Oracle Health mode',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(652,'oracle_health_sid','Oracle Health SID',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(655,'oracle_health_username','Oracle Health username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(656,'oracle_health_password','Oracle Health password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(650,'oracle_health_warning','Oracle Health warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(651,'oracle_health_critical','Oracle Health critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
-
-
 
 
 --

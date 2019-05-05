@@ -1,7 +1,8 @@
 #
 #Service template Level 1
 # HowTo Export:
-# icingacli director service show generic_service --json --no-defaults
+# export OBJ="generic_service"
+# icingacli director service show "$OBJ" --json --no-defaults
 
 RES=`icingacli director service exists "generic_service"`
 if [[ $RES =~ "does not exist" ]]
@@ -107,6 +108,27 @@ then
     "object_name": "generic_snmp",
     "object_type": "template"
 }'
+fi
+
+# Generic Passive Service
+OBJ="generic_passive_service"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "dummy",
+    "check_interval": "86400",
+    "enable_active_checks": false,
+    "imports": [
+        "generic_service"
+    ],
+    "max_check_attempts": "1",
+    "object_name": "generic_passive_service",
+    "object_type": "template"
+}
+'
 fi
 
 echo "Service Templates created"

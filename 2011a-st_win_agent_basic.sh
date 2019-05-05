@@ -10,11 +10,28 @@
 ######
 
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_Win_CPU"`
+OBJ="Agent connected to zone"
+RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "cluster-zone",
+    "imports": [
+        "generic_agent"
+    ],
+    "object_name": "Agent connected to zone",
+    "object_type": "template",
+    "use_agent": false
+}'
+fi
 
-   echo "Service 'Agent_Win_CPU' does not exists"
+OBJ="Agent_Win_CPU"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-cpu",
@@ -27,8 +44,6 @@ then
 }
 '
 fi
-
-
 
 ###
 # Agent_Win_Diskspace
