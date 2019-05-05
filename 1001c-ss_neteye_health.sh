@@ -1,65 +1,80 @@
 
 ###
-# Create Service Set: "NetEye Local Master"
+# Create Service Set: "NetEye Master for standalone or cluster "
 # Create Service Set: "NetEye ClusterNode or Satellite"
 ###
 
 
 # Service Template for Service Set
-RES=`icingacli director serviceset exists "NetEye Local Master"`
+RES=`icingacli director serviceset exists "NetEye Master"`
 if [[ $RES =~ "does not exist" ]]
 then
 icingacli director serviceset create --json '
 {
-    "object_name": "NetEye Local Master",
+    "object_name": "NetEye Master",
     "object_type": "template",
-    "description": "NetEye Health checks for local master - no use of Icinga2 Agent."
-}
-'
+    "description": "NetEye Health checks for Icinga2 master: compatible with NetEye standalone or NetEye cluster."
+}'
 
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_disk"
+        "neteye disk"
     ],
-    "object_name": "NetEye local diskspace",
+    "object_name": "NetEye diskspace",
     "object_type": "object",
-    "service_set": "NetEye Local Master"
-}
-'
+    "service_set": "NetEye Master"
+}'
 
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_proc_influxdb"
+        "neteye icinga cluster"
     ],
-    "object_name": "NetEye local Influxdb running",
+    "object_name": "NetEye icinga cluster",
     "object_type": "object",
-    "service_set": "NetEye Local Master"
-}
-'
+    "service_set": "NetEye Master"
+}'
 
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_load"
+        "neteye icinga ido"
     ],
-    "object_name": "NetEye local Load",
+    "object_name": "NetEye icinga ido",
     "object_type": "object",
-    "service_set": "NetEye Local Master"
-}
-'
+    "service_set": "NetEye Master"
+}'
 
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_processes"
+        "neteye proc procname"
     ],
-    "object_name": "NetEye local running processes",
+    "object_name": "NetEye Influxdb running",
     "object_type": "object",
-    "service_set": "NetEye Local Master"
-}
-'
+    "service_set": "NetEye Master"
+}'
+
+icingacli director service create --json '
+{
+    "imports": [
+        "neteye load"
+    ],
+    "object_name": "NetEye load",
+    "object_type": "object",
+    "service_set": "NetEye Master"
+}'
+
+icingacli director service create --json '
+{
+    "imports": [
+        "neteye processes"
+    ],
+    "object_name": "NetEye running processes",
+    "object_type": "object",
+    "service_set": "NetEye Master"
+}'
 fi
 
 
@@ -79,49 +94,57 @@ icingacli director serviceset create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_disk"
+        "neteye disk"
     ],
-    "object_name": "NetEye local diskspace",
+    "object_name": "NetEye diskspace",
     "object_type": "object",
-    "service_set": "NetEye Satellite",
-    "use_agent": true
-}
-'
+    "service_set": "NetEye Satellite"
+}'
 
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_proc_influxdb"
+        "neteye icinga zone"
     ],
-    "object_name": "NetEye local Influxdb running",
+    "object_name": "Neteye icinga cluster zone connected",
     "object_type": "object",
-    "service_set": "NetEye Satellite",
-    "use_agent": true
-}
-'
+    "service_set": "NetEye Satellite"
+}'
 
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_load"
+        "neteye load"
     ],
-    "object_name": "NetEye local Load",
+    "object_name": "NetEye load",
     "object_type": "object",
-    "service_set": "NetEye Satellite",
-    "use_agent": true
-}
-'
+    "service_set": "NetEye Satellite"
+}'
 
 icingacli director service create --json '
 {
     "imports": [
-        "neteye_processes"
+        "neteye proc procname"
     ],
-    "object_name": "NetEye local running processes",
+    "object_name": "neteye proc icinga2",
     "object_type": "object",
     "service_set": "NetEye Satellite",
-    "use_agent": true
-}
-'
+    "vars": {
+        "procs_command": "icinga2",
+        "procs_critical": "1:",
+        "procs_warning": "1:50"
+    }
+}'
+
+
+icingacli director service create --json '
+{
+    "imports": [
+        "neteye processes"
+    ],
+    "object_name": "NetEye running processes",
+    "object_type": "object",
+    "service_set": "NetEye Satellite"
+}'
 fi
 
