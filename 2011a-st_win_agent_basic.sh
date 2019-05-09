@@ -10,7 +10,7 @@
 ######
 
 # Service Template for Service Set
-OBJ="Agent connected to zone"
+OBJ="Agent_connected"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -21,7 +21,7 @@ then
     "imports": [
         "generic_agent"
     ],
-    "object_name": "Agent connected to zone",
+    "object_name": "Agent_connected",
     "object_type": "template",
     "use_agent": false
 }'

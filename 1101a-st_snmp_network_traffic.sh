@@ -15,14 +15,13 @@ then
 
 icingacli director service create generic_snmp_interfaces --json '
 {
-    "check_command": "interfaces",
+    "check_command": "check_interfaces",
     "imports": [
         "generic_snmp"
     ],
     "object_name": "generic_snmp_interfaces",
     "object_type": "template",
     "vars": {
-        "interfaces_community": "public",
         "interfaces_perfdata": true,
         "interfaces_regex": "Eth.*",
         "interfaces_exclude_regex": "Exclude_Eth(9|15|20|22|24)",

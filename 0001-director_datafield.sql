@@ -96,7 +96,7 @@ INSERT IGNORE `director_datafield` VALUES
 (204,'disk_mountpoint','Disk Linux Mountpoint',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (205,'disk_timeout','Disk Linux Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (206,'http_vhost','HTTP virtual host',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(300,'snmp_community','SNMP Community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(300,'snmp_community','SNMP Community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (301,'snmp_manufacturer','SNMP Manufacturer',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (302,'snmp_interface','SNMP Interface',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (303,'snmp_warning','SNMP Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -105,6 +105,7 @@ INSERT IGNORE `director_datafield` VALUES
 (306,'snmp_enable_perfdata','SNMP Enable Perfdata',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (307,'snmp_timeout','SNMP Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (308,'snmp_protocol','SNMP Protocol version',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(309,'snmp_version','SNMP Version',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (310,'interfaces_community','Interfaces community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (311,'interfaces_regex','Interfaces Regex','Regex to match interfaces','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (312,'interfaces_exclude_regex','Interfaces exclude-regex','interface list negative regexp','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -122,14 +123,12 @@ ifVlanNames: the vlan on which the interface was associated
 ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (321,'interface_table_warning_property','Interf. Table:  Max property changes warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (322,'interface_table_v2c','Interf. Table: Use SNMP vers. 2c',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(330,'snmp_nocrypt','SNMP Use version 1 or 2',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(331,'snmp_v3','SNMPv3 Use Protocol Version 3',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(332,'snmp_v3_use_authprotocol','SNMPv3 use authentication protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(333,'snmp_v3_use_privpass','SNMPv3 use private Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(334,'snmp_login','SNMPv3 Username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(335,'snmp_authprotocol','SNMPv3 Auth Protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(336,'snmp_password','SNMPv3 Auth Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(337,'snmp_privpass','SNMPv3 Private Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(330,'snmp_security_level','SNMPv3 security level',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(331,'snmp_user','SNMPv3 Username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(332,'snmp_authprotocol','SNMPv3 auth.Protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(333,'snmp_auth_passphrase','SNMPv3 auth. passphrase',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(334,'snmp_privprotocol','SNMPv3 priv.Protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(336,'snmp_priv_password','SNMPv3 priv.Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (340,'snmp_storage_name','SNMP Storage Name',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (350,'fortinet_type','Fortinet Type (-T)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (351,'fortinet_slave','Fortinet Slave (-s)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -188,7 +187,8 @@ INSERT IGNORE `director_datalist` (`id`, `list_name`, `owner`) VALUES
 (172,'NSCP module','root'),
 (175,'NSCP query','root'),
 (177,'NSCP counter operator','root'),
-(196,'HTTP Action on redirect','root');
+(196,'HTTP Action on redirect','root'),
+(300,'SNMP Version','root');
 /*!40000 ALTER TABLE `director_datalist` ENABLE KEYS */;
 ALTER TABLE `director_datalist` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
@@ -250,7 +250,11 @@ INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`,
 (177,'<','<','string',NULL),
 (177,'=','=','string',NULL),
 (177,'>','>','string',NULL),
-(196,'follow','follow','string',NULL);
+(196,'follow','follow','string',NULL),
+(300,'1','1','string',NULL),
+(300,'2','2','string',NULL),
+(300,'2c','2c','string',NULL),
+(300,'3','3','string',NULL);
 /*!40000 ALTER TABLE `director_datalist_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +292,9 @@ INSERT IGNORE `director_datafield_setting` (`datafield_id`, `setting_name`, `set
 (177,'datalist_id',177),
 (177,'data_type','string'),
 (196,'datalist_id',196),
-(196,'data_type','string');
+(196,'data_type','string'),
+(300,'datalist_id',300),
+(300,'data_type','string');
 /*!40000 ALTER TABLE `director_datafield_setting` ENABLE KEYS */;
 UNLOCK TABLES;
 

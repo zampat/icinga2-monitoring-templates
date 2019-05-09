@@ -35,6 +35,19 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
+        "Agent_connected"
+    ],
+    "object_name": "Icinga Agent connected",
+    "object_type": "object",
+    "service_set": "Windows_Agent_OS-Basic",
+    "use_agent": false
+}
+'
+
+   icingacli director service create --json '
+{
+    "disabled": false,
+    "imports": [
         "Agent_Win_Memory"
     ],
     "object_name": "Win Memory",
