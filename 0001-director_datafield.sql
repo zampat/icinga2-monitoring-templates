@@ -97,7 +97,7 @@ INSERT IGNORE `director_datafield` VALUES
 (204,'disk_mountpoint','Disk Linux Mountpoint',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (205,'disk_timeout','Disk Linux Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (206,'http_vhost','HTTP virtual host',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(300,'snmp_community','SNMP Community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
+(300,'snmp_community','SNMP Community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (301,'snmp_manufacturer','SNMP Manufacturer',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (302,'snmp_interface','SNMP Interface',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (303,'snmp_warning','SNMP Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
