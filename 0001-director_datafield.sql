@@ -6,6 +6,7 @@
 -- Index Reservations:
 -- 1 - 99: Host fields
 -- 100 - 300: Service fields
+-- Advice: some id's had been removed. See DELETE query below!!
 --
 
 LOCK TABLES `director_datafield` WRITE;
@@ -104,7 +105,7 @@ INSERT IGNORE `director_datafield` VALUES
 (305,'snmp_check_type','SNMP Check Type',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (306,'snmp_enable_perfdata','SNMP Enable Perfdata',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (307,'snmp_timeout','SNMP Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(308,'snmp_protocol','SNMP Protocol version',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(308,'snmp_version','SNMP Version',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (310,'interfaces_community','Interfaces community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (311,'interfaces_regex','Interfaces Regex','Regex to match interfaces','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (312,'interfaces_exclude_regex','Interfaces exclude-regex','interface list negative regexp','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -122,14 +123,12 @@ ifVlanNames: the vlan on which the interface was associated
 ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (321,'interface_table_warning_property','Interf. Table:  Max property changes warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (322,'interface_table_v2c','Interf. Table: Use SNMP vers. 2c',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(330,'snmp_nocrypt','SNMP Use version 1 or 2',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(331,'snmp_v3','SNMPv3 Use Protocol Version 3',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(332,'snmp_v3_use_authprotocol','SNMPv3 use authentication protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(333,'snmp_v3_use_privpass','SNMPv3 use private Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(334,'snmp_login','SNMPv3 Username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(335,'snmp_authprotocol','SNMPv3 Auth Protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(336,'snmp_password','SNMPv3 Auth Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(337,'snmp_privpass','SNMPv3 Private Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(330,'snmp_security_level','SNMPv3 security level',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(331,'snmp_user','SNMPv3 Username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(332,'snmp_authprotocol','SNMPv3 auth.Protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(333,'snmp_auth_passphrase','SNMPv3 auth. passphrase',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(334,'snmp_privprotocol','SNMPv3 priv.Protocol',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(336,'snmp_priv_password','SNMPv3 priv.Password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (340,'snmp_storage_name','SNMP Storage Name',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (350,'fortinet_type','Fortinet Type (-T)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (351,'fortinet_slave','Fortinet Slave (-s)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -171,6 +170,21 @@ UNLOCK TABLES;
 
 
 --
+-- Changes required to align to master branch
+--
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_version', `caption` = 'SNMP Version', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeDatalist' WHERE `director_datafield`.`id` = 308;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_security_level', `caption` = 'SNMPv3 security level', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 330;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_user', `caption` = 'SNMPv3 Username', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 331;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_authprotocol', `caption` = 'SNMPv3 auth.Protocol', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 332;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_auth_passphrase', `caption` = 'SNMPv3 auth. passphrase', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 333;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_privprotocol', `caption` = 'SNMPv3 priv.Protocol' WHERE `director_datafield`.`id` = 334;
+DELETE FROM `director`.`director_datafield` WHERE `director_datafield`.`id` = 335;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_priv_password', `caption` = 'SNMPv3 priv.Password' WHERE `director_datafield`.`id` = 336;
+DELETE FROM `director`.`director_datafield` WHERE `director_datafield`.`id` = 337;
+
+
+
+--
 -- Table structure for table `director_datalist`
 -- For default import
 -- Create DataLists for DataFiels having FieldType "datalist"
@@ -188,7 +202,8 @@ INSERT IGNORE `director_datalist` (`id`, `list_name`, `owner`) VALUES
 (172,'NSCP module','root'),
 (175,'NSCP query','root'),
 (177,'NSCP counter operator','root'),
-(196,'HTTP Action on redirect','root');
+(196,'HTTP Action on redirect','root'),
+(308,'SNMP Version','root');
 /*!40000 ALTER TABLE `director_datalist` ENABLE KEYS */;
 ALTER TABLE `director_datalist` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
@@ -250,7 +265,11 @@ INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`,
 (177,'<','<','string',NULL),
 (177,'=','=','string',NULL),
 (177,'>','>','string',NULL),
-(196,'follow','follow','string',NULL);
+(196,'follow','follow','string',NULL),
+(308,'1','1','string',NULL),
+(308,'2','2','string',NULL),
+(308,'2c','2c','string',NULL),
+(308,'3','3','string',NULL);
 /*!40000 ALTER TABLE `director_datalist_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +307,9 @@ INSERT IGNORE `director_datafield_setting` (`datafield_id`, `setting_name`, `set
 (177,'datalist_id',177),
 (177,'data_type','string'),
 (196,'datalist_id',196),
-(196,'data_type','string');
+(196,'data_type','string'),
+(308,'datalist_id',308),
+(308,'data_type','string');
 /*!40000 ALTER TABLE `director_datafield_setting` ENABLE KEYS */;
 UNLOCK TABLES;
 
