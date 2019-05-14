@@ -172,6 +172,7 @@ UNLOCK TABLES;
 --
 -- Changes required to align to master branch
 --
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_version', `caption` = 'SNMP Version', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeDatalist' WHERE `director_datafield`.`id` = 308;
 UPDATE `director`.`director_datafield` SET `varname` = 'snmp_security_level', `caption` = 'SNMPv3 security level', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 330;
 UPDATE `director`.`director_datafield` SET `varname` = 'snmp_user', `caption` = 'SNMPv3 Username', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 331;
 UPDATE `director`.`director_datafield` SET `varname` = 'snmp_authprotocol', `caption` = 'SNMPv3 auth.Protocol', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 332;
