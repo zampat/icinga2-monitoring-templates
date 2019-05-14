@@ -105,7 +105,7 @@ INSERT IGNORE `director_datafield` VALUES
 (305,'snmp_check_type','SNMP Check Type',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (306,'snmp_enable_perfdata','SNMP Enable Perfdata',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (307,'snmp_timeout','SNMP Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(309,'snmp_version','SNMP Version',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
+(308,'snmp_version','SNMP Version',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (310,'interfaces_community','Interfaces community',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (311,'interfaces_regex','Interfaces Regex','Regex to match interfaces','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (312,'interfaces_exclude_regex','Interfaces exclude-regex','interface list negative regexp','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -202,7 +202,7 @@ INSERT IGNORE `director_datalist` (`id`, `list_name`, `owner`) VALUES
 (175,'NSCP query','root'),
 (177,'NSCP counter operator','root'),
 (196,'HTTP Action on redirect','root'),
-(309,'SNMP Version','root');
+(308,'SNMP Version','root');
 /*!40000 ALTER TABLE `director_datalist` ENABLE KEYS */;
 ALTER TABLE `director_datalist` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
@@ -265,10 +265,10 @@ INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`,
 (177,'=','=','string',NULL),
 (177,'>','>','string',NULL),
 (196,'follow','follow','string',NULL),
-(309,'1','1','string',NULL),
-(309,'2','2','string',NULL),
-(309,'2c','2c','string',NULL),
-(309,'3','3','string',NULL);
+(308,'1','1','string',NULL),
+(308,'2','2','string',NULL),
+(308,'2c','2c','string',NULL),
+(308,'3','3','string',NULL);
 /*!40000 ALTER TABLE `director_datalist_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,8 +307,8 @@ INSERT IGNORE `director_datafield_setting` (`datafield_id`, `setting_name`, `set
 (177,'data_type','string'),
 (196,'datalist_id',196),
 (196,'data_type','string'),
-(309,'datalist_id',309),
-(309,'data_type','string');
+(308,'datalist_id',308),
+(308,'data_type','string');
 /*!40000 ALTER TABLE `director_datafield_setting` ENABLE KEYS */;
 UNLOCK TABLES;
 
