@@ -34,7 +34,7 @@ then
    echo "Service '$OBJ' does not exists"
    icingacli director service create --json '
 {
-    "check_command": "nscp-local-cpu",
+    "check_command": "load-windows",
     "imports": [
         "generic_agent"
     ],
@@ -99,20 +99,20 @@ fi
 
 
 ###
-# Agent_WinSrv
+# Agent_Win_Service
 ###
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_WinSrv"`
+RES=`icingacli director service exists "Agent_Win_Service"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_WinSrv' does not exists"
+   echo "Service 'Agent_Win_Service' does not exists"
    icingacli director service create --json '
 {
     "check_command": "service-windows",
     "imports": [
         "generic_agent"
     ],
-    "object_name": "Agent_WinSrv",
+    "object_name": "Agent_Win_Service",
     "object_type": "template",
     "vars": {
         "service_win_service": [
@@ -122,7 +122,6 @@ then
 }
 '
 fi
-
 
 
 ###
