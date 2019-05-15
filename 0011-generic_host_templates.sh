@@ -139,6 +139,9 @@ then
 
    icingacli director host create --json '
 {
+    "groups": [
+        "network devices"
+    ],
     "imports": [
         "generic-snmp"
     ],

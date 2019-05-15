@@ -110,7 +110,7 @@ then
                     "value": "$snmp_user$"
                 }
             },
-    "command": "PluginDir + \/check_interfaces",
+    "command": "PluginContribDir + \/check_interfaces",
     "methods_execute": "PluginCheck",
     "object_name": "check_interfaces",
     "object_type": "object"
