@@ -1,0 +1,109 @@
+{
+    "ImportSource": {
+        "NetEye3: NeDi Devices": {
+            "description": "NeDi Devices import (compatible with NeDi 1.7)",
+            "key_column": "device",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "snmpversion",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierReplace",
+                    "settings": {
+                        "replacement": "2c",
+                        "string": "130"
+                    },
+                    "target_property": "snmpversion"
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "device",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "devos",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierReplace",
+                    "settings": {
+                        "replacement": "HP",
+                        "string": "Comware"
+                    },
+                    "target_property": null
+                }
+            ],
+            "originalId": "1",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "device, serial, address, vendor, type, description, devos, snmpversion, readcomm",
+                "query": "SELECT device, serial, INET_NTOA(devip) as address, vendor, type, description, devos, snmpversion, readcomm FROM nedi.devices",
+                "resource": "NetEye3:NeDi"
+            },
+            "source_name": "NetEye3: NeDi Devices"
+        }
+    },
+    "SyncRule": {
+        "NetEye3: NeDi Devices": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "host",
+            "originalId": "1",
+            "properties": [
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "NetEye3: NeDi Devices",
+                    "source_expression": "generic-snmp"
+                },
+                {
+                    "destination_field": "address",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "NetEye3: NeDi Devices",
+                    "source_expression": "${address}"
+                },
+                {
+                    "destination_field": "notes",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "3",
+                    "source": "NetEye3: NeDi Devices",
+                    "source_expression": "${description}"
+                },
+                {
+                    "destination_field": "vars.host_os",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "4",
+                    "source": "NetEye3: NeDi Devices",
+                    "source_expression": "${devos}"
+                },
+                {
+                    "destination_field": "vars.snmp_community",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "5",
+                    "source": "NetEye3: NeDi Devices",
+                    "source_expression": "${readcomm}"
+                },
+                {
+                    "destination_field": "vars.snmp_version",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "6",
+                    "source": "NetEye3: NeDi Devices",
+                    "source_expression": "${snmpversion}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "NetEye3: NeDi Devices",
+            "update_policy": "ignore"
+        }
+    }
+}
