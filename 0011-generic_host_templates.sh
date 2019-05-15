@@ -123,7 +123,10 @@ then
     ],
     "object_name": "generic-snmp",
     "icon_image": "devices.gif",
-    "object_type": "template"
+    "object_type": "template",
+    "vars": {
+        "snmp_version": "2c"
+    }
 }
 '
 fi
