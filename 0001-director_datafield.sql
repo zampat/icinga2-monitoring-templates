@@ -155,6 +155,7 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (432,'nwc_health_criticalx','NWC Critical Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (433,'nwc_health_warning','NWC Warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (434,'nwc_health_warningx','NWC Warning Extended',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(435,'nwc_health_blacklist','NWC Blacklist',"Run debug mode -vv to get [ENTITY_xxx] to exclude",'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (501,'nrpe_command','NRPE Command ','The nrpe command','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (502,'nrpe_arguments','NRPE Arguments (multi value)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
 (503,'nrpe_no_ssl','NRPE Do not use SSL',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
