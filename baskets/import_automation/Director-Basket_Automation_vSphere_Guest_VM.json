@@ -1,0 +1,140 @@
+{
+    "ImportSource": {
+        "vsphere: Virtual Machines": {
+            "description": null,
+            "key_column": "name",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "guest.guestState",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": "IsRunning"
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "guest.ipAddress",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "regex",
+                        "filter_string": "\/\\d+\\.\\d+\\.\\d+\\.\\d+\/",
+                        "policy": "keep"
+                    },
+                    "target_property": "IPAddress"
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "guest.hostName",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": "name"
+                },
+                {
+                    "description": null,
+                    "priority": "5",
+                    "property_name": "runtime.host",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": "parent_esx"
+                },
+                {
+                    "description": null,
+                    "priority": "6",
+                    "property_name": "config.template",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "wildcard",
+                        "filter_string": "false",
+                        "policy": "reject"
+                    },
+                    "target_property": "isTemplate"
+                },
+                {
+                    "description": null,
+                    "priority": "7",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "regex",
+                        "filter_string": "\/exclude-vm1|exclude-vm2\/",
+                        "policy": "reject"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "8",
+                    "property_name": "config.annotation",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "regex",
+                        "filter_string": "\/.*template.*\/i",
+                        "policy": "reject"
+                    },
+                    "target_property": "notes"
+                }
+            ],
+            "originalId": "14",
+            "provider_class": "Icinga\\Module\\Vsphere\\ProvidedHook\\Director\\ImportSource",
+            "settings": {
+                "host": "vspherehost.mydomain.net",
+                "object_type": "VirtualMachine",
+                "password": "test",
+                "proxy_type": "",
+                "scheme": "HTTPS",
+                "ssl_verify_host": "n",
+                "ssl_verify_peer": "n",
+                "username": "domain\\neteye"
+            },
+            "source_name": "vsphere: Virtual Machines"
+        }
+    },
+    "SyncRule": {
+        "vsphere: Virtual Machines": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "host",
+            "originalId": "10",
+            "properties": [
+                {
+                    "destination_field": "address",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "vsphere: Virtual Machines",
+                    "source_expression": "${IPAddress}"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "vsphere: Virtual Machines",
+                    "source_expression": "generic-host"
+                },
+                {
+                    "destination_field": "vars.host_parent",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "3",
+                    "source": "vsphere: Virtual Machines",
+                    "source_expression": "${parent}"
+                },
+                {
+                    "destination_field": "notes",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "4",
+                    "source": "vsphere: Virtual Machines",
+                    "source_expression": "${notes}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "vsphere: Virtual Machines",
+            "update_policy": "merge"
+        }
+    }
+}

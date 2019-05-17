@@ -1,0 +1,82 @@
+{
+    "ImportSource": {
+        "vsphere: ESX Machines": {
+            "description": null,
+            "key_column": "name",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "7",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "regex",
+                        "filter_string": "\/exclude-vm1|exclude-vm2\/",
+                        "policy": "reject"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "8",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierGetHostByName",
+                    "settings": {
+                        "on_failure": "keep"
+                    },
+                    "target_property": "ip"
+                }
+            ],
+            "originalId": "15",
+            "provider_class": "Icinga\\Module\\Vsphere\\ProvidedHook\\Director\\ImportSource",
+            "settings": {
+                "host": "vspherehost.mydomain.net",
+                "object_type": "HostSystem",
+                "password": "test",
+                "proxy_type": "",
+                "scheme": "HTTPS",
+                "ssl_verify_host": "n",
+                "ssl_verify_peer": "n",
+                "username": "mydomain\\neteye"
+            },
+            "source_name": "vsphere: ESX Machines"
+        }
+    },
+    "SyncRule": {
+        "vsphere: ESX Machines": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "host",
+            "originalId": "11",
+            "properties": [
+                {
+                    "destination_field": "address",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "vsphere: ESX Machines",
+                    "source_expression": "${ip}"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "vsphere: ESX Machines",
+                    "source_expression": "generic-esx"
+                },
+                {
+                    "destination_field": "vars.host_os",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "5",
+                    "source": "vsphere: ESX Machines",
+                    "source_expression": "ESX"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "vsphere: ESX Machines",
+            "update_policy": "merge"
+        }
+    }
+}
