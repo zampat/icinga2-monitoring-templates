@@ -23,7 +23,8 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye diskspace",
     "object_type": "object",
-    "service_set": "NetEye Master"
+    "service_set": "NetEye Master",
+    "use_agent": false
 }'
 
 icingacli director service create --json '
@@ -33,7 +34,8 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye icinga cluster",
     "object_type": "object",
-    "service_set": "NetEye Master"
+    "service_set": "NetEye Master",
+    "use_agent": false
 }'
 
 icingacli director service create --json '
@@ -43,7 +45,8 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye icinga ido",
     "object_type": "object",
-    "service_set": "NetEye Master"
+    "service_set": "NetEye Master",
+    "use_agent": false
 }'
 
 icingacli director service create --json '
@@ -53,7 +56,8 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye Influxdb running",
     "object_type": "object",
-    "service_set": "NetEye Master"
+    "service_set": "NetEye Master",
+    "use_agent": false
 }'
 
 icingacli director service create --json '
@@ -63,7 +67,8 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye load",
     "object_type": "object",
-    "service_set": "NetEye Master"
+    "service_set": "NetEye Master",
+    "use_agent": false
 }'
 
 icingacli director service create --json '
@@ -73,7 +78,8 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye running processes",
     "object_type": "object",
-    "service_set": "NetEye Master"
+    "service_set": "NetEye Master",
+    "use_agent": false
 }'
 fi
 
