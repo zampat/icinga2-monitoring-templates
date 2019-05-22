@@ -1,0 +1,79 @@
+{
+    "ImportSource": {
+        "NetEye3 Monarch: Hosts": {
+            "description": "NetEye 3 Monarch Hosts import",
+            "key_column": "name",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "alias",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                }
+            ],
+            "originalId": "1",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "name, alias, address, hosttemplate_name, hostprofile_name, hostprofile_desc",
+                "query": "SELECT H.Name, H.alias, H.address, HT.name AS hosttemplate_name, HP.name AS hostprofile_name, HP.description AS hostprofile_desc\r\nFROM `hosts` H\r\nJOIN profiles_host HP ON HP.hostprofile_id = H.hostprofile_id\r\nJOIN host_templates HT ON HT.hosttemplate_id = H.hosttemplate_id\r\nWHERE deleted = 0",
+                "resource": "NetEye3 Monarch"
+            },
+            "source_name": "NetEye3 Monarch: Hosts"
+        }
+    },
+    "SyncRule": {
+        "NetEye3 Monarch: Hosts": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "host",
+            "originalId": "1",
+            "properties": [
+                {
+                    "destination_field": "address",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "NetEye3 Monarch: Hosts",
+                    "source_expression": "${address}"
+                },
+                {
+                    "destination_field": "notes",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "NetEye3 Monarch: Hosts",
+                    "source_expression": "${alias}"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "3",
+                    "source": "NetEye3 Monarch: Hosts",
+                    "source_expression": "${hosttemplate_name}"
+                },
+                {
+                    "destination_field": "vars.host_profile",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "4",
+                    "source": "NetEye3 Monarch: Hosts",
+                    "source_expression": "${hostprofile_name}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "NetEye3 Monarch: Hosts",
+            "update_policy": "merge"
+        }
+    }
+}
