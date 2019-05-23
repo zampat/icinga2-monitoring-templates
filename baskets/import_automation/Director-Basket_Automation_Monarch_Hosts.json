@@ -26,7 +26,7 @@
             "settings": {
                 "column_cache": "name, alias, address, hosttemplate_name, hostprofile_name, hostprofile_desc",
                 "query": "SELECT H.Name, H.alias, H.address, HT.name AS hosttemplate_name, HP.name AS hostprofile_name, HP.description AS hostprofile_desc\r\nFROM `hosts` H\r\nJOIN profiles_host HP ON HP.hostprofile_id = H.hostprofile_id\r\nJOIN host_templates HT ON HT.hosttemplate_id = H.hosttemplate_id\r\nWHERE deleted = 0",
-                "resource": "NetEye3 Monarch"
+                "resource": "Sample remote MYSQL ressource"
             },
             "source_name": "NetEye3 Monarch: Hosts"
         }
