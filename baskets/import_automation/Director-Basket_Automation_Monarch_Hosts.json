@@ -21,7 +21,7 @@
                     "target_property": null
                 }
             ],
-            "originalId": "1",
+            "originalId": "10001",
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
             "settings": {
                 "column_cache": "name, alias, address, hosttemplate_name, hostprofile_name, hostprofile_desc",
@@ -36,7 +36,7 @@
             "description": null,
             "filter_expression": null,
             "object_type": "host",
-            "originalId": "1",
+            "originalId": "10001",
             "properties": [
                 {
                     "destination_field": "address",
