@@ -35,12 +35,12 @@
                     "target_property": null
                 }
             ],
-            "originalId": "1",
+            "originalId": "10011",
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
             "settings": {
                 "column_cache": "device, serial, address, vendor, type, description, devos, snmpversion, readcomm",
                 "query": "SELECT device, serial, INET_NTOA(devip) as address, vendor, type, description, devos, snmpversion, readcomm FROM nedi.devices",
-                "resource": "NetEye3:NeDi"
+                "resource": "Sample remote MYSQL ressource"
             },
             "source_name": "NetEye3: NeDi Devices"
         }
@@ -50,7 +50,7 @@
             "description": null,
             "filter_expression": null,
             "object_type": "host",
-            "originalId": "1",
+            "originalId": "10011",
             "properties": [
                 {
                     "destination_field": "import",

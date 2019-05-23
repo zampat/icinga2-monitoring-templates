@@ -51,7 +51,7 @@
                     "target_property": "email_adresse"
                 }
             ],
-            "originalId": "5",
+            "originalId": "10101",
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceLdap",
             "settings": {
                 "base": "DC=mydomain,DC=lan",
@@ -68,7 +68,7 @@
             "description": null,
             "filter_expression": "(cn=*|cn=*CustomGroup*)",
             "object_type": "user",
-            "originalId": "4",
+            "originalId": "10101",
             "properties": [
                 {
                     "destination_field": "email",

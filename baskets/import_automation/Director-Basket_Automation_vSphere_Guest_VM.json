@@ -77,7 +77,7 @@
                     "target_property": "notes"
                 }
             ],
-            "originalId": "14",
+            "originalId": "10201",
             "provider_class": "Icinga\\Module\\Vsphere\\ProvidedHook\\Director\\ImportSource",
             "settings": {
                 "host": "vspherehost.mydomain.net",
@@ -97,7 +97,7 @@
             "description": null,
             "filter_expression": null,
             "object_type": "host",
-            "originalId": "10",
+            "originalId": "10201",
             "properties": [
                 {
                     "destination_field": "address",
