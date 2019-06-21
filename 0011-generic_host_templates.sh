@@ -122,7 +122,7 @@ then
         "generic-host"
     ],
     "object_name": "generic-snmp",
-    "icon_image": "devices.gif",
+    "icon_image": "device-snmp.png",
     "object_type": "template",
     "vars": {
         "snmp_version": "2c"
