@@ -1,6 +1,6 @@
 {
     "ImportSource": {
-        "NetEye3 Monarch: Hosts": {
+        "01: NetEye3 Monarch: Hosts": {
             "description": "NetEye 3 Monarch Hosts import",
             "key_column": "name",
             "modifiers": [
@@ -19,20 +19,134 @@
                     "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
                     "settings": {},
                     "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "address",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "wildcard",
+                        "filter_string": "127.0.0.1",
+                        "policy": "reject"
+                    },
+                    "target_property": null
                 }
             ],
             "originalId": "10001",
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
             "settings": {
-                "column_cache": "name, alias, address, hosttemplate_name, hostprofile_name, hostprofile_desc",
-                "query": "SELECT H.Name, H.alias, H.address, HT.name AS hosttemplate_name, HP.name AS hostprofile_name, HP.description AS hostprofile_desc\r\nFROM `hosts` H\r\nJOIN profiles_host HP ON HP.hostprofile_id = H.hostprofile_id\r\nJOIN host_templates HT ON HT.hosttemplate_id = H.hosttemplate_id\r\nWHERE deleted = 0",
-                "resource": "Sample remote MYSQL ressource"
+                "column_cache": "host_id, name, deleted, alias, address, hosttemplate_name, hostprofile_name, hostprofile_desc",
+                "query": "SELECT distinct(H.host_id), H.Name, H.deleted, H.alias, H.address, HT.name AS hosttemplate_name, HP.name AS hostprofile_name, HP.description AS hostprofile_desc\r\nFROM `hosts` H\r\nLEFT JOIN profiles_host HP ON HP.hostprofile_id = H.hostprofile_id\r\nJOIN host_templates HT ON HT.hosttemplate_id = H.hosttemplate_id\r\nWHERE deleted = 0 AND H.host_id NOT IN (SELECT host_id FROM  hostgroup_host WHERE hostgroup_id = 63)",
+                "resource": "NetEye 3 Monarch"
             },
-            "source_name": "NetEye3 Monarch: Hosts"
+            "source_name": "01: NetEye3 Monarch: Hosts"
+        },
+        "02: NetEye3 Monarch: HostGroups": {
+            "description": null,
+            "key_column": "name",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "alias",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "4",
+                    "property_name": "alias",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                }
+            ],
+            "originalId": "10002",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "name, alias",
+                "query": "SELECT name, alias FROM `hostgroups`",
+                "resource": "NetEye 3 Monarch"
+            },
+            "source_name": "02: NetEye3 Monarch: HostGroups"
+        },
+        "03: NetEye3 Monarch Hosts - Hostgroup relation": {
+            "description": null,
+            "key_column": "name",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "json",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "4",
+                    "property_name": "json",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "5",
+                    "property_name": "json",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierJsonDecode",
+                    "settings": {
+                        "on_failure": "null"
+                    },
+                    "target_property": "hosts_arr"
+                }
+            ],
+            "originalId": "10003",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "name, json",
+                "query": "SELECT H.name, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"'  ) ), ']' ) json FROM `hostgroups` AS HG JOIN hostgroup_host R ON HG.hostgroup_id = R.hostgroup_id JOIN hosts H ON H.host_id = R.host_id GROUP BY H.name\r\n",
+                "resource": "NetEye 3 Monarch"
+            },
+            "source_name": "03: NetEye3 Monarch Hosts - Hostgroup relation"
         }
     },
     "SyncRule": {
-        "NetEye3 Monarch: Hosts": {
+        "01: NetEye3 Monarch: Hosts": {
             "description": null,
             "filter_expression": null,
             "object_type": "host",
@@ -43,7 +157,7 @@
                     "filter_expression": null,
                     "merge_policy": "override",
                     "priority": "1",
-                    "source": "NetEye3 Monarch: Hosts",
+                    "source": "01: NetEye3 Monarch: Hosts",
                     "source_expression": "${address}"
                 },
                 {
@@ -51,7 +165,7 @@
                     "filter_expression": null,
                     "merge_policy": "override",
                     "priority": "2",
-                    "source": "NetEye3 Monarch: Hosts",
+                    "source": "01: NetEye3 Monarch: Hosts",
                     "source_expression": "${alias}"
                 },
                 {
@@ -59,20 +173,58 @@
                     "filter_expression": null,
                     "merge_policy": "merge",
                     "priority": "3",
-                    "source": "NetEye3 Monarch: Hosts",
-                    "source_expression": "${hosttemplate_name}"
-                },
-                {
-                    "destination_field": "vars.host_profile",
-                    "filter_expression": null,
-                    "merge_policy": "merge",
-                    "priority": "4",
-                    "source": "NetEye3 Monarch: Hosts",
-                    "source_expression": "${hostprofile_name}"
+                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source_expression": "generic-host"
                 }
             ],
             "purge_existing": "n",
-            "rule_name": "NetEye3 Monarch: Hosts",
+            "rule_name": "01: NetEye3 Monarch: Hosts",
+            "update_policy": "merge"
+        },
+        "02: NetEye3 Monarch: HostGroups": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "hostgroup",
+            "originalId": "10002",
+            "properties": [
+                {
+                    "destination_field": "object_name",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "02: NetEye3 Monarch: HostGroups",
+                    "source_expression": "${name}"
+                },
+                {
+                    "destination_field": "display_name",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "02: NetEye3 Monarch: HostGroups",
+                    "source_expression": "${alias}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "02: NetEye3 Monarch: HostGroups",
+            "update_policy": "merge"
+        },
+        "03: NetEye3 Monarch Hosts - Hostgroup relation": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "host",
+            "originalId": "10004",
+            "properties": [
+                {
+                    "destination_field": "groups",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "03: NetEye3 Monarch Hosts - Hostgroup relation",
+                    "source_expression": "${hosts_arr}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "03: NetEye3 Monarch Hosts - Hostgroup relation",
             "update_policy": "merge"
         }
     }
