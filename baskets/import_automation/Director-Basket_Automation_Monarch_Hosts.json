@@ -26,8 +26,8 @@
                     "property_name": "address",
                     "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
                     "settings": {
-                        "filter_method": "wildcard",
-                        "filter_string": "127.0.0.1",
+                        "filter_method": "regex",
+                        "filter_string": "\/127.0.0.1|localhost\/",
                         "policy": "reject"
                     },
                     "target_property": null
@@ -133,13 +133,25 @@
                         "on_failure": "null"
                     },
                     "target_property": "hosts_arr"
+                },
+                {
+                    "description": null,
+                    "priority": "6",
+                    "property_name": "address",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "regex",
+                        "filter_string": "\/127.0.0.1|localhost\/",
+                        "policy": "reject"
+                    },
+                    "target_property": null
                 }
             ],
             "originalId": "10003",
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
             "settings": {
-                "column_cache": "name, json",
-                "query": "SELECT H.name, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"'  ) ), ']' ) json FROM `hostgroups` AS HG JOIN hostgroup_host R ON HG.hostgroup_id = R.hostgroup_id JOIN hosts H ON H.host_id = R.host_id GROUP BY H.name\r\n",
+                "column_cache": "name, address, hostgroups_json",
+                "query": "SELECT H.name, H.address, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"'  ) ), ']' ) hostgroups_json FROM `hostgroups` AS HG JOIN hostgroup_host R ON HG.hostgroup_id = R.hostgroup_id JOIN hosts H ON H.host_id = R.host_id\r\nWHERE H.deleted = 0 AND H.host_id NOT IN (SELECT host_id FROM  hostgroup_host WHERE hostgroup_id = 63)\r\n GROUP BY H.name",
                 "resource": "NetEye 3 Monarch"
             },
             "source_name": "03: NetEye3 Monarch Hosts - Hostgroup relation"
@@ -221,6 +233,14 @@
                     "priority": "1",
                     "source": "03: NetEye3 Monarch Hosts - Hostgroup relation",
                     "source_expression": "${hosts_arr}"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "03: NetEye3 Monarch Hosts - Hostgroup relation",
+                    "source_expression": "generic-host"
                 }
             ],
             "purge_existing": "n",
