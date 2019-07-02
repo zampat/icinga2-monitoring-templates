@@ -25,7 +25,8 @@ icingacli director service create generic_snmp_interfaces --json '
         "interfaces_perfdata": true,
         "interfaces_regex": "Eth.*",
         "interfaces_exclude_regex": "Exclude_Eth(9|15|20|22|24)",
-        "custom_analytics_dashboard": "gITkmapik/interfaces-traffic"
+        "custom_analytics_dashboard": "gITkmapik/interfaces-traffic",
+        "snmp_timeout": 60
     }
 }
 

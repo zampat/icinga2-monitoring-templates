@@ -99,7 +99,7 @@ then
                 },
                 "--timeout": {
                     "description": "Sets the SNMP timeout (in ms).",
-                    "value": "$interfaces_timeout$"
+                    "value": "$snmp_timeout$"
                 },
                 "--trim": {
                     "description": "Cut this number of characters from the start of interface descriptions.",
@@ -113,7 +113,8 @@ then
     "command": "PluginContribDir + \/check_interfaces",
     "methods_execute": "PluginCheck",
     "object_name": "check_interfaces",
-    "object_type": "object"
+    "object_type": "object",
+    "timeout": "1m"
 }
 '
 fi
