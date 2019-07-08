@@ -5,13 +5,13 @@
 #
 
 
-# Pre-Requisites: Agent_Win_Counter
-# Service Template Agent_Win_Counter
-RES=`icingacli director service exists "Agent_Win_Counter"`
+# Pre-Requisites: Agent_WinCnt
+# Service Template Agent_WinCnt
+RES=`icingacli director service exists "Agent_WinCnt"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service template 'Agent_Win_Counter' does not exists This is a pre-requisite.".
+   echo "Service template 'Agent_WinCnt' does not exists This is a pre-requisite.".
    echo "Please import this Service template from service windows templates.".
    exit 3
 fi
