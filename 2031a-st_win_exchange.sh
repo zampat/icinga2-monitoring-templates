@@ -37,31 +37,6 @@ then
 fi
 
 
-
-# Check Command:Powershell Exchange scripts
-#
-RES=`icingacli director command exists "powershell_exchange"`
-if [[ $RES =~ "does not exist" ]]
-then
-   echo "Command 'powershell_exchange' does not exists"
-   icingacli director command create powershell_exchange --json '
-{
-   "object_name": "powershell_exchange",
-   "methods_execute": "PluginCheck",
-   "command": "c:\\Windows\\system32\\cmd.exe",
-   "object_type": "object",
-   "arguments": {
-        "(no key)": {
-            "set_if_format": "string",
-            "skip_key": true,
-            "value": "\/c echo c:\\Scripts\\$powershell_script$ ; exit ($$lastexitcode) | powershell.exe -command -"
-        }
-    }
-}
-'
-fi
-
-
 ######
 ## Services for Windwows Exchange
 ######
@@ -73,7 +48,7 @@ then
    echo "Service 'generic_agent_powershell_exchange' does not exists"
    icingacli director service create --json '
 {
-    "check_command": "powershell_exchange",
+    "check_command": "powershell",
     "imports": [
         "generic_agent_powershell"
     ],
