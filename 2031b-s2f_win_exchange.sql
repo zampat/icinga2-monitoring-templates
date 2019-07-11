@@ -10,3 +10,9 @@ INSERT IGNORE icinga_command_field (command_id, datafield_id, is_required) VALUE
 
 # Services for https_exchange_owa
 INSERT IGNORE icinga_command_field (command_id, datafield_id, is_required) VALUES ((select id from icinga_command where object_name = "https_exchange_owa"),(select id from director_datafield where varname = "http_vhost"),"n");
+
+
+# Services Fields for Windwows Exchange Server
+# Exchange Services
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_type = "template" AND object_name = "Exchange Services"),(select id from director_datafield where varname = "nscp_service_name"),"n");
+

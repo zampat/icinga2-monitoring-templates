@@ -75,6 +75,7 @@ INSERT IGNORE `director_datafield` VALUES
 (177,'nscp_counter_op','NSCP counter operator',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (178,'nscp_counter_warning','NSCP counter warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (180,'nscp_counter_critical','NSCP counter critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(181,'nscp_service_name','NSCP Service Name',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
 (190,'http_ssl','HTTP use SSL','Activates -S','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (191,'http_uri','HTTP uri',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (192,'http_auth_pair','HTTP Authentication username:password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
