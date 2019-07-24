@@ -8,7 +8,7 @@
 --
 LOCK TABLES `icinga_user` WRITE;
 /*!40000 ALTER TABLE `icinga_user` DISABLE KEYS */;
-INSERT INTO `icinga_user` (`id`, `object_name`, `object_type`, `disabled`, `display_name`, `email`, `pager`, `enable_notifications`, `period_id`, `zone_id`) VALUES
+INSERT IGNORE INTO `icinga_user` (`id`, `object_name`, `object_type`, `disabled`, `display_name`, `email`, `pager`, `enable_notifications`, `period_id`, `zone_id`) VALUES
 (1, 'notify-allEvents', 'template', 'n', NULL, NULL, NULL, 'y', NULL, NULL),
 (2, 'user 1', 'object', 'n', 'Username', 'user.name@neteye.local', NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `icinga_user` ENABLE KEYS */;
@@ -19,7 +19,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `icinga_user_inheritance` WRITE;
 /*!40000 ALTER TABLE `icinga_user_inheritance` DISABLE KEYS */;
-INSERT INTO `icinga_user_inheritance` (`user_id`, `parent_user_id`, `weight`) VALUES
+INSERT IGNORE INTO `icinga_user_inheritance` (`user_id`, `parent_user_id`, `weight`) VALUES
 (2, 1, 1);
 UNLOCK TABLES;
 
@@ -27,7 +27,7 @@ UNLOCK TABLES;
 -- Includes for icinga_user_states_set
 LOCK TABLES `icinga_user_states_set` WRITE;
 /*!40000 ALTER TABLE `icinga_user_states_set` DISABLE KEYS */;
-INSERT INTO `icinga_user_states_set` (`user_id`, `property`, `merge_behaviour`) VALUES
+INSERT IGNORE INTO `icinga_user_states_set` (`user_id`, `property`, `merge_behaviour`) VALUES
 (1, 'OK', 'override'),
 (1, 'Warning', 'override'),
 (1, 'Critical', 'override'),
@@ -39,7 +39,7 @@ UNLOCK TABLES;
 -- Includes for icinga_user_types_set
 LOCK TABLES `icinga_user_types_set` WRITE;
 /*!40000 ALTER TABLE `icinga_user_types_set` DISABLE KEYS */;
-INSERT INTO `icinga_user_types_set` (`user_id`, `property`, `merge_behaviour`) VALUES
+INSERT IGNORE INTO `icinga_user_types_set` (`user_id`, `property`, `merge_behaviour`) VALUES
 (1, 'DowntimeStart', 'override'),
 (1, 'DowntimeEnd', 'override'),
 (1, 'DowntimeRemoved', 'override'),
