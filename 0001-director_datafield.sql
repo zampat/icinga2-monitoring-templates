@@ -172,7 +172,10 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (732,'mssql_health_regexp','MSSQL Regexp',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (733,'mssql_health_units','MSSQL Units',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (734,'mssql_health_lookback','MSSQL Lookback',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(735,'mssql_health_nooffline','MSSQL NoOffline',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
+(735,'mssql_health_nooffline','MSSQL NoOffline',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(801,'mem_critical','Linux memory percent free/used critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(802,'mem_warning','Linux memory percent free/used warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(803,'mem_used','Linux Check USED memory',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;

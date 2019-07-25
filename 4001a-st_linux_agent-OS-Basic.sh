@@ -39,7 +39,12 @@ then
         "generic_agent"
     ],
     "object_name": "Agent_Linux_Memory",
-    "object_type": "template"
+    "object_type": "template",
+    "vars": {
+        "mem_critical": "95",
+        "mem_used": true,
+        "mem_warning": "85"
+    }
 }
 '
 fi
