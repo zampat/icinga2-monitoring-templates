@@ -90,8 +90,9 @@ then
     "object_name": "Agent_Win_Memory",
     "object_type": "template",
     "vars": {
-        "memory_win_crit": "15%",
-        "memory_win_warn": "10%"
+        "memory_win_crit": "95%",
+        "memory_win_show_used": true,
+        "memory_win_warn": "90%"
     }
 }
    '

@@ -9,6 +9,8 @@ INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUE
 
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_name = "Agent_Win_Memory"),(select id from director_datafield where varname = "memory_win_crit"),'n');
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_name = "Agent_Win_Memory"),(select id from director_datafield where varname = "memory_win_warn"),'n');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_name = "Agent_Win_Memory"),(select id from director_datafield where varname = "memory_win_unit"),'n');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_name = "Agent_Win_Memory"),(select id from director_datafield where varname = "memory_win_show_used"),'n');
 
 # Agent_Win_Service
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_name = "Agent_Win_Service"),(select id from director_datafield where varname = "service_win_service"),'n');

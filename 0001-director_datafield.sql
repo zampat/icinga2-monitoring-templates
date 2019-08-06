@@ -38,6 +38,8 @@ INSERT IGNORE `director_datafield` VALUES
 (119,'disk_win_warn','Disk Win warn','Warning threshold','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (120,'memory_win_crit','Memory win crit','Critical Threshold','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (121,'memory_win_warn','Memory win warn','Warning Threshold','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(122,'memory_win_unit','Memory win unit','Use this unit to display memory','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(123,'memory_win_show_used','Show used memory','Show used memory instead of the free memory','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (125,'esx_datacenter','VMWare Datacenter',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (126,'esx_critical','ESX critical value',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (127,'esx_warning','ESX waning value',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
