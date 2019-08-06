@@ -24,7 +24,10 @@ then
         "FlappingStart",
         "Problem",
         "Recovery"
-    ]
+    ],
+    "vars": {
+        "notification_from": "NetEye <neteye.monitoring@mydomain.lan>"
+    }
 }
 '
 fi
