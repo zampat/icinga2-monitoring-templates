@@ -5,15 +5,16 @@
 
 # Notification template
 
-OBJ="generic_notify_all_events"
+OBJ="generic notify all events"
 RES=`icingacli director notification exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
    echo "Notification template '$OBJ' does not exists"
    icingacli director notification create --json '
 {
-    "object_name": "generic_notify_all_events",
+    "object_name": "generic notify all events",
     "object_type": "template",
+    "period": "24x7",
     "types": [
         "Acknowledgement",
         "Custom",
@@ -33,7 +34,7 @@ then
 fi
 
 
-OBJ="generic_notify_all_host_events"
+OBJ="generic notify all host events"
 RES=`icingacli director notification exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -42,9 +43,9 @@ then
 {
     "command": "mail-host-notification",
     "imports": [
-        "generic_notify_all_events"
+        "generic notify all events"
     ],
-    "object_name": "generic_notify_all_host_events",
+    "object_name": "generic notify all host events",
     "object_type": "template",
     "states": [
         "Down",
@@ -55,7 +56,7 @@ then
 '
 fi
 
-OBJ="notify_all_events_service"
+OBJ="generic notify all events service"
 RES=`icingacli director notification exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -64,9 +65,9 @@ then
 {
     "command": "mail-service-notification",
     "imports": [
-        "generic_notify_all_events"
+        "generic notify all events"
     ],
-    "object_name": "notify_all_events_service",
+    "object_name": "generic notify all events service",
     "object_type": "template",
     "states": [
         "Critical",
@@ -89,7 +90,7 @@ then
    icingacli director notification create --json '
 {
     "imports": [
-        "generic_notify_all_host_events"
+        "generic notify all host events"
     ],
     "notification_interval": "0",
     "object_name": "notify all host events: Once",
@@ -106,7 +107,7 @@ then
    icingacli director notification create --json '
 {
     "imports": [
-        "generic_notify_all_host_events"
+        "generic notify all host events"
     ],
     "notification_interval": "86400",
     "object_name": "notify all host events: Daily",
@@ -123,7 +124,7 @@ then
    icingacli director notification create --json '
 {
     "imports": [
-        "generic_notify_all_host_events"
+        "generic notify all host events"
     ],
     "notification_interval": "86400",
     "object_name": "notify all host events: Escal 2nd lvl",
@@ -141,7 +142,7 @@ then
    icingacli director notification create --json '
 {
     "imports": [
-        "notify_all_events_service"
+        "generic notify all events service"
     ],
     "notification_interval": "0",
     "object_name": "notify all service events: Once",
@@ -158,7 +159,7 @@ then
    icingacli director notification create --json '
 {
     "imports": [
-        "notify_all_events_service"
+        "generic notify all events service"
     ],
     "notification_interval": "86400",
     "object_name": "notify all service events: Daily",
