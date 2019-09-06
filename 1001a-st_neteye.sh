@@ -194,4 +194,30 @@ then
 '
 fi
 
+
+OBJ="neteye memory"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "mem",
+    "imports": [
+        "generic neteye"
+    ],
+    "object_name": "neteye memory",
+    "object_type": "template",
+    "vars": {
+        "mem_critical": "100",
+        "mem_used": true,
+        "mem_warning": "99.8"
+    }
+}
+'
+fi
+
+
+
+
 echo "Generic NetEye Service Templates created"

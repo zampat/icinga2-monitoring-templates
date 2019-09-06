@@ -81,6 +81,19 @@ icingacli director service create --json '
     "service_set": "NetEye Master",
     "use_agent": false
 }'
+
+
+icingacli director service create --json '
+{
+    "imports": [
+        "neteye memory"
+    ],
+    "object_name": "NetEye memory",
+    "object_type": "object",
+    "service_set": "NetEye Master",
+    "use_agent": false
+}'
+
 fi
 
 
@@ -152,5 +165,17 @@ icingacli director service create --json '
     "object_type": "object",
     "service_set": "NetEye Satellite"
 }'
-fi
 
+icingacli director service create --json '
+{
+    "imports": [
+        "neteye memory"
+    ],
+    "object_name": "NetEye memory",
+    "object_type": "object",
+    "service_set": "NetEye Satellite",
+    "use_agent": false
+}'
+
+
+fi
