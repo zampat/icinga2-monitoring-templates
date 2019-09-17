@@ -243,7 +243,7 @@
             "action_url": null,
             "apply_for": null,
             "assign_filter": null,
-            "check_command": "check_mssql_health",
+            "check_command": "mssql_health",
             "check_interval": null,
             "check_period": null,
             "check_timeout": null,
@@ -296,8 +296,8 @@
             "vars": {
                 "mssql_health_hostname": "$address$",
                 "mssql_health_mode": "connection-time",
-                "mssql_health_password": "my_password",
-                "mssql_health_username": "domain\\username"
+                "mssql_health_password": "myPASSWORD",
+                "mssql_health_username": "DOMAIN\\USERNAME"
             },
             "volatile": null,
             "zone": null
