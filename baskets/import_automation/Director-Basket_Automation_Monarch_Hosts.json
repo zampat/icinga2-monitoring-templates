@@ -21,13 +21,13 @@
                     "target_property": null
                 },
                 {
-                    "description": null,
+                    "description": "Blacklist some duplicate Hosts",
                     "priority": "3",
-                    "property_name": "address",
+                    "property_name": "alias",
                     "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
                     "settings": {
                         "filter_method": "regex",
-                        "filter_string": "\/127.0.0.1|localhost\/",
+                        "filter_string": "\/blacklisted_hostname\/",
                         "policy": "reject"
                     },
                     "target_property": null
@@ -36,9 +36,9 @@
             "originalId": "10001",
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
             "settings": {
-                "column_cache": "host_id, name, deleted, alias, address, hosttemplate_name, hostprofile_name, hostprofile_desc",
-                "query": "SELECT distinct(H.host_id), H.Name, H.deleted, H.alias, H.address, HT.name AS hosttemplate_name, HP.name AS hostprofile_name, HP.description AS hostprofile_desc\r\nFROM `hosts` H\r\nLEFT JOIN profiles_host HP ON HP.hostprofile_id = H.hostprofile_id\r\nJOIN host_templates HT ON HT.hosttemplate_id = H.hosttemplate_id\r\nWHERE deleted = 0 AND H.host_id NOT IN (SELECT host_id FROM  hostgroup_host WHERE hostgroup_id = 63)",
-                "resource": "NetEye 3 Monarch"
+                "column_cache": "name, alias, address, hosttemplate_name, hostprofile_name, hostprofile_desc",
+                "query": "SELECT H.Name, H.alias, H.address, HT.name AS hosttemplate_name, IFNULL(HP.name, -1) AS hostprofile_name, IFNULL(HP.description, -1) AS hostprofile_desc\r\nFROM `hosts` H\r\nleft JOIN profiles_host HP ON HP.hostprofile_id = H.hostprofile_id\r\nJOIN host_templates HT ON HT.hosttemplate_id = H.hosttemplate_id\r\nWHERE deleted = 0",
+                "resource": "neteye3-monarch"
             },
             "source_name": "01: NetEye3 Monarch: Hosts"
         },
@@ -84,7 +84,7 @@
             "settings": {
                 "column_cache": "name, alias",
                 "query": "SELECT name, alias FROM `hostgroups`",
-                "resource": "NetEye 3 Monarch"
+                "resource": "neteye3-monarch"
             },
             "source_name": "02: NetEye3 Monarch: HostGroups"
         },
@@ -133,26 +133,14 @@
                         "on_failure": "null"
                     },
                     "target_property": "hosts_arr"
-                },
-                {
-                    "description": null,
-                    "priority": "6",
-                    "property_name": "address",
-                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
-                    "settings": {
-                        "filter_method": "regex",
-                        "filter_string": "\/127.0.0.1|localhost\/",
-                        "policy": "reject"
-                    },
-                    "target_property": null
                 }
             ],
             "originalId": "10003",
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
             "settings": {
-                "column_cache": "name, address, hostgroups_json",
-                "query": "SELECT H.name, H.address, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"'  ) ), ']' ) hostgroups_json FROM `hostgroups` AS HG JOIN hostgroup_host R ON HG.hostgroup_id = R.hostgroup_id JOIN hosts H ON H.host_id = R.host_id\r\nWHERE H.deleted = 0 AND H.host_id NOT IN (SELECT host_id FROM  hostgroup_host WHERE hostgroup_id = 63)\r\n GROUP BY H.name",
-                "resource": "NetEye 3 Monarch"
+                "column_cache": "name, json",
+                "query": "SELECT H.name, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"'  ) ), ']' ) json FROM `hostgroups` AS HG JOIN hostgroup_host R ON HG.hostgroup_id = R.hostgroup_id JOIN hosts H ON H.host_id = R.host_id WHERE H.deleted = 0 GROUP BY H.name\r\n",
+                "resource": "neteye3-monarch"
             },
             "source_name": "03: NetEye3 Monarch Hosts - Hostgroup relation"
         }
@@ -182,9 +170,33 @@
                 },
                 {
                     "destination_field": "import",
-                    "filter_expression": null,
+                    "filter_expression": "hostprofile_name=profile_linux_hosts",
                     "merge_policy": "merge",
-                    "priority": "3",
+                    "priority": "4",
+                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source_expression": "generic-agent-linux"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": "hostprofile_name=profile_windows_hosts",
+                    "merge_policy": "override",
+                    "priority": "5",
+                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source_expression": "generic-agent-windows"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": "hostprofile_name=profile_switch_devices",
+                    "merge_policy": "override",
+                    "priority": "6",
+                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source_expression": "generic_switch"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": "hostprofile_name=-1",
+                    "merge_policy": "override",
+                    "priority": "10",
                     "source": "01: NetEye3 Monarch: Hosts",
                     "source_expression": "generic-host"
                 }
@@ -233,14 +245,6 @@
                     "priority": "1",
                     "source": "03: NetEye3 Monarch Hosts - Hostgroup relation",
                     "source_expression": "${hosts_arr}"
-                },
-                {
-                    "destination_field": "import",
-                    "filter_expression": null,
-                    "merge_policy": "override",
-                    "priority": "2",
-                    "source": "03: NetEye3 Monarch Hosts - Hostgroup relation",
-                    "source_expression": "generic-host"
                 }
             ],
             "purge_existing": "n",
