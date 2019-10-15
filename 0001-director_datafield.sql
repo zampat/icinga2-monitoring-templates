@@ -156,6 +156,8 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (501,'nrpe_command','NRPE Command ','The nrpe command','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (502,'nrpe_arguments','NRPE Arguments (multi value)',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
 (503,'nrpe_no_ssl','NRPE Do not use SSL',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(504,'nrpe_timeout_unknown','NRPE timeout unknown', 'Make socket timeouts return an UNKNOWN state instead of CRITICAL','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(505,'nrpe_timeout','NRPE Timeout','Number of seconds before connection times out (default=10)','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (651,'oracle_health_mode','Oracle Health mode',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (652,'oracle_health_sid','Oracle Health SID',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (655,'oracle_health_username','Oracle Health username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
