@@ -34,8 +34,7 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye icinga cluster",
     "object_type": "object",
-    "service_set": "NetEye Master",
-    "use_agent": false
+    "service_set": "NetEye Master"
 }'
 
 icingacli director service create --json '
