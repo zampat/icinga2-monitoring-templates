@@ -1,6 +1,6 @@
 {
     "ImportSource": {
-        "01: NetEye3 Monarch: Hosts": {
+        "Net3_01: Monarch Hosts": {
             "description": "NetEye 3 Monarch Hosts import",
             "key_column": "name",
             "modifiers": [
@@ -23,7 +23,7 @@
                 {
                     "description": "Blacklist some duplicate Hosts",
                     "priority": "3",
-                    "property_name": "alias",
+                    "property_name": "name",
                     "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
                     "settings": {
                         "filter_method": "regex",
@@ -40,9 +40,9 @@
                 "query": "SELECT H.Name, H.alias, H.address, HT.name AS hosttemplate_name, IFNULL(HP.name, -1) AS hostprofile_name, IFNULL(HP.description, -1) AS hostprofile_desc\r\nFROM `hosts` H\r\nleft JOIN profiles_host HP ON HP.hostprofile_id = H.hostprofile_id\r\nJOIN host_templates HT ON HT.hosttemplate_id = H.hosttemplate_id\r\nWHERE deleted = 0",
                 "resource": "neteye3-monarch"
             },
-            "source_name": "01: NetEye3 Monarch: Hosts"
+            "source_name": "Net3_01: Monarch Hosts"
         },
-        "02: NetEye3 Monarch: HostGroups": {
+        "Net3_02: Monarch HostGroups": {
             "description": null,
             "key_column": "name",
             "modifiers": [
@@ -86,9 +86,9 @@
                 "query": "SELECT name, alias FROM `hostgroups`",
                 "resource": "neteye3-monarch"
             },
-            "source_name": "02: NetEye3 Monarch: HostGroups"
+            "source_name": "Net3_02: Monarch HostGroups"
         },
-        "03: NetEye3 Monarch Hosts - Hostgroup relation": {
+        "Net3_03: Monarch Hosts2Hostgroups": {
             "description": null,
             "key_column": "name",
             "modifiers": [
@@ -139,14 +139,14 @@
             "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
             "settings": {
                 "column_cache": "name, json",
-                "query": "SELECT H.name, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"'  ) ), ']' ) json FROM `hostgroups` AS HG JOIN hostgroup_host R ON HG.hostgroup_id = R.hostgroup_id JOIN hosts H ON H.host_id = R.host_id WHERE H.deleted = 0 GROUP BY H.name\r\n",
+                "query": "SELECT H.name, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"'  ) ), ']' ) json FROM `hostgroups` AS HG JOIN hostgroup_host R ON HG.hostgroup_id = R.hostgroup_id JOIN hosts H ON H.host_id = R.host_id WHERE H.deleted = 0 AND HG.name IN ('linux-servers', 'windows-servers')\r\nGROUP BY H.name",
                 "resource": "neteye3-monarch"
             },
-            "source_name": "03: NetEye3 Monarch Hosts - Hostgroup relation"
+            "source_name": "Net3_03: Monarch Hosts2Hostgroups"
         }
     },
     "SyncRule": {
-        "01: NetEye3 Monarch: Hosts": {
+        "Net3_01: Monarch Hosts": {
             "description": null,
             "filter_expression": null,
             "object_type": "host",
@@ -157,7 +157,7 @@
                     "filter_expression": null,
                     "merge_policy": "override",
                     "priority": "1",
-                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source": "Net3_01: Monarch Hosts",
                     "source_expression": "${address}"
                 },
                 {
@@ -165,7 +165,7 @@
                     "filter_expression": null,
                     "merge_policy": "override",
                     "priority": "2",
-                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source": "Net3_01: Monarch Hosts",
                     "source_expression": "${alias}"
                 },
                 {
@@ -173,8 +173,8 @@
                     "filter_expression": "hostprofile_name=profile_linux_hosts",
                     "merge_policy": "merge",
                     "priority": "4",
-                    "source": "01: NetEye3 Monarch: Hosts",
-                    "source_expression": "generic-agent-linux"
+                    "source": "Net3_01: Monarch Hosts",
+                    "source_expression": "generic-linux"
                 },
                 {
                     "destination_field": "import",
@@ -189,7 +189,7 @@
                     "filter_expression": "hostprofile_name=profile_switch_devices",
                     "merge_policy": "override",
                     "priority": "6",
-                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source": "Net3_01: Monarch Hosts",
                     "source_expression": "generic_switch"
                 },
                 {
@@ -197,15 +197,15 @@
                     "filter_expression": "hostprofile_name=-1",
                     "merge_policy": "override",
                     "priority": "10",
-                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source": "Net3_01: Monarch Hosts",
                     "source_expression": "generic-host"
                 }
             ],
             "purge_existing": "n",
-            "rule_name": "01: NetEye3 Monarch: Hosts",
+            "rule_name": "Net3_01: Monarch Hosts",
             "update_policy": "merge"
         },
-        "02: NetEye3 Monarch: HostGroups": {
+        "Net3_02: Monarch HostGroups": {
             "description": null,
             "filter_expression": null,
             "object_type": "hostgroup",
@@ -216,7 +216,7 @@
                     "filter_expression": null,
                     "merge_policy": "override",
                     "priority": "1",
-                    "source": "02: NetEye3 Monarch: HostGroups",
+                    "source": "Net3_02: Monarch HostGroups",
                     "source_expression": "${name}"
                 },
                 {
@@ -224,15 +224,15 @@
                     "filter_expression": null,
                     "merge_policy": "override",
                     "priority": "2",
-                    "source": "02: NetEye3 Monarch: HostGroups",
+                    "source": "Net3_02: Monarch HostGroups",
                     "source_expression": "${alias}"
                 }
             ],
             "purge_existing": "n",
-            "rule_name": "02: NetEye3 Monarch: HostGroups",
+            "rule_name": "Net3_02: Monarch HostGroups",
             "update_policy": "merge"
         },
-        "03: NetEye3 Monarch Hosts - Hostgroup relation": {
+        "Net3_03: Monarch Hosts2Hostgroups": {
             "description": null,
             "filter_expression": null,
             "object_type": "host",
@@ -243,12 +243,12 @@
                     "filter_expression": null,
                     "merge_policy": "override",
                     "priority": "1",
-                    "source": "03: NetEye3 Monarch Hosts - Hostgroup relation",
+                    "source": "Net3_03: Monarch Hosts2Hostgroups",
                     "source_expression": "${hosts_arr}"
                 }
             ],
             "purge_existing": "n",
-            "rule_name": "03: NetEye3 Monarch Hosts - Hostgroup relation",
+            "rule_name": "Net3_03: Monarch Hosts2Hostgroups",
             "update_policy": "merge"
         }
     }
