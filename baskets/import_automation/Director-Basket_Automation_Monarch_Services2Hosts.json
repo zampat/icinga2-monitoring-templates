@@ -1,0 +1,306 @@
+{
+    "ImportSource": {
+        "Net3_10: Monarch Commands": {
+            "description": null,
+            "key_column": "name",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRegexReplace",
+                    "settings": {
+                        "pattern": "\/^.+CDATA\\[((?:\\$USER|\\\/).+)\\]\\]\\>.+$\/s",
+                        "replacement": "\\1"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierReplace",
+                    "settings": {
+                        "replacement": "PluginDir + ",
+                        "string": "$USER1$"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierReplace",
+                    "settings": {
+                        "replacement": "PluginContribDir + ",
+                        "string": "$USER5$"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "4",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierReplace",
+                    "settings": {
+                        "replacement": "$address$",
+                        "string": "$HOSTADDRESS$"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "5",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRegexReplace",
+                    "settings": {
+                        "pattern": "\/\\$ARG[0-7]+\\$\/",
+                        "replacement": ""
+                    },
+                    "target_property": null
+                }
+            ],
+            "originalId": "4",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "name, command_line",
+                "query": "SELECT name, data AS command_line FROM commands WHERE type = 'check' and name LIKE '%snmp%'",
+                "resource": "NetEye3 Monarch"
+            },
+            "source_name": "Net3_10: Monarch Commands"
+        },
+        "Net3_11: Services2Hosts": {
+            "description": null,
+            "key_column": "key",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "host",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierCombine",
+                    "settings": {
+                        "pattern": "${host}!${service_name}"
+                    },
+                    "target_property": "key"
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierSplit",
+                    "settings": {
+                        "delimiter": "!",
+                        "when_empty": "empty_array"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierArrayElementByPosition",
+                    "settings": {
+                        "position": "1",
+                        "position_type": "fixed",
+                        "when_missing": "null"
+                    },
+                    "target_property": "ARG1"
+                },
+                {
+                    "description": null,
+                    "priority": "4",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierArrayElementByPosition",
+                    "settings": {
+                        "position": "2",
+                        "position_type": "fixed",
+                        "when_missing": "null"
+                    },
+                    "target_property": "ARG2"
+                },
+                {
+                    "description": null,
+                    "priority": "5",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierArrayElementByPosition",
+                    "settings": {
+                        "position": "3",
+                        "position_type": "fixed",
+                        "when_missing": "null"
+                    },
+                    "target_property": "ARG3"
+                },
+                {
+                    "description": null,
+                    "priority": "6",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierArrayElementByPosition",
+                    "settings": {
+                        "position": "4",
+                        "position_type": "fixed",
+                        "when_missing": "null"
+                    },
+                    "target_property": "ARG4"
+                },
+                {
+                    "description": null,
+                    "priority": "7",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierArrayElementByPosition",
+                    "settings": {
+                        "position": "5",
+                        "position_type": "fixed",
+                        "when_missing": "null"
+                    },
+                    "target_property": "ARG5"
+                },
+                {
+                    "description": null,
+                    "priority": "8",
+                    "property_name": "command_line",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierArrayElementByPosition",
+                    "settings": {
+                        "position": "0",
+                        "position_type": "fixed",
+                        "when_missing": "null"
+                    },
+                    "target_property": "command_name_fromArgs"
+                },
+                {
+                    "description": null,
+                    "priority": "9",
+                    "property_name": "ARG1",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "wildcard",
+                        "filter_string": "*",
+                        "policy": "keep"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "10",
+                    "property_name": "host",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "regex",
+                        "filter_string": "\/neteye.*\/",
+                        "policy": "reject"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "11",
+                    "property_name": "ARG1",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierCombine",
+                    "settings": {
+                        "glue": "!",
+                        "pattern": "${ARG2}!${ARG3}!${ARG4}!${ARG5}"
+                    },
+                    "target_property": "args"
+                },
+                {
+                    "description": null,
+                    "priority": "12",
+                    "property_name": "args",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierSplit",
+                    "settings": {
+                        "delimiter": "!",
+                        "when_empty": "empty_array"
+                    },
+                    "target_property": null
+                }
+            ],
+            "originalId": "10104",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "host, service_name, command_name, command_line",
+                "query": "SELECT H.name AS host, SN.name AS service_name, C.name AS command_name, S.command_line\r\nFROM  `services`  S\r\nJOIN commands C ON C.command_id = S.check_command\r\nJOIN service_names SN ON SN.servicename_id = S.servicename_id\r\nJOIN hosts H ON H.host_id = S.host_id\r\nWHERE S.deleted = 0 AND C.name LIKE 'check_nrpe%';",
+                "resource": "NetEye3 Monarch"
+            },
+            "source_name": "Net3_11: Services2Hosts"
+        }
+    },
+    "SyncRule": {
+        "Net3_10: Monarch Commands": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "command",
+            "originalId": "5",
+            "properties": [
+                {
+                    "destination_field": "command",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "Net3_10: Monarch Commands",
+                    "source_expression": "${command_line}"
+                },
+                {
+                    "destination_field": "methods_execute",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "Net3_10: Monarch Commands",
+                    "source_expression": "PluginCheck"
+                }
+            ],
+            "purge_existing": "y",
+            "rule_name": "Net3_10: Monarch Commands",
+            "update_policy": "merge"
+        },
+        "Net3_11: Services2Hosts": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "service",
+            "originalId": "10102",
+            "properties": [
+                {
+                    "destination_field": "object_name",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "Net3_11: Services2Hosts",
+                    "source_expression": "${service_name}"
+                },
+                {
+                    "destination_field": "host",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "Net3_11: Services2Hosts",
+                    "source_expression": "${host}"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": "command_name=check_nrpe*",
+                    "merge_policy": "override",
+                    "priority": "3",
+                    "source": "Net3_11: Services2Hosts",
+                    "source_expression": "generic_nrpe"
+                },
+                {
+                    "destination_field": "vars.nrpe_command",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "4",
+                    "source": "Net3_11: Services2Hosts",
+                    "source_expression": "${ARG1}"
+                },
+                {
+                    "destination_field": "vars.nrpe_arguments",
+                    "filter_expression": null,
+                    "merge_policy": "merge",
+                    "priority": "5",
+                    "source": "Net3_11: Services2Hosts",
+                    "source_expression": "${args}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "Net3_11: Services2Hosts",
+            "update_policy": "merge"
+        }
+    }
+}
