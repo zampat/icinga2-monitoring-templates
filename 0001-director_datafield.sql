@@ -8,17 +8,40 @@
 -- 100 - 300: Service fields
 -- Advice: some id's had been removed. See DELETE query below!!
 --
+--
+-- Changes required to align to master branch
+--
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_version', `caption` = 'SNMP Version', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeDatalist' WHERE `director_datafield`.`id` = 308;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_security_level', `caption` = 'SNMPv3 security level', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 330;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_user', `caption` = 'SNMPv3 Username', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 331;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_authprotocol', `caption` = 'SNMPv3 auth.Protocol', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 332;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_auth_passphrase', `caption` = 'SNMPv3 auth. passphrase', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 333;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_privprotocol', `caption` = 'SNMPv3 priv.Protocol' WHERE `director_datafield`.`id` = 334;
+DELETE FROM `director`.`director_datafield` WHERE `director_datafield`.`id` = 335;
+UPDATE `director`.`director_datafield` SET `varname` = 'snmp_priv_password', `caption` = 'SNMPv3 priv.Password' WHERE `director_datafield`.`id` = 336;
+DELETE FROM `director`.`director_datafield` WHERE `director_datafield`.`id` = 337;
+
+UPDATE `director`.`director_datafield` SET `id` = 1001 WHERE `director_datafield`.`id` = 125 AND `director_datafield`.`varname` = 'esx_datacenter';
+UPDATE `director`.`director_datafield` SET `id` = 1002 WHERE `director_datafield`.`id` = 126 AND `director_datafield`.`varname` = 'esx_critical';
+UPDATE `director`.`director_datafield` SET `id` = 1003 WHERE `director_datafield`.`id` = 127 AND `director_datafield`.`varname` = 'esx_warning';
+UPDATE `director`.`director_datafield` SET `id` = 1004 WHERE `director_datafield`.`id` = 128 AND `director_datafield`.`varname` = 'esx_username';
+UPDATE `director`.`director_datafield` SET `id` = 1005 WHERE `director_datafield`.`id` = 129 AND `director_datafield`.`varname` = 'esx_password';
+UPDATE `director`.`director_datafield` SET `id` = 1006 WHERE `director_datafield`.`id` = 130 AND `director_datafield`.`varname` = 'esx_command';
+UPDATE `director`.`director_datafield` SET `id` = 1007 WHERE `director_datafield`.`id` = 131 AND `director_datafield`.`varname` = 'esx_subcommand';
+UPDATE `director`.`director_datafield` SET `id` = 1008 WHERE `director_datafield`.`id` = 201 AND `director_datafield`.`varname` = 'esx_authfile';
+UPDATE `director`.`director_datafield` SET `id` = 1009 WHERE `director_datafield`.`id` = 132 AND `director_datafield`.`varname` = 'esx_optional';
+
 
 LOCK TABLES `director_datafield` WRITE;
 /*!40000 ALTER TABLE `director_datafield` DISABLE KEYS */;
-INSERT IGNORE `director_datafield` VALUES
+INSERT IGNORE `director_datafield` (`id`, `varname`, `caption`, `description`, `datatype`, `format`) VALUES
 (40,'custom_analytics_dashboard','ITOA Custom Dashboard',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (50,'host_service','Host Service',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (51,'host_owner','Host Owner',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDirectorObject',NULL),
 (52,'host_os','Host OS',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (53,'host_parent','Host parent',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDirectorObject',NULL),
 (80,'notification_from','Notification From','Set from address. Requires GNU mailutils (Debian/Ubuntu) or mailx (RHEL/SUSE)','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),	
-(81,'notification_comment','Notification Notes','Set additional notes for notification message','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),	
+(81,'notification_comment','Notification Notes','Set additional notes for notification message','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (90,'icingacli_businessprocess_config','BP configuration filename','Configuration file containing your business process without file extension','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (91,'icingacli_businessprocess_process','BP process name','Business process to monitor','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (92,'icingacli_businessprocess_details','BP show problem details',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
@@ -40,14 +63,6 @@ INSERT IGNORE `director_datafield` VALUES
 (121,'memory_win_warn','Memory win warn','Warning Threshold','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (122,'memory_win_unit','Memory win unit','Use this unit to display memory','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (123,'memory_win_show_used','Show used memory','Show used memory instead of the free memory','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
-(125,'esx_datacenter','VMWare Datacenter',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(126,'esx_critical','ESX critical value',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(127,'esx_warning','ESX waning value',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(128,'esx_username','ESX username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(129,'esx_password','ESX password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(130,'esx_command','ESX command',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
-(131,'esx_subcommand','ESX subcommand',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(132,'esx_optional','ESX optional',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (133,'powershell_args','Powershell Arguments',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (134,'powershell_script','Powershell Script',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (142,'iftraffic_address_string','iftraffic address',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -89,7 +104,7 @@ INSERT IGNORE `director_datafield` VALUES
 (198,'http_proxy_auth_pair','HTTP Proxy Authentication username:password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (199,'http_timeout','HTTP Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (200,'http_string','HTTP Expected String',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(201,'esx_authfile','ESX authentication file',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(201,'http_sni','HTTP enable SNI','Enable SSL/TLS hostname extension support (SNI)','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (203,'disk_partitions_excluded','Disk Linux Exclude partition',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (204,'disk_mountpoint','Disk Linux Mountpoint',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (205,'disk_timeout','Disk Linux Timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
@@ -179,24 +194,25 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (735,'mssql_health_nooffline','MSSQL NoOffline',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (801,'mem_critical','Linux memory percent free/used critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (802,'mem_warning','Linux memory percent free/used warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(803,'mem_used','Linux Check USED memory',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
+(803,'mem_used','Linux Check USED memory',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(901,'ping_crta','PING: critical RTA threshold','critical threshold rount trip average time (ms)','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(902,'ping_cpl','PING: critical PL threshold','critical percentage of packet loss to trigger an alarm state','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(903,'ping_wrta','PING: warning RTA threshold','warning threshold rount trip average time (ms)','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(904,'ping_wpl','PING: warning PL threshold','warning percentage of packet loss to trigger an alarm state','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(905,'ping_packets','PING: number of packages',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(906,'ping_timeout','PING: timeout',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(1001,'esx_datacenter','VMWare Datacenter',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1002,'esx_critical','ESX critical value',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1003,'esx_warning','ESX waning value',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1004,'esx_username','ESX username',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1005,'esx_password','ESX password',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1006,'esx_command','ESX command',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
+(1007,'esx_subcommand','ESX subcommand',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1008,'esx_authfile','ESX authentication file',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1009,'esx_optional','ESX optional',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
-
-
---
--- Changes required to align to master branch
---
-UPDATE `director`.`director_datafield` SET `varname` = 'snmp_version', `caption` = 'SNMP Version', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeDatalist' WHERE `director_datafield`.`id` = 308;
-UPDATE `director`.`director_datafield` SET `varname` = 'snmp_security_level', `caption` = 'SNMPv3 security level', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 330;
-UPDATE `director`.`director_datafield` SET `varname` = 'snmp_user', `caption` = 'SNMPv3 Username', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 331;
-UPDATE `director`.`director_datafield` SET `varname` = 'snmp_authprotocol', `caption` = 'SNMPv3 auth.Protocol', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 332;
-UPDATE `director`.`director_datafield` SET `varname` = 'snmp_auth_passphrase', `caption` = 'SNMPv3 auth. passphrase', `datatype` = 'Icinga\\Module\\Director\\DataType\\DataTypeString' WHERE `director_datafield`.`id` = 333;
-UPDATE `director`.`director_datafield` SET `varname` = 'snmp_privprotocol', `caption` = 'SNMPv3 priv.Protocol' WHERE `director_datafield`.`id` = 334;
-DELETE FROM `director`.`director_datafield` WHERE `director_datafield`.`id` = 335;
-UPDATE `director`.`director_datafield` SET `varname` = 'snmp_priv_password', `caption` = 'SNMPv3 priv.Password' WHERE `director_datafield`.`id` = 336;
-DELETE FROM `director`.`director_datafield` WHERE `director_datafield`.`id` = 337;
 
 
 
@@ -205,13 +221,17 @@ DELETE FROM `director`.`director_datafield` WHERE `director_datafield`.`id` = 33
 -- For default import
 -- Create DataLists for DataFiels having FieldType "datalist"
 --
+
+-- Changes required to align to master branch
+--
+UPDATE `director`.`director_datalist` SET `id` = 1006 WHERE `director_datalist`.`id` = 130;
+
 LOCK TABLES `director_datalist` WRITE;
 /*!40000 ALTER TABLE `director_datalist` DISABLE KEYS */;
 INSERT IGNORE `director_datalist` (`id`, `list_name`, `owner`) VALUES
 (50,'Host Service','root'),
 (52, "Host OS", 'root'),
 (108,'UPS Type','root'),
-(130,'ESX command','root'),
 (150,'iftraffic units','root'),
 (154,'3par command','root'),
 (705,'MSSQL mode','root'),
@@ -219,7 +239,8 @@ INSERT IGNORE `director_datalist` (`id`, `list_name`, `owner`) VALUES
 (175,'NSCP query','root'),
 (177,'NSCP counter operator','root'),
 (196,'HTTP Action on redirect','root'),
-(308,'SNMP Version','root');
+(308,'SNMP Version','root'),
+(1006,'ESX command','root');
 /*!40000 ALTER TABLE `director_datalist` ENABLE KEYS */;
 ALTER TABLE `director_datalist` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
@@ -228,6 +249,11 @@ UNLOCK TABLES;
 --
 -- Table structure for table `director_datalist_entry`
 -- For default import
+--
+-- Changes required to align to master branch
+--
+UPDATE `director`.`director_datalist_entry` SET `list_id` = 1006 WHERE `director_datalist_entry`.`list_id` = 130;
+
 -- Create entries of DataList
 --
 LOCK TABLES `director_datalist_entry` WRITE;
@@ -254,12 +280,6 @@ INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`,
 (108,'nvenergy','nvenergy','string',NULL),
 (108,'socomec','socomec','string',NULL),
 (108,'socomecnew','socomecnew','string',NULL),
-(130,'CPU','CPU','string',NULL),
-(130,'IO','IO','string',NULL),
-(130,'NET','NET','string',NULL),
-(130,'MEM','MEM','string',NULL),
-(130,'RUNTIME','RUNTIME','string',NULL),
-(130,'VMFS','VM FileSystem','string',NULL),
 (150,'b','bits','string',NULL),
 (150,'g','gigabits','string',NULL),
 (150,'k','kilobits','string',NULL),
@@ -287,10 +307,15 @@ INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`,
 (308,'1','1','string',NULL),
 (308,'2','2','string',NULL),
 (308,'2c','2c','string',NULL),
-(308,'3','3','string',NULL);
+(308,'3','3','string',NULL),
+(1006,'CPU','CPU','string',NULL),
+(1006,'IO','IO','string',NULL),
+(1006,'NET','NET','string',NULL),
+(1006,'MEM','MEM','string',NULL),
+(1006,'RUNTIME','RUNTIME','string',NULL),
+(1006,'VMFS','VM FileSystem','string',NULL);
 /*!40000 ALTER TABLE `director_datalist_entry` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 
 --
@@ -298,6 +323,9 @@ UNLOCK TABLES;
 -- For default import. Join with above datafields
 -- Connect DataField with DataList where DataList is used
 --
+-- Changes required to align to master branch
+--
+UPDATE `director`.`director_datafield_setting` SET `datafield_id` = 1006 WHERE `director_datafield_setting`.`datafield_id` = 130;
 
 LOCK TABLES `director_datafield_setting` WRITE;
 /*!40000 ALTER TABLE `director_datafield_setting` DISABLE KEYS */;
@@ -310,8 +338,6 @@ INSERT IGNORE `director_datafield_setting` (`datafield_id`, `setting_name`, `set
 (53,'icinga_object_type','host'),
 (108,'datalist_id',108),
 (108,'data_type','string'),
-(130,'datalist_id',130),
-(130,'data_type','string'),
 (150,'datalist_id',150),
 (150,'data_type','string'),
 (154,'datalist_id',154),
@@ -327,13 +353,9 @@ INSERT IGNORE `director_datafield_setting` (`datafield_id`, `setting_name`, `set
 (196,'datalist_id',196),
 (196,'data_type','string'),
 (308,'datalist_id',308),
-(308,'data_type','string');
+(308,'data_type','string'),
+(1006,'datalist_id',1006),
+(1006,'data_type','string');
 /*!40000 ALTER TABLE `director_datafield_setting` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
-
-
-
-
 

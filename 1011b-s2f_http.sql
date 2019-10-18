@@ -18,4 +18,4 @@ INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUE
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "http_website_availability"),(select id from director_datafield where varname = "http_ssl"),'n');
 
 # http_certificate_validity
-INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "generic_http"),(select id from director_datafield where varname = "http_certificate"),'n');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "http_certificate_validity"),(select id from director_datafield where varname = "http_certificate"),'n');

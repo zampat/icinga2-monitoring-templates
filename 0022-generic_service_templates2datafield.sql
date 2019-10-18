@@ -6,6 +6,13 @@
 # generic_service
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_type = "template" AND object_name = "generic_service"),(select id from director_datafield where varname = "custom_analytics_dashboard"),'n');
 
+#generic_ping
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_type = "template" AND object_name = "generic_ping"),(select id from director_datafield where varname = "ping_crta"),'n');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_type = "template" AND object_name = "generic_ping"),(select id from director_datafield where varname = "ping_cpl"),'n');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_type = "template" AND object_name = "generic_ping"),(select id from director_datafield where varname = "ping_wrta"),'n');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_type = "template" AND object_name = "generic_ping"),(select id from director_datafield where varname = "ping_wpl"),'n');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_type = "template" AND object_name = "generic_ping"),(select id from director_datafield where varname = "ping_packets"),'n');
+
 # generic_http
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "generic_http"),(select id from director_datafield where varname = "http_ssl"),'n');
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "generic_http"),(select id from director_datafield where varname = "http_uri"),'n');

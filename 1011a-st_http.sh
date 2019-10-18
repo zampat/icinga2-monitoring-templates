@@ -54,13 +54,15 @@ then
 
 icingacli director service create http_certificate_validity --json '
 {
+    "check_interval": "86400",
     "imports": [
         "generic_http"
     ],
     "object_name": "http_certificate_validity",
     "object_type": "template",
     "vars": {
-        "http_certificate": 30
+        "http_certificate": "30,14",
+        "http_ssl": true
     }
 }
 '
