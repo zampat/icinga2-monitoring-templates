@@ -213,7 +213,8 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (1101,'by_ssh_command','SSH command','Check by SSH: Command to execute on remote machine','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (1102,'by_ssh_logname','SSH identity','Check by SSH: user name on remote host','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (1103,'by_ssh_timeout','SSH timeout','Check by SSH: timeout in seconds','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(1104,'by_ssh_port','SSH port','Check by SSH: port number','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL);
+(1104,'by_ssh_port','SSH port','Check by SSH: port number','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(1105,'by_ssh_options','SSH options','Check by SSH: additional options','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
