@@ -13,7 +13,7 @@ then
    icingacli director host create --json '
 {
     "check_command": "hostalive",
-    "check_interval": "300",
+    "check_interval": "60",
     "check_timeout": "60",
     "enable_active_checks": true,
     "enable_event_handler": true,
