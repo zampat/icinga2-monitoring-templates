@@ -264,9 +264,10 @@ UPDATE `director`.`director_datalist_entry` SET `list_id` = 1006 WHERE `director
 LOCK TABLES `director_datalist_entry` WRITE;
 /*!40000 ALTER TABLE `director_datalist_entry` DISABLE KEYS */;
 INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`, `format`, `allowed_roles`) VALUES 
-(50,'Dynamics AX','Dynamics AX','string',NULL),
-(50,'MS Exchange','MS Exchange','string',NULL),
-(50,'MS SQL Server','MS SQL Server','string',NULL),
+(50,'sap','SAP','string',NULL),
+(50,'dynamics_ax','Dynamics AX','string',NULL),
+(50,'ms_exchange','MS Exchange','string',NULL),
+(50,'ms_sql_server','MS SQL Server','string',NULL),
 (52,'Linux','Linux','string',NULL),
 (52,'Windows','Windows','string',NULL),
 (52,'ESX','ESX','string',NULL),
