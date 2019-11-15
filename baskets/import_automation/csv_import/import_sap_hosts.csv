@@ -1,0 +1,2 @@
+hostname;address;template
+sap1;127.0.0.1;generic_sap_system

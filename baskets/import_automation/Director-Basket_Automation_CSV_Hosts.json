@@ -1,0 +1,48 @@
+{
+    "ImportSource": {
+        "CSV_Hosts": {
+            "description": null,
+            "key_column": "hostname",
+            "modifiers": [],
+            "originalId": "10102",
+            "provider_class": "Icinga\\Module\\Fileshipper\\ProvidedHook\\Director\\ImportSource",
+            "settings": {
+                "basedir": "\/neteye\/shared\/httpd\/file-import",
+                "csv_delimiter": ";",
+                "csv_enclosure": "\"",
+                "file_format": "csv",
+                "file_name": "import_sap_hosts.csv"
+            },
+            "source_name": "CSV_Hosts"
+        }
+    },
+    "SyncRule": {
+        "CSV_Hosts": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "host",
+            "originalId": "10102",
+            "properties": [
+                {
+                    "destination_field": "address",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "CSV_Hosts",
+                    "source_expression": "${address}"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "CSV_Hosts",
+                    "source_expression": "generic-ibm-aix"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "CSV_Hosts",
+            "update_policy": "merge"
+        }
+    }
+}
