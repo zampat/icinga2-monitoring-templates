@@ -1,0 +1,605 @@
+{
+    "Command": {
+        "check_sap_dp_queues": {
+            "arguments": {
+                "critical_pct": {
+                    "skip_key": true,
+                    "value": "90",
+                    "order": "5"
+                },
+                "hostname": {
+                    "skip_key": true,
+                    "value": "$host.name$",
+                    "order": "0"
+                },
+                "instance-no": {
+                    "skip_key": true,
+                    "value": "$sap_instance_no$",
+                    "order": "1"
+                },
+                "sap_sid": {
+                    "skip_key": true,
+                    "value": "$sap_instance_sid_service$",
+                    "order": "3"
+                },
+                "use_ssl": {
+                    "skip_key": true,
+                    "value": "$host.vars.sap_ssl$",
+                    "order": "2"
+                },
+                "warning_pct": {
+                    "skip_key": true,
+                    "value": "70",
+                    "order": "4"
+                }
+            },
+            "command": "PluginContribDir + \/check_sap_dp_queues.sh",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "methods_execute": "PluginCheck",
+            "object_name": "check_sap_dp_queues",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {},
+            "zone": null
+        },
+        "check_sap_enqueue_table": {
+            "arguments": {
+                "critical_pct": {
+                    "skip_key": true,
+                    "value": "90",
+                    "order": "5"
+                },
+                "hostname": {
+                    "skip_key": true,
+                    "value": "$host.name$",
+                    "order": "0"
+                },
+                "instance-no": {
+                    "skip_key": true,
+                    "value": "$sap_instance_no$",
+                    "order": "1"
+                },
+                "sap_sid": {
+                    "skip_key": true,
+                    "value": "$sap_instance_sid_service$",
+                    "order": "3"
+                },
+                "use_ssl": {
+                    "skip_key": true,
+                    "value": "$host.vars.sap_ssl$",
+                    "order": "2"
+                },
+                "warning_pct": {
+                    "skip_key": true,
+                    "value": "80",
+                    "order": "4"
+                }
+            },
+            "command": "PluginContribDir + \/check_sap_enqueue_table.sh",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "methods_execute": "PluginCheck",
+            "object_name": "check_sap_enqueue_table",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {},
+            "zone": null
+        },
+        "check_sap_instance_status": {
+            "arguments": {
+                "-function": {
+                    "skip_key": false,
+                    "value": "GetProcessList",
+                    "order": "3"
+                },
+                "-host": {
+                    "skip_key": false,
+                    "value": "$host.name$",
+                    "order": "0"
+                },
+                "-nr": {
+                    "skip_key": false,
+                    "value": "$sap_instance_no$",
+                    "order": "1"
+                },
+                "-prot": {
+                    "set_if": "1",
+                    "set_if_format": "string",
+                    "skip_key": false,
+                    "value": "NI_HTTPS",
+                    "order": "2"
+                }
+            },
+            "command": "PluginContribDir + \/check_sap_instance_status.sh",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "methods_execute": "PluginCheck",
+            "object_name": "check_sap_instance_status",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {},
+            "zone": null
+        },
+        "check_sap_instance_status_env": {
+            "arguments": {
+                "-function": {
+                    "skip_key": false,
+                    "value": "GetProcessList",
+                    "order": "3"
+                },
+                "-host": {
+                    "skip_key": false,
+                    "value": "$host.name$",
+                    "order": "0"
+                },
+                "-nr": {
+                    "skip_key": false,
+                    "value": "$sap_instance_no$",
+                    "order": "1"
+                },
+                "-prot": {
+                    "set_if": "1",
+                    "skip_key": false,
+                    "value": "NI_HTTPS",
+                    "order": "2"
+                },
+                "env.LD_LIBRARY_PATH": {
+                    "value": "$sap_control_env$"
+                }
+            },
+            "command": "negate -u OK \/neteye\/shared\/monitoring\/plugins\/sapcontrol",
+            "disabled": false,
+            "fields": [
+                {
+                    "datafield_id": 10026,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "imports": [],
+            "methods_execute": "PluginCheck",
+            "object_name": "check_sap_instance_status_env",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {
+                "sap_control_env": "\/neteye\/shared\/monitoring\/plugins"
+            },
+            "zone": null
+        },
+        "check_sap_kernel_version": {
+            "arguments": {
+                "hostname": {
+                    "skip_key": true,
+                    "value": "$host.name$",
+                    "order": "0"
+                },
+                "instance-no": {
+                    "skip_key": true,
+                    "value": "$sap_instance_no$",
+                    "order": "1"
+                },
+                "use_ssl": {
+                    "skip_key": true,
+                    "value": "$host.vars.sap_ssl$",
+                    "order": "2"
+                }
+            },
+            "command": "PluginContribDir + \/check_sap_kernel_version.sh",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "methods_execute": "PluginCheck",
+            "object_name": "check_sap_kernel_version",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {},
+            "zone": null
+        }
+    },
+    "HostTemplate": {
+        "generic_sap_system": {
+            "accept_config": null,
+            "action_url": null,
+            "address": null,
+            "address6": null,
+            "api_key": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 10021,
+                    "is_required": "y",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10022,
+                    "is_required": "y",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10014,
+                    "is_required": "y",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10013,
+                    "is_required": "y",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "has_agent": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [],
+            "master_should_connect": null,
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_sap_system",
+            "object_type": "template",
+            "retry_interval": null,
+            "template_choice": null,
+            "vars": {
+                "sap_is_dbserver": false,
+                "sap_provides_sapmnt": false
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "generic_sap_instance": {
+            "accept_config": null,
+            "action_url": null,
+            "address": null,
+            "address6": null,
+            "api_key": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 10018,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10016,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10017,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10015,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10023,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "has_agent": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [],
+            "master_should_connect": null,
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_sap_instance",
+            "object_type": "template",
+            "retry_interval": null,
+            "template_choice": null,
+            "vars": {
+                "sap_ssl": 1
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "generic_sapcontrol": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 10025,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_service"
+            ],
+            "max_check_attempts": null,
+            "notes": " ",
+            "notes_url": null,
+            "object_name": "generic_sapcontrol",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {},
+            "volatile": null,
+            "zone": null
+        },
+        "SSH-AIX: Filesystem_sapmnt": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_by_ssh"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "SSH-AIX: Filesystem_sapmnt",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_command": "\/opt\/freeware\/lib\/nagios\/plugins\/check_disk -w 10% -c 5% -p \/sapmnt\/"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "generic_by_ssh": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_by_ssh",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 1101,
+                    "is_required": "y",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1105,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_by_ssh",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_options": "StrictHostKeyChecking=no"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "Datafield": {
+        "10026": {
+            "varname": "sap_control_env",
+            "caption": "SAP sapcontrol environment",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10026",
+            "settings": {}
+        },
+        "10021": {
+            "varname": "sap_is_dbserver",
+            "caption": "SAP Database Server (y\/n)",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeBoolean",
+            "format": null,
+            "originalId": "10021",
+            "settings": {}
+        },
+        "10022": {
+            "varname": "sap_provides_sapmnt",
+            "caption": "SAP system providing sapmnt filesystem",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeBoolean",
+            "format": null,
+            "originalId": "10022",
+            "settings": {}
+        },
+        "10014": {
+            "varname": "sap_system_dbsid",
+            "caption": "SAP DBSID",
+            "description": "SAP Database System-ID",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "10014",
+            "settings": {}
+        },
+        "10013": {
+            "varname": "sap_system_sid",
+            "caption": "SAP SID",
+            "description": "System-ID of SAP system",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "10013",
+            "settings": {}
+        },
+        "10018": {
+            "varname": "sap_instance_index",
+            "caption": "SAP Instance Index",
+            "description": "Index of SAP-Instance related to server",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "10018",
+            "settings": {}
+        },
+        "10016": {
+            "varname": "sap_instance_number",
+            "caption": "SAP Instance Number",
+            "description": "Instance number  (00 - 99)",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "10016",
+            "settings": {}
+        },
+        "10017": {
+            "varname": "sap_instance_sid",
+            "caption": "SAP Instance SID",
+            "description": "SID of Instance",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "10017",
+            "settings": {}
+        },
+        "10015": {
+            "varname": "sap_instance_type",
+            "caption": "SAP Instance Type",
+            "description": "Type of SAP-Instance, e.g. ASCS or DVEBMGS",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "10015",
+            "settings": {}
+        },
+        "10023": {
+            "varname": "sap_ssl",
+            "caption": "SAP use SSL",
+            "description": "specify protocol to be used when communicating with SAP-instances or sapstartsrv",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeNumber",
+            "format": null,
+            "originalId": "10023",
+            "settings": {}
+        },
+        "10025": {
+            "varname": "sap_instance_no",
+            "caption": "SAP instance number for service",
+            "description": "SAP Instance number to be used in service templates",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeNumber",
+            "format": null,
+            "originalId": "10025",
+            "settings": {}
+        },
+        "1101": {
+            "varname": "by_ssh_command",
+            "caption": "SSH command",
+            "description": "Check by SSH: Command to execute on remote machine",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1101",
+            "settings": {}
+        },
+        "1105": {
+            "varname": "by_ssh_options",
+            "caption": "SSH options",
+            "description": "Check by SSH: additional options",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1105",
+            "settings": {}
+        }
+    }
+}

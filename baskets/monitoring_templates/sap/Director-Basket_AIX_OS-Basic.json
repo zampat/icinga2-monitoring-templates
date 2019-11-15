@@ -1,0 +1,514 @@
+{
+    "Command": {
+        "check_by_ssh": {
+            "arguments": {
+                "-6": {
+                    "description": "Use IPv6 only",
+                    "set_if": "$by_ssh_ipv6$"
+                },
+                "-4": {
+                    "description": "Use IPv4 only",
+                    "set_if": "$by_ssh_ipv4$"
+                },
+                "-C": {
+                    "value": "$by_ssh_command$"
+                },
+                "-E": {
+                    "description": "Ignore all or (if specified) first n lines on STDERR [optional]",
+                    "value": "$by_ssh_skip_stderr$"
+                },
+                "-H": {
+                    "description": "Host name, IP Address, or unix socket (must be an absolute path)",
+                    "value": "$address$"
+                },
+                "-c": {
+                    "description": "Response time to result in critical status (seconds)",
+                    "value": "$by_ssh_crit$"
+                },
+                "-i": {
+                    "description": "identity of an authorized key [optional]",
+                    "value": "$by_ssh_identity$"
+                },
+                "-l": {
+                    "description": "SSH user name on remote host [optional]",
+                    "value": "$by_ssh_logname$"
+                },
+                "-o": {
+                    "description": "Provide ssh options (may be repeated)",
+                    "value": "$by_ssh_options$"
+                },
+                "-p": {
+                    "description": "Port number (default: none)",
+                    "value": "$by_ssh_port$"
+                },
+                "-q": {
+                    "description": "Tell ssh to suppress warning and diagnostic messages [optional]",
+                    "set_if": "$by_ssh_quiet$"
+                },
+                "-t": {
+                    "description": "Seconds before connection times out (default: 10)",
+                    "value": "$by_ssh_timeout$"
+                },
+                "-w": {
+                    "description": "Response time to result in warning status (seconds)",
+                    "value": "$by_ssh_warn$"
+                }
+            },
+            "command": "check_by_ssh",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "methods_execute": "PluginCheck",
+            "object_name": "check_by_ssh",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {
+                "by_ssh_address": "$check_address$",
+                "by_ssh_quiet": false,
+                "check_address": {
+                    "arguments": [],
+                    "deprecated": false,
+                    "name": "<anonymous>",
+                    "side_effect_free": false,
+                    "type": "Function"
+                },
+                "check_ipv4": "$by_ssh_ipv4$",
+                "check_ipv6": "$by_ssh_ipv6$"
+            },
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "generic_by_ssh": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_by_ssh",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 1101,
+                    "is_required": "y",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1105,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_by_ssh",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_options": "StrictHostKeyChecking=no"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "SSH-AIX: Filesystems_OS": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_by_ssh"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "SSH-AIX: Filesystems_OS",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_command": "\/opt\/freeware\/lib\/nagios\/plugins\/check_disk -w 10% -c 5% -p \/ -w 10% -c 5% -p \/usr -w 10% -c 5% -p \/var -w 10% -c 5% -p \/tmp -w 10% -c 5% -p \/home -w 10% -c 5% -p \/admin -w 10% -c 5% -p \/opt"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "SSH-AIX: Filesystem_sapmnt": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_by_ssh"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "SSH-AIX: Filesystem_sapmnt",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_command": "\/opt\/freeware\/lib\/nagios\/plugins\/check_disk -w 10% -c 5% -p \/sapmnt\/"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "SSH-AIX: Filesystem_streamserve": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_by_ssh"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "SSH-AIX: Filesystem_streamserve",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_command": "\/opt\/freeware\/lib\/nagios\/plugins\/check_disk -w 10% -c 5% -p \/usr\/streamserve"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "SSH-AIX: Load": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_by_ssh"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "SSH-AIX: Load",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_command": "\/opt\/freeware\/lib\/nagios\/plugins\/check_load -r -w 2,2,2 -c 5,5,5"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "SSH-AIX: Memory": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_by_ssh"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "SSH-AIX: Memory",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "by_ssh_command": "\/opt\/freeware\/lib\/nagios\/plugins\/check_mem.pl -u -w 90 -c 95"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "ServiceSet": {
+        "AIX OS-Basic": {
+            "assign_filter": "host.vars.host_os=%22AIX%22",
+            "description": "Basic set of OS-checks for AIX",
+            "object_name": "AIX OS-Basic",
+            "object_type": "template",
+            "services": {
+                "SSH-AIX: Load": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "SSH-AIX: Load"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "SSH-AIX: Load",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {},
+                    "volatile": null,
+                    "zone": null
+                },
+                "SSH-AIX: Memory": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "SSH-AIX: Memory"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "SSH-AIX: Memory",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {},
+                    "volatile": null,
+                    "zone": null
+                },
+                "SSH-AIX: Filesystems_OS": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "SSH-AIX: Filesystems_OS"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "SSH-AIX: Filesystems_OS",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {},
+                    "volatile": null,
+                    "zone": null
+                }
+            }
+        }
+    },
+    "Datafield": {
+        "1101": {
+            "varname": "by_ssh_command",
+            "caption": "SSH command",
+            "description": "Check by SSH: Command to execute on remote machine",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1101",
+            "settings": {}
+        },
+        "1105": {
+            "varname": "by_ssh_options",
+            "caption": "SSH options",
+            "description": "Check by SSH: additional options",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1105",
+            "settings": {}
+        }
+    }
+}
