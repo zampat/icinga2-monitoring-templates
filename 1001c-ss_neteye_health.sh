@@ -93,6 +93,18 @@ icingacli director service create --json '
     "use_agent": false
 }'
 
+icingacli director service create --json '
+{
+    "imports": [
+        "neteye smtp"
+    ],
+    "object_name": "NetEye smtp",
+    "object_type": "object",
+    "service_set": "NetEye Master",
+    "use_agent": false
+}'
+
+
 fi
 
 

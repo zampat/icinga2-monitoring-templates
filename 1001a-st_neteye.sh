@@ -217,6 +217,26 @@ then
 '
 fi
 
+OBJ="neteye smtp"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "smtp",
+    "imports": [
+        "generic neteye"
+    ],
+    "object_name": "neteye smtp",
+    "object_type": "template",
+    "vars": {
+        "check_address": "localhost"
+    }
+}
+'
+
+fi
 
 
 

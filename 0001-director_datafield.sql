@@ -37,7 +37,6 @@ LOCK TABLES `director_datafield` WRITE;
 INSERT IGNORE `director_datafield` (`id`, `varname`, `caption`, `description`, `datatype`, `format`) VALUES
 (40,'custom_analytics_dashboard','ITOA Custom Dashboard',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (50,'host_service','Host Service',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
-(51,'host_owner','Host Owner',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDirectorObject',NULL),
 (52,'host_os','Host OS',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (53,'host_parent','Host parent',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDirectorObject',NULL),
 (80,'notification_from','Notification From','Set from address. Requires GNU mailutils (Debian/Ubuntu) or mailx (RHEL/SUSE)','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),	
