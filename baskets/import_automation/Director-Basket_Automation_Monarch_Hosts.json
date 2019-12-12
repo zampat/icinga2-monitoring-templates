@@ -181,7 +181,7 @@
                     "filter_expression": "hostprofile_name=profile_windows_hosts",
                     "merge_policy": "override",
                     "priority": "5",
-                    "source": "01: NetEye3 Monarch: Hosts",
+                    "source": "Net3_01: Monarch Hosts",
                     "source_expression": "generic-agent-windows"
                 },
                 {
