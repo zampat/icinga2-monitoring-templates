@@ -13,7 +13,7 @@ then
    icingacli director notification create --json '
 {
     "apply_to": "host",
-    "assign_filter": "host.name=true",
+     "assign_filter": "host.name=%22host_name_prefix%2A%22",
     "imports": [
         "notify all host events: Once"
     ],
@@ -35,7 +35,7 @@ then
    icingacli director notification create --json '
 {
     "apply_to": "service",
-    "assign_filter": "service.name=%22%2A%22",
+    "assign_filter": "service.name=%22service_name_prefix%2A%22",
     "imports": [
         "notify all service events: Once"
     ],
