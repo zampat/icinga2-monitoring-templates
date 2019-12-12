@@ -209,11 +209,12 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (1007,'esx_subcommand','ESX subcommand',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (1008,'esx_authfile','ESX authentication file',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (1009,'esx_optional','ESX optional',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(1101,'by_ssh_command','SSH command','Check by SSH: Command to execute on remote machine','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(1102,'by_ssh_logname','SSH identity','Check by SSH: user name on remote host','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(1103,'by_ssh_timeout','SSH timeout','Check by SSH: timeout in seconds','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(1104,'by_ssh_port','SSH port','Check by SSH: port number','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(1105,'by_ssh_options','SSH options','Check by SSH: additional options','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
+(1101,'by_ssh_command','BySSH command','Check by SSH: Command to execute on remote machine','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1102,'by_ssh_logname','BySSH identity','Check by SSH: user name on remote host','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1103,'by_ssh_timeout','BySSH timeout','Check by SSH: timeout in seconds','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(1104,'by_ssh_port','BySSH port','Check by SSH: port number','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(1105,'by_ssh_options','BySSH options','Check by SSH: additional options','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(1106,'by_ssh_quiet','BySSH quiet','Tell ssh to suppress warning and diagnostic messages','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
