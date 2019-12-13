@@ -35,6 +35,7 @@ UPDATE `director`.`director_datafield` SET `id` = 1009 WHERE `director_datafield
 LOCK TABLES `director_datafield` WRITE;
 /*!40000 ALTER TABLE `director_datafield` DISABLE KEYS */;
 INSERT IGNORE `director_datafield` (`id`, `varname`, `caption`, `description`, `datatype`, `format`) VALUES
+(30,'check_address','Check address','Override Host check address','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (40,'custom_analytics_dashboard','ITOA Custom Dashboard',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (50,'host_service','Host Service',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (52,'host_os','Host OS',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
