@@ -236,8 +236,26 @@ then
 }
 '
 
+OBJ="neteye mysql"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "mysql",
+    "imports": [
+        "generic neteye"
+    ],
+    "object_name": "neteye mysql",
+    "object_type": "template",
+    "vars": {
+        "check_address": "mariadb.neteyelocal",
+        "mysql_ignore_auth": true
+    }
+}
+'
 fi
-
 
 
 echo "Generic NetEye Service Templates created"
