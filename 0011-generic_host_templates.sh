@@ -1,7 +1,7 @@
 #
 # host template Level 1
 # How to export host template:
-# export OBJ="generic neteye"
+# export OBJ="generic-neteye"
 # icingacli director host show "$OBJ" --json --no-defaults
 #
 

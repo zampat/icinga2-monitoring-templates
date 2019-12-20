@@ -1,7 +1,7 @@
 #
 #Service template Level 1
 # HowTo Export:
-# icingacli director service show generic_service --json --no-defaults
+# icingacli director service show generic-service --json --no-defaults
 #
 
 RES=`icingacli director service exists "generic_business_process"`
@@ -15,7 +15,7 @@ icingacli director service create generic_business_process --json '
     "check_interval": "60",
     "check_timeout": "50",
     "imports": [
-        "generic_service"
+        "generic-service"
     ],
     "max_check_attempts": "2",
     "object_name": "generic_business_process",

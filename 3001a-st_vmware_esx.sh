@@ -1,7 +1,7 @@
 # 
 #Services (as template)
 # HowTo Export:
-# icingacli director service show generic_vmware --json --no-defaults
+# icingacli director service show generic-vmware --json --no-defaults
 #
 
 
@@ -10,17 +10,17 @@
 ######
 
 # Service Template: Generic Vmware
-RES=`icingacli director service exists "generic_vmware"`
+RES=`icingacli director service exists "generic-vmware"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'generic_vmware' does not exists"
+   echo "Service 'generic-vmware' does not exists"
    icingacli director service create --json '
 {
     "check_command": "check_vmware_api",
     "imports": [
-        "generic_service"
+        "generic-active-service"
     ],
-    "object_name": "generic_vmware",
+    "object_name": "generic-vmware",
     "object_type": "template",
     "vars": {
         "esx_authfile": "\/neteye\/shared\/monitoring\/configs\/vmware_auth_poc.cfg"
@@ -37,7 +37,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic_vmware"
+        "generic-vmware"
     ],
     "object_name": "vmware_dc_esx",
     "object_type": "template",
@@ -56,7 +56,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic_vmware"
+        "generic-vmware"
     ],
     "object_name": "vmware_dc_datastore",
     "object_type": "template",

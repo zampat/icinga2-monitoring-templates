@@ -5,18 +5,18 @@
 #
 #Service template
 #
-RES=`icingacli director service exists "generic_http"`
+RES=`icingacli director service exists "generic-http"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'generic_http' does not exists"
-   icingacli director service create generic_http --json '
+   echo "Service 'generic-http' does not exists"
+   icingacli director service create generic-http --json '
 {
     "check_command": "http",
     "imports": [
-        "generic_service"
+        "generic-active-service"
     ],
-    "object_name": "generic_http",
+    "object_name": "generic-http",
     "object_type": "template",
     "vars": {
         "http_critical_time": 30,
@@ -36,7 +36,7 @@ then
 icingacli director service create http_website_availability --json '
 {
     "imports": [
-        "generic_http"
+        "generic-http"
     ],
     "object_name": "http_website_availability",
     "object_type": "template"
@@ -56,7 +56,7 @@ icingacli director service create http_certificate_validity --json '
 {
     "check_interval": "86400",
     "imports": [
-        "generic_http"
+        "generic-http"
     ],
     "object_name": "http_certificate_validity",
     "object_type": "template",

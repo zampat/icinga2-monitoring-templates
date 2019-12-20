@@ -21,19 +21,19 @@ fi
 ## Services for Windwows SQL Server
 ######
 
-# Service Template generic_MSSQL
-RES=`icingacli director service exists "generic_MSSQL"`
+# Service Template generic-mssql
+RES=`icingacli director service exists "generic-mssql"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'generic_MSSQL' does not exists"
+   echo "Service 'generic-mssql' does not exists"
    icingacli director service create --json '
 {
     "check_command": "mssql_health",
     "imports": [
-        "generic_service"
+        "generic-service"
     ],
-    "object_name": "generic_MSSQL",
+    "object_name": "generic-mssql",
     "object_type": "template",
     "vars": {
         "mssql_health_hostname": "$address$",
@@ -55,7 +55,7 @@ then
 {
     "check_command": "mssql_health",
     "imports": [
-        "generic_MSSQL"
+        "generic-mssql"
     ],
     "object_name": "MSSQL_Connections",
     "object_type": "template",
@@ -69,7 +69,7 @@ then
 fi
 
 
-# Service Template generic_MSSQL
+# Service Template generic-mssql
 RES=`icingacli director service exists "MSSQL_Transactions/sec"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -79,7 +79,7 @@ then
 {
     "check_command": "mssql_health",
     "imports": [
-        "generic_MSSQL"
+        "generic-mssql"
     ],
     "object_name": "MSSQL_Transactions\/sec",
     "object_type": "template",

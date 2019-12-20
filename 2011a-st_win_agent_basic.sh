@@ -1,7 +1,7 @@
 # 
 #Services (as template)
 # HowTo Export:
-# icingacli director service show generic_service --json --no-defaults
+# icingacli director service show generic-service --json --no-defaults
 #
 
 
@@ -19,7 +19,7 @@ then
 {
     "check_command": "cluster-zone",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_connected",
     "object_type": "template",
@@ -36,7 +36,7 @@ then
 {
     "check_command": "load-windows",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Win_CPU",
     "object_type": "template",
@@ -58,7 +58,7 @@ then
 {
     "check_command": "disk-windows",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Win_Diskspace",
     "object_type": "template",
@@ -85,7 +85,7 @@ then
 {
     "check_command": "memory-windows",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Win_Memory",
     "object_type": "template",
@@ -111,7 +111,7 @@ then
 {
     "check_command": "service-windows",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Win_Service",
     "object_type": "template",
@@ -137,7 +137,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_WinCnt",
     "object_type": "template",
@@ -157,7 +157,7 @@ then
 {
     "check_command": "nscp-local-service",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Win_NscpServices",
     "object_type": "template"
@@ -175,7 +175,7 @@ then
 {
     "check_command": "nscp-local-service",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Win_NscpServiceQuery",
     "object_type": "template"

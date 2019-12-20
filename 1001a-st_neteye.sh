@@ -1,13 +1,13 @@
 #
 #Service template: NetEye "agentless" as we don't have any endpoint = host_name
 # Contribute exporting services:
-# export OBJ="generic neteye"
+# export OBJ="generic-neteye"
 # icingacli director service show "$OBJ" --json --no-defaults
 
 #
 #Service template
 #
-OBJ="generic neteye"
+OBJ="generic-neteye"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -15,9 +15,9 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic_service"
+        "generic-active-service"
     ],
-    "object_name": "generic neteye",
+    "object_name": "generic-neteye",
     "object_type": "template",
     "use_agent": true
 }
@@ -34,7 +34,7 @@ then
 {
     "check_command": "load",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye load",
     "object_type": "template"
@@ -51,7 +51,7 @@ then
 {
     "check_command": "disk",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye disk",
     "object_type": "template"
@@ -68,7 +68,7 @@ then
 {
     "check_command": "cluster",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye icinga cluster",
     "object_type": "template",
@@ -86,7 +86,7 @@ then
 {
     "check_command": "ido",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye icinga ido",
     "object_type": "template",
@@ -108,7 +108,7 @@ then
 {
     "check_command": "cluster-zone",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye icinga zone",
     "object_type": "template",
@@ -126,7 +126,7 @@ then
 {
     "check_command": "load",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye load",
     "object_type": "template"
@@ -143,7 +143,7 @@ then
 {
     "check_command": "procs",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye proc procname",
     "object_type": "template",
@@ -165,7 +165,7 @@ then
 {
     "check_command": "procs",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye processes",
     "object_type": "template",
@@ -186,7 +186,7 @@ then
 {
     "check_command": "icinga",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye stats",
     "object_type": "template"
@@ -204,7 +204,7 @@ then
 {
     "check_command": "mem",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye memory",
     "object_type": "template",
@@ -226,7 +226,7 @@ then
 {
     "check_command": "smtp",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye smtp",
     "object_type": "template",
@@ -245,7 +245,7 @@ then
 {
     "check_command": "mysql",
     "imports": [
-        "generic neteye"
+        "generic-neteye"
     ],
     "object_name": "neteye mysql",
     "object_type": "template",
@@ -258,4 +258,4 @@ then
 fi
 
 
-echo "Generic NetEye Service Templates created"
+echo "generic-neteye Service Templates created"

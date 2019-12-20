@@ -17,7 +17,7 @@ then
     "check_command": "nscp-local",
     "check_interval": "3600",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_WinDisk_FileAge",
     "object_type": "template",

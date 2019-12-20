@@ -1,7 +1,7 @@
 # 
 #Services (as template)
 # HowTo Export:
-# icingacli director service show generic_service --json --no-defaults
+# icingacli director service show generic-service --json --no-defaults
 #
 
 # Service Template for Service Template
@@ -14,7 +14,7 @@ then
 {
     "check_command": "check_nwc_health",
     "imports": [
-        "generic_snmp"
+        "generic-snmp"
     ],
     "object_name": "snmp_nwc_health",
     "object_type": "template"

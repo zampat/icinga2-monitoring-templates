@@ -5,12 +5,12 @@
 #
 
 
-# Pre-Requisites: Command: Powershell and service template "generic_agent_powershell"
-RES=`icingacli director service exists "generic_agent_powershell"`
+# Pre-Requisites: Command: Powershell and service template "generic-agent-powershell"
+RES=`icingacli director service exists "generic-agent-powershell"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service template 'generic_agent_powershell' does not exists This is a pre-requisite.".
+   echo "Service template 'generic-agent-powershell' does not exists This is a pre-requisite.".
    echo "Please import this Service template from service windows templates.".
    exit 3
 fi
@@ -42,17 +42,17 @@ fi
 ######
 # Service template for Exchange via PowerShell
 #
-RES=`icingacli director service exists "generic_agent_powershell_exchange"`
+RES=`icingacli director service exists "generic-agent-powershell_exchange"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'generic_agent_powershell_exchange' does not exists"
+   echo "Service 'generic-agent-powershell_exchange' does not exists"
    icingacli director service create --json '
 {
     "check_command": "powershell",
     "imports": [
-        "generic_agent_powershell"
+        "generic-agent-powershell"
     ],
-    "object_name": "generic_agent_powershell_exchange",
+    "object_name": "generic-agent-powershell_exchange",
     "object_type": "template"
 }
 '
@@ -119,7 +119,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic_agent_powershell_exchange"
+        "generic-agent-powershell_exchange"
     ],
     "object_name": "Exchange2016 Mailbox Health status",
     "object_type": "template",
@@ -139,7 +139,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic_agent_powershell_exchange"
+        "generic-agent-powershell_exchange"
     ],
     "object_name": "Exchange2016 FullBackup status",
     "object_type": "template",
@@ -159,7 +159,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic_agent_powershell_exchange"
+        "generic-agent-powershell_exchange"
     ],
     "object_name": "Exchange2016 IncrementalBackup status",
     "object_type": "template",
@@ -179,7 +179,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic_agent_powershell_exchange"
+        "generic-agent-powershell_exchange"
     ],
     "object_name": "Exchange2016 QueueHealth status",
     "object_type": "template",

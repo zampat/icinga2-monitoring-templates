@@ -2,10 +2,10 @@
 
 # Contribute exporting commands: IMHO the "show" does not work
 
-# export OBJ="generic_snmp_interfaces"
+# export OBJ="generic-snmp_interfaces"
 # icingacli director commands show "$OBJ" --json --no-defaults
 
-# Check Command:generic_snmp_interfaces
+# Check Command:generic-snmp_interfaces
 #
 OBJ="check_interfaces"
 RES=`icingacli director command exists "$OBJ"`

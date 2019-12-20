@@ -19,7 +19,7 @@ then
 {
     "check_command": "apt",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Debian_APT-Update_available",
     "object_type": "template",

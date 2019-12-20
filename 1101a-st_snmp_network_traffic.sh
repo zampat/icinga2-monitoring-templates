@@ -1,25 +1,25 @@
 #
 #Service templates for generic Network Traffic monitoring via SNMP
 # HowTo Export:
-# icingacli director service show generic_service --json --no-defaults
+# icingacli director service show generic-service --json --no-defaults
 #
 # Requirements:
-# Service tempate: generic_snmp
-# Provided by: 0021-generic_service_templates.sh
+# Service tempate: generic-snmp
+# Provided by: 0021-generic-service_templates.sh
 #
 
-RES=`icingacli director service exists "generic_snmp_interfaces"`
+RES=`icingacli director service exists "generic-snmp_interfaces"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'generic_snmp_interfaces' does not exists"
+   echo "Service 'generic-snmp_interfaces' does not exists"
 
-icingacli director service create generic_snmp_interfaces --json '
+icingacli director service create generic-snmp_interfaces --json '
 {
     "check_command": "check_interfaces",
     "imports": [
-        "generic_snmp"
+        "generic-snmp"
     ],
-    "object_name": "generic_snmp_interfaces",
+    "object_name": "generic-snmp_interfaces",
     "object_type": "template",
     "vars": {
         "interfaces_perfdata": true,

@@ -14,7 +14,7 @@ fi
 
 # 1) The import of Icinga2 ITL
 #
-# Pre-Requisites: Command: Powershell and service template "generic_agent_powershell"
+# Pre-Requisites: Command: Powershell and service template "generic-agent-powershell"
 RES=`icingacli director command exists "icinga"`
 if [[ $RES =~ "does not exist" ]]
 then

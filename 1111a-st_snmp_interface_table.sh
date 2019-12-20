@@ -1,7 +1,7 @@
 # 
 #Services (as template)
 # HowTo Export:
-# icingacli director service show generic_snmp_interface_table --json --no-defaults
+# icingacli director service show generic-snmp_interface_table --json --no-defaults
 #
 
 
@@ -10,18 +10,18 @@
 ######
 
 # Service Templates
-RES=`icingacli director service exists "generic_snmp_interface_table"`
+RES=`icingacli director service exists "generic-snmp_interface_table"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'generic_snmp_interface_table' does not exists"
+   echo "Service 'generic-snmp_interface_table' does not exists"
    icingacli director service create --json '
 {
     "check_command": "check_interface_table",
     "imports": [
-        "generic_snmp"
+        "generic-snmp"
     ],
-    "object_name": "generic_snmp_interface_table",
+    "object_name": "generic-snmp_interface_table",
     "object_type": "template",
     "vars": {
         "interface_table_warning_property": 1,

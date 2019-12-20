@@ -19,7 +19,7 @@ then
 {
     "check_command": "disk",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Linux_Diskspace",
     "object_type": "template"
@@ -36,7 +36,7 @@ then
 {
     "check_command": "mem",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Linux_Memory",
     "object_type": "template",
@@ -58,7 +58,7 @@ then
 {
     "check_command": "load",
     "imports": [
-        "generic_agent"
+        "generic-agent"
     ],
     "object_name": "Agent_Linux_Load",
     "object_type": "template"
