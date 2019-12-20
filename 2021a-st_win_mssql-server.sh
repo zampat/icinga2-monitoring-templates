@@ -5,13 +5,13 @@
 #
 
 
-# Pre-Requisites: Agent_WinCnt
-# Service Template Agent_WinCnt
-RES=`icingacli director service exists "Agent_WinCnt"`
+# Pre-Requisites: generic-agent-windows-perfcounter
+# Service Template generic-agent-windows-perfcounter
+RES=`icingacli director service exists "generic-agent-windows-perfcounter"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service template 'Agent_WinCnt' does not exists This is a pre-requisite.".
+   echo "Service template 'generic-agent-windows-perfcounter' does not exists This is a pre-requisite.".
    echo "Please import this Service template from service windows templates.".
    exit 3
 fi
@@ -31,7 +31,7 @@ then
 {
     "check_command": "mssql_health",
     "imports": [
-        "generic-service"
+        "generic-active-service"
     ],
     "object_name": "generic-mssql",
     "object_type": "template",

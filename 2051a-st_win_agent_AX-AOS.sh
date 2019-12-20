@@ -1,14 +1,14 @@
 # 
 # Service template
-# HowTo Export: icingacli director service show Agent_WinCnt --json --no-defaults
+# HowTo Export: icingacli director service show generic-agent-windows-perfcounter --json --no-defaults
 #
 
-# Pre-Requisites: Agent_WinCnt (former Agent_Win_Counter)
+# Pre-Requisites: generic-agent-windows-perfcounter (former Agent_Win_Counter)
 # Service Template 
-RES=`icingacli director service exists "Agent_WinCnt"`
+RES=`icingacli director service exists "generic-agent-windows-perfcounter"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service template 'Agent_WinCnt' does not exists This is a pre-requisite.".
+   echo "Service template 'generic-agent-windows-perfcounter' does not exists This is a pre-requisite.".
    echo "Please import this Service template from service windows templates.".
    exit 3
 fi
@@ -45,7 +45,7 @@ then
    icingacli director service create --json '
    {
     "imports": [
-        "Agent_WinCnt"
+        "generic-agent-windows-perfcounter"
     ],
     "object_name": "AOS_Active_Sessions",
     "object_type": "template",
@@ -64,7 +64,7 @@ then
    icingacli director service create --json '
    {
     "imports": [
-        "Agent_WinCnt"
+        "generic-agent-windows-perfcounter"
     ],
     "object_name": "AOS_BYTES_RECEIVED_BY_SERVER",
     "object_type": "template",
@@ -83,7 +83,7 @@ then
    icingacli director service create --json '
   {
     "imports": [
-        "Agent_WinCnt"
+        "generic-agent-windows-perfcounter"
     ],
     "object_name": "AOS_BYTES_SENT_BY_SERVER",
     "object_type": "template",
@@ -102,7 +102,7 @@ then
    icingacli director service create --json '
   {
     "imports": [
-        "Agent_WinCnt"
+        "generic-agent-windows-perfcounter"
     ],
     "object_name": "AOS_CLIENT_REQUESTS",
     "object_type": "template",
@@ -122,7 +122,7 @@ then
    icingacli director service create --json '
   {
     "imports": [
-        "Agent_WinCnt"
+        "generic-agent-windows-perfcounter"
     ],
     "object_name": "AOS_CLIENT_REQUESTS/SEC",
     "object_type": "template",

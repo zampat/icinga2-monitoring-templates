@@ -126,20 +126,20 @@ fi
 
 
 ###
-# Agent_WinCnt
+# generic-agent-windows-perfcounter
 ###
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_WinCnt"`
+RES=`icingacli director service exists "generic-agent-windows-perfcounter"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_WinCnt' does not exists"
+   echo "Service 'generic-agent-windows-perfcounter' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_WinCnt",
+    "object_name": "generic-agent-windows-perfcounter",
     "object_type": "template",
     "use_agent": true
 }
@@ -149,17 +149,17 @@ fi
 
 # Agent Win NSCPServices (Advantage of multiple service monitoring provided by NSCLient++)
 #
-RES=`icingacli director service exists "Agent_Win_NscpServices"`
+RES=`icingacli director service exists "generic-agent-nscp-service"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_Win_NscpServices' does not exists"
+   echo "Service 'generic-agent-nscp-service' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-service",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_Win_NscpServices",
+    "object_name": "generic-agent-nscp-service",
     "object_type": "template"
 }
 '
