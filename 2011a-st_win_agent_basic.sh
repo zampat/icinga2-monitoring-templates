@@ -126,20 +126,51 @@ fi
 
 
 ###
-# generic-agent-windows-perfcounter
+# generic-agent-windows-nscp based checks
 ###
-# Service Template for Service Set
-RES=`icingacli director service exists "generic-agent-windows-perfcounter"`
+# windows nscp disk
+OBJ="generic-agent-windows-nscp-disk"
+RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'generic-agent-windows-perfcounter' does not exists"
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "nscp-local-disk",
+    "imports": [
+        "generic-agent"
+    ],
+    "object_name": "generic-agent-windows-nscp-disk",
+    "object_type": "template",
+    "vars": {
+        "nscp_disk_arguments": [
+            "filter=type in ('fixed')",
+            "perf-config=*(unit:GB)"
+        ],
+        "nscp_disk_critical": "98%",
+        "nscp_disk_drive": [
+            "c:",
+            "d:"
+        ],
+        "nscp_disk_warning": "95%"
+    }
+}'
+fi
+
+
+
+# windows nscp perfcounter
+RES=`icingacli director service exists "windows-nscp-perfcounter"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service 'windows-nscp-perfcounter' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "generic-agent-windows-perfcounter",
+    "object_name": "windows-nscp-perfcounter",
     "object_type": "template",
     "use_agent": true
 }
@@ -149,17 +180,18 @@ fi
 
 # Agent Win NSCPServices (Advantage of multiple service monitoring provided by NSCLient++)
 #
-RES=`icingacli director service exists "generic-agent-nscp-service"`
+# windows nscp service
+RES=`icingacli director service exists "windows-nscp-generic-service"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'generic-agent-nscp-service' does not exists"
+   echo "Service 'windows-nscp-generic-service' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-service",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "generic-agent-nscp-service",
+    "object_name": "windows-nscp-generic-service",
     "object_type": "template"
 }
 '

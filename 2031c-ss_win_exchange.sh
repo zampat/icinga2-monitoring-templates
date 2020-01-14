@@ -22,7 +22,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "MSExch2016 IS ActiveMailboxes",
     "object_type": "object",
@@ -41,7 +41,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "MSExch2016 AD Replication",
     "object_type": "object",

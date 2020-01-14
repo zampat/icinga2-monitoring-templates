@@ -27,6 +27,6 @@ INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUE
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "generic-http"),(select id from director_datafield where varname = "http_port"),'n');
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "generic-http"),(select id from director_datafield where varname = "http_string"),'n');
 
-# generic-agent-powershell
-INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "generic-agent-powershell"),(select id from director_datafield where varname = "powershell_script"),'y');
-INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "generic-agent-powershell"),(select id from director_datafield where varname = "powershell_args"),'n');
+# windows-powershell-generic
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "windows-powershell-generic"),(select id from director_datafield where varname = "powershell_script"),'y');
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((SELECT id FROM icinga_service WHERE object_name = "windows-powershell-generic"),(select id from director_datafield where varname = "powershell_args"),'n');

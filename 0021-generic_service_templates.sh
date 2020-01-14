@@ -96,21 +96,21 @@ fi
 
 
 #
-#Service template: generic-agent-powershell
+#Service template: windows-powershell-generic
 # Note: Prerequisite is loading commands
 #
-RES=`icingacli director service exists "generic-agent-powershell"`
+RES=`icingacli director service exists "windows-powershell-generic"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'generic-agent-powershell' does not exists"
-   icingacli director service create generic-agent-powershell --json '
+   echo "Service 'windows-powershell-generic' does not exists"
+   icingacli director service create windows-powershell-generic --json '
 {
     "check_command": "powershell",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "generic-agent-powershell",
+    "object_name": "windows-powershell-generic",
     "object_type": "template"
 }
 '

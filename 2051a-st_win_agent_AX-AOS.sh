@@ -1,14 +1,14 @@
 # 
 # Service template
-# HowTo Export: icingacli director service show generic-agent-windows-perfcounter --json --no-defaults
+# HowTo Export: icingacli director service show windows-nscp-perfcounter --json --no-defaults
 #
 
-# Pre-Requisites: generic-agent-windows-perfcounter (former Agent_Win_Counter)
+# Pre-Requisites: windows-nscp-perfcounter (former Agent_Win_Counter)
 # Service Template 
-RES=`icingacli director service exists "generic-agent-windows-perfcounter"`
+RES=`icingacli director service exists "windows-nscp-perfcounter"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service template 'generic-agent-windows-perfcounter' does not exists This is a pre-requisite.".
+   echo "Service template 'windows-nscp-perfcounter' does not exists This is a pre-requisite.".
    echo "Please import this Service template from service windows templates.".
    exit 3
 fi
@@ -23,7 +23,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "generic-agent-nscp-service"
+        "windows-nscp-generic-service"
     ],
     "object_name": "windows-nscp-service-ax aos",
     "object_type": "template",
@@ -45,7 +45,7 @@ then
    icingacli director service create --json '
    {
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-ax aos active sessions",
     "object_type": "template",
@@ -64,7 +64,7 @@ then
    icingacli director service create --json '
    {
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-ax aos bytes received by server",
     "object_type": "template",
@@ -83,7 +83,7 @@ then
    icingacli director service create --json '
   {
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-ax aos bytes sent by server",
     "object_type": "template",
@@ -102,7 +102,7 @@ then
    icingacli director service create --json '
   {
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-ax aos client requests",
     "object_type": "template",
@@ -122,7 +122,7 @@ then
    icingacli director service create --json '
   {
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-ax aos client requests/sec",
     "object_type": "template",

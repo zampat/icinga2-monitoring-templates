@@ -1,14 +1,14 @@
 # 
 #Services (as template)
 # HowTo Export:
-# icingacli director service show generic-agent-windows-perfcounter --json --no-defaults
+# icingacli director service show windows-nscp-perfcounter --json --no-defaults
 #
 
 # Requirements Check
-RES=` icingacli director service show generic-agent-windows-perfcounter --json --no-defaults`
+RES=` icingacli director service show windows-nscp-perfcounter --json --no-defaults`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Prerequisite failure: Service Template 'generic-agent-windows-perfcounter' does not exists. Abort import of OS-Performance."
+   echo "Prerequisite failure: Service Template 'windows-nscp-perfcounter' does not exists. Abort import of OS-Performance."
    exit 0
 fi
 
@@ -22,7 +22,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-pagingfile %usage",
     "object_type": "template",
@@ -44,7 +44,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-processor %interrupt time",
     "object_type": "template",
@@ -66,7 +66,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-disk queue length",
     "object_type": "template",
@@ -88,7 +88,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-disk read bytes/sec",
     "object_type": "template",
@@ -108,7 +108,7 @@ then
    {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-disk write bytes\/sec",
     "object_type": "template",
@@ -129,7 +129,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-processor %privileged time",
     "object_type": "template",
@@ -149,7 +149,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-processor %processor time",
     "object_type": "template",
@@ -169,7 +169,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-processor interrupts\/sec",
     "object_type": "template",
@@ -189,7 +189,7 @@ then
 {
     "check_command": "nscp-local-counter",
     "imports": [
-        "generic-agent-windows-perfcounter"
+        "windows-nscp-perfcounter"
     ],
     "object_name": "windows-perfcounter-pagingfile %usagePeak",
     "object_type": "template",

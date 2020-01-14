@@ -5,13 +5,13 @@
 #
 
 
-# Pre-Requisites: generic-agent-windows-perfcounter
-# Service Template generic-agent-windows-perfcounter
-RES=`icingacli director service exists "generic-agent-windows-perfcounter"`
+# Pre-Requisites: windows-nscp-perfcounter
+# Service Template windows-nscp-perfcounter
+RES=`icingacli director service exists "windows-nscp-perfcounter"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service template 'generic-agent-windows-perfcounter' does not exists This is a pre-requisite.".
+   echo "Service template 'windows-nscp-perfcounter' does not exists This is a pre-requisite.".
    echo "Please import this Service template from service windows templates.".
    exit 3
 fi
