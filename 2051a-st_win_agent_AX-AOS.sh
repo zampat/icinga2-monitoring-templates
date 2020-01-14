@@ -23,7 +23,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "windows-nscp-service"
+        "generic-agent-nscp-service"
     ],
     "object_name": "windows-nscp-service-ax aos",
     "object_type": "template",

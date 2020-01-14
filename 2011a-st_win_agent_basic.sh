@@ -165,24 +165,5 @@ then
 '
 fi
 
-# Agent Win NSCPServices (Advantage of multiple service monitoring provided by NSCLient++)
-#
-RES=`icingacli director service exists "windows-nscp-service"`
-if [[ $RES =~ "does not exist" ]]
-then
-   echo "Service 'windows-nscp-service' does not exists"
-   icingacli director service create --json '
-{
-    "check_command": "nscp-local-service",
-    "imports": [
-        "generic-agent"
-    ],
-    "object_name": "windows-nscp-service",
-    "object_type": "template"
-}
-'
-fi
-
-
 echo "Services created"
 exit 0

@@ -24,7 +24,7 @@ icingacli director service create --json '
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "MSExch2016_IS_ActiveMailboxes",
+    "object_name": "MSExch2016 IS ActiveMailboxes",
     "object_type": "object",
     "service_set": "Windows_Agent_Exchange",
     "vars": {
@@ -43,7 +43,7 @@ icingacli director service create --json '
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "MSExch2016_AD_Replication",
+    "object_name": "MSExch2016 AD Replication",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange",
     "vars": {
@@ -63,7 +63,7 @@ icingacli director service create --json '
     "imports": [
         "windows-nscp-service-exchange"
     ],
-    "object_name": "windows-nscp-service-exchange",
+    "object_name": "MSExch2016 Exchange services",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -75,7 +75,7 @@ icingacli director service create --json '
     "imports": [
         "windows-exchange2016 full backup"
     ],
-    "object_name": "windows-exchange2016 full backup",
+    "object_name": "MSExch2016 full backup",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -86,7 +86,7 @@ icingacli director service create --json '
     "imports": [
         "windows-exchange2016 incremental backup"
     ],
-    "object_name": "windows-exchange2016 incremental backup",
+    "object_name": "MSExch2016 incremental backup",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -97,7 +97,7 @@ icingacli director service create --json '
     "imports": [
         "windows-exchange2016 mailbox health"
     ],
-    "object_name": "windows-exchange2016 mailbox health",
+    "object_name": "MSExch2016 mailbox health",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -108,7 +108,7 @@ icingacli director service create --json '
     "imports": [
         "windows-exchange2016 queue health"
     ],
-    "object_name": "windows-exchange2016 queue health",
+    "object_name": "MSExch2016 queue health",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
