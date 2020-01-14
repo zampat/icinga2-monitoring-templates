@@ -1,7 +1,7 @@
 #
 #Services (as template)
 # HowTo Export:
-# # icingacli director service show Agent_Win_Service --json
+# # icingacli director service show windows-generic-service --json
 #
 
 
@@ -58,17 +58,17 @@ then
 '
 fi
 
-# NSCP Services check: Windows Services "Exchange Services"
-RES=`icingacli director service exists "Exchange Services"`
+# NSCP Services check: Windows Services "windows-nscp-service-exchange"
+RES=`icingacli director service exists "windows-nscp-service-exchange"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Exchange Services' does not exists"
+   echo "Service 'windows-nscp-service-exchange' does not exists"
    icingacli director service create --json '
    {
     "imports": [
         "generic-agent-nscp-service"
     ],
-    "object_name": "Exchange Services",
+    "object_name": "windows-nscp-service-exchange",
     "object_type": "template",
     "vars": {
         "nscp_service_name": [
@@ -112,16 +112,16 @@ fi
 ######
 
 # Service Template
-RES=`icingacli director service exists "Exchange2016 Mailbox Health status"`
+RES=`icingacli director service exists "windows-exchange2016 mailbox health"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Exchange2016 Mailbox Health status' does not exists"
+   echo "Service 'windows-exchange2016 mailbox health' does not exists"
    icingacli director service create --json '
 {
     "imports": [
         "generic-agent-powershell_exchange"
     ],
-    "object_name": "Exchange2016 Mailbox Health status",
+    "object_name": "windows-exchange2016 mailbox health",
     "object_type": "template",
     "vars": {
         "exchange2016_powershell": "exchange-QueueHealth.ps1",
@@ -132,16 +132,16 @@ then
 fi
 
 # Service Template
-RES=`icingacli director service exists "Exchange2016 FullBackup status"`
+RES=`icingacli director service exists "windows-exchange2016 full backup"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Exchange2016 FullBackup status' does not exists"
+   echo "Service 'windows-exchange2016 full backup' does not exists"
    icingacli director service create --json '
 {
     "imports": [
         "generic-agent-powershell_exchange"
     ],
-    "object_name": "Exchange2016 FullBackup status",
+    "object_name": "windows-exchange2016 full backup",
     "object_type": "template",
     "vars": {
         "exchange2016_powershell": "exchange-QueueHealth.ps1",
@@ -152,16 +152,16 @@ then
 fi
 
 # Service Template
-RES=`icingacli director service exists "Exchange2016 IncrementalBackup status"`
+RES=`icingacli director service exists "windows-exchange2016 incremental backup"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Exchange2016 IncrementalBackup status' does not exists"
+   echo "Service 'windows-exchange2016 incremental backup' does not exists"
    icingacli director service create --json '
 {
     "imports": [
         "generic-agent-powershell_exchange"
     ],
-    "object_name": "Exchange2016 IncrementalBackup status",
+    "object_name": "windows-exchange2016 incremental backup",
     "object_type": "template",
     "vars": {
         "exchange2016_powershell": "exchange-QueueHealth.ps1",
@@ -172,16 +172,16 @@ then
 fi
 
 # Service Template
-RES=`icingacli director service exists "Exchange2016 QueueHealth status"`
+RES=`icingacli director service exists "windows-exchange2016 queue health"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Exchange2016 QueueHealth status' does not exists"
+   echo "Service 'windows-exchange2016 queue health' does not exists"
    icingacli director service create --json '
 {
     "imports": [
         "generic-agent-powershell_exchange"
     ],
-    "object_name": "Exchange2016 QueueHealth status",
+    "object_name": "windows-exchange2016 queue health",
     "object_type": "template",
     "vars": {
         "exchange2016_powershell": "exchange-QueueHealth.ps1",

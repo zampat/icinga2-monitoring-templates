@@ -1,7 +1,7 @@
 # 
 #Services (as template)
 # HowTo Export:
-# # icingacli director service show Agent_Win_Service --json
+# # icingacli director service show windows-generic-service --json
 #
 
 
@@ -45,19 +45,19 @@ then
 '
 fi
 
-# Service Template MSSQL_Connections
-RES=`icingacli director service exists "MSSQL_Connections"`
+# Service Template windows-mssql-connections
+RES=`icingacli director service exists "windows-mssql-connections"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'MSSQL_Connections' does not exists"
+   echo "Service 'windows-mssql-connections' does not exists"
    icingacli director service create --json '
 {
     "check_command": "mssql_health",
     "imports": [
         "generic-mssql"
     ],
-    "object_name": "MSSQL_Connections",
+    "object_name": "windows-mssql-connections",
     "object_type": "template",
     "vars": {
         "mssql_health_critical": 8,
@@ -70,18 +70,18 @@ fi
 
 
 # Service Template generic-mssql
-RES=`icingacli director service exists "MSSQL_Transactions/sec"`
+RES=`icingacli director service exists "windows-mssql-transactions/sec"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'MSSQL_Transactions/sec' does not exists"
+   echo "Service 'windows-mssql-transactions/sec' does not exists"
    icingacli director service create --json '
 {
     "check_command": "mssql_health",
     "imports": [
         "generic-mssql"
     ],
-    "object_name": "MSSQL_Transactions\/sec",
+    "object_name": "windows-mssql-transactions\/sec",
     "object_type": "template",
     "vars": {
         "mssql_health_mode": "transactions"

@@ -61,9 +61,9 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "Exchange Services"
+        "windows-nscp-service-exchange"
     ],
-    "object_name": "Exchange Services",
+    "object_name": "windows-nscp-service-exchange",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -73,9 +73,9 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "Exchange2016 FullBackup status"
+        "windows-exchange2016 full backup"
     ],
-    "object_name": "Exchange2016 FullBackup status",
+    "object_name": "windows-exchange2016 full backup",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -84,9 +84,9 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "Exchange2016 IncrementalBackup status"
+        "windows-exchange2016 incremental backup"
     ],
-    "object_name": "Exchange2016 IncrementalBackup status",
+    "object_name": "windows-exchange2016 incremental backup",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -95,9 +95,9 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "Exchange2016 Mailbox Health status"
+        "windows-exchange2016 mailbox health"
     ],
-    "object_name": "Exchange2016 Mailbox Health status",
+    "object_name": "windows-exchange2016 mailbox health",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }
@@ -106,9 +106,9 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "Exchange2016 QueueHealth status"
+        "windows-exchange2016 queue health"
     ],
-    "object_name": "Exchange2016 QueueHealth status",
+    "object_name": "windows-exchange2016 queue health",
     "object_type": "object",
 	"service_set": "Windows_Agent_Exchange"
 }

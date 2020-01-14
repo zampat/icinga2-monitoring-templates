@@ -65,7 +65,7 @@
             "volatile": null,
             "zone": null
         },
-        "MSSQL_Connections": {
+        "windows-mssql-connections": {
             "action_url": null,
             "apply_for": null,
             "assign_filter": null,
@@ -112,7 +112,7 @@
             "max_check_attempts": null,
             "notes": null,
             "notes_url": null,
-            "object_name": "MSSQL_Connections",
+            "object_name": "windows-mssql-connections",
             "object_type": "template",
             "retry_interval": null,
             "service_set": null,
@@ -195,7 +195,7 @@
             "volatile": null,
             "zone": null
         },
-        "MSSQL_Transactions\/sec": {
+        "windows-mssql-transactions\/sec": {
             "action_url": null,
             "apply_for": null,
             "assign_filter": null,
@@ -226,7 +226,7 @@
             "max_check_attempts": null,
             "notes": null,
             "notes_url": null,
-            "object_name": "MSSQL_Transactions\/sec",
+            "object_name": "windows-mssql-transactions\/sec",
             "object_type": "template",
             "retry_interval": null,
             "service_set": null,
@@ -336,7 +336,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -422,7 +422,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -468,7 +468,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -558,7 +558,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -604,7 +604,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -650,7 +650,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -696,7 +696,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -742,7 +742,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -832,7 +832,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -878,7 +878,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -924,7 +924,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -970,7 +970,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -1016,7 +1016,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -1062,7 +1062,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -1108,7 +1108,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -1154,7 +1154,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -1200,7 +1200,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,
@@ -1246,7 +1246,7 @@
                     "icon_image": null,
                     "icon_image_alt": null,
                     "imports": [
-                        "MSSQL_Connections"
+                        "windows-mssql-connections"
                     ],
                     "max_check_attempts": null,
                     "notes": null,

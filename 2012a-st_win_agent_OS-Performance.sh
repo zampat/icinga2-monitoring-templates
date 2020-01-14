@@ -14,17 +14,17 @@ fi
 
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-PagingFile_%Usage"`
+RES=`icingacli director service exists "windows-perfcounter-pagingfile %usage"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-PagingFile_%Usage' does not exists"
+   echo "Service 'windows-perfcounter-pagingfile %usage' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-PagingFile_%Usage",
+    "object_name": "windows-perfcounter-pagingfile %usage",
     "object_type": "template",
     "vars": {
         "nscp_counter_critical": "90",
@@ -36,17 +36,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-Processor_%InterruptTime"`
+RES=`icingacli director service exists "windows-perfcounter-processor %interrupt time"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-Processor_%InterruptTime' does not exists"
+   echo "Service 'windows-perfcounter-processor %interrupt time' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-Processor_%InterruptTime",
+    "object_name": "windows-perfcounter-processor %interrupt time",
     "object_type": "template",
     "vars": {
         "nscp_counter_critical": "90",
@@ -58,17 +58,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-DiskQueueLength"`
+RES=`icingacli director service exists "windows-perfcounter-disk queue length"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-DiskQueueLength' does not exists"
+   echo "Service 'windows-perfcounter-disk queue length' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-DiskQueueLength",
+    "object_name": "windows-perfcounter-disk queue length",
     "object_type": "template",
     "vars": {
         "nscp_counter_critical": "10",
@@ -80,17 +80,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-DiskReadBytes/sec"`
+RES=`icingacli director service exists "windows-perfcounter-disk read bytes/sec"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-DiskReadBytes/sec' does not exists"
+   echo "Service 'windows-perfcounter-disk read bytes/sec' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-DiskReadBytes\/sec",
+    "object_name": "windows-perfcounter-disk read bytes/sec",
     "object_type": "template",
     "vars": {
         "nscp_counter_name": "\\PhysicalDisk(_Total)\\Disk Read Bytes\/sec"
@@ -100,17 +100,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-DiskWriteBytes/sec"`
+RES=`icingacli director service exists "windows-perfcounter-disk write bytes/sec"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-DiskWriteBytes/sec' does not exists"
+   echo "Service 'windows-perfcounter-disk write bytes/sec' does not exists"
    icingacli director service create --json '
    {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-DiskWriteBytes\/sec",
+    "object_name": "windows-perfcounter-disk write bytes\/sec",
     "object_type": "template",
     "use_agent": true,
     "vars": {
@@ -121,17 +121,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-Processor_%PrivilegedTime"`
+RES=`icingacli director service exists "windows-perfcounter-processor %privileged time"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-Processor_%PrivilegedTime' does not exists"
+   echo "Service 'windows-perfcounter-processor %privileged time' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-Processor_%PrivilegedTime",
+    "object_name": "windows-perfcounter-processor %privileged time",
     "object_type": "template",
     "vars": {
         "nscp_counter_name": "\\Processor(_Total)\\% Privileged Time"
@@ -141,17 +141,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-Processor_%ProcessorTime"`
+RES=`icingacli director service exists "windows-perfcounter-processor %processor time"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-Processor_%ProcessorTime' does not exists"
+   echo "Service 'windows-perfcounter-processor %processor time' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-Processor_%ProcessorTime",
+    "object_name": "windows-perfcounter-processor %processor time",
     "object_type": "template",
     "vars": {
         "nscp_counter_name": "\\Processor(_Total)\\% Processor Time"
@@ -161,17 +161,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-Processor_Interrupts/sec"`
+RES=`icingacli director service exists "windows-perfcounter-processor interrupts/sec"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-Processor_Interrupts/sec' does not exists"
+   echo "Service 'windows-perfcounter-processor interrupts/sec' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-Processor_Interrupts\/sec",
+    "object_name": "windows-perfcounter-processor interrupts\/sec",
     "object_type": "template",
     "vars": {
         "nscp_counter_name": "\\Processor(_Total)\\Interrupts\/sec"
@@ -181,17 +181,17 @@ then
 fi
 
 # Import of Service Template
-RES=`icingacli director service exists "PerfCounter-PagingFile_%UsagePeak"`
+RES=`icingacli director service exists "windows-perfcounter-pagingfile %usagePeak"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'PerfCounter-PagingFile_%UsagePeak' does not exists"
+   echo "Service 'windows-perfcounter-pagingfile %usagePeak' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-counter",
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "PerfCounter-PagingFile_%UsagePeak",
+    "object_name": "windows-perfcounter-pagingfile %usagePeak",
     "object_type": "template",
     "vars": {
         "nscp_counter_name": "\\Paging File(_Total)\\% Usage Peak"

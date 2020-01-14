@@ -10,7 +10,7 @@
 ######
 
 # Service Template for Service Set
-OBJ="Agent_connected"
+OBJ="agent-connected"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -21,13 +21,13 @@ then
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_connected",
+    "object_name": "agent-connected",
     "object_type": "template",
     "use_agent": false
 }'
 fi
 
-OBJ="Agent_Win_CPU"
+OBJ="windows-cpu"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -38,7 +38,7 @@ then
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_Win_CPU",
+    "object_name": "windows-cpu",
     "object_type": "template",
     "use_agent": true
 }
@@ -46,21 +46,21 @@ then
 fi
 
 ###
-# Agent_Win_Diskspace
+# windows-diskspace
 ###
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_Win_Diskspace"`
+RES=`icingacli director service exists "windows-diskspace"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'Agent_Win_Diskspace' does not exists"
+   echo "Service 'windows-diskspace' does not exists"
    icingacli director service create --json '
 {
     "check_command": "disk-windows",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_Win_Diskspace",
+    "object_name": "windows-diskspace",
     "object_type": "template",
     "vars": {
         "disk_win_crit": "5%",
@@ -73,21 +73,21 @@ fi
 
 
 ###
-# Agent_Win_Memory
+# windows-memory
 ###
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_Win_Memory"`
+RES=`icingacli director service exists "windows-memory"`
 if [[ $RES =~ "does not exist" ]]
 then
 
-   echo "Service 'Agent_Win_Memory' does not exists"
+   echo "Service 'windows-memory' does not exists"
    icingacli director service create --json '
 {
     "check_command": "memory-windows",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_Win_Memory",
+    "object_name": "windows-memory",
     "object_type": "template",
     "vars": {
         "memory_win_crit": "95%",
@@ -100,20 +100,20 @@ fi
 
 
 ###
-# Agent_Win_Service
+# windows-generic-service
 ###
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_Win_Service"`
+RES=`icingacli director service exists "windows-generic-service"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_Win_Service' does not exists"
+   echo "Service 'windows-generic-service' does not exists"
    icingacli director service create --json '
 {
     "check_command": "service-windows",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_Win_Service",
+    "object_name": "windows-generic-service",
     "object_type": "template",
     "vars": {
         "service_win_service": [
@@ -167,17 +167,17 @@ fi
 
 # Agent Win NSCPServices (Advantage of multiple service monitoring provided by NSCLient++)
 #
-RES=`icingacli director service exists "Agent_Win_NscpServiceQuery"`
+RES=`icingacli director service exists "windows-nscp-service"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_Win_NscpServiceQuery' does not exists"
+   echo "Service 'windows-nscp-service' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local-service",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_Win_NscpServiceQuery",
+    "object_name": "windows-nscp-service",
     "object_type": "template"
 }
 '

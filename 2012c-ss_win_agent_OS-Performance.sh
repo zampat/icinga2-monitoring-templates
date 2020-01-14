@@ -24,7 +24,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-PagingFile_%Usage"
+        "windows-perfcounter-pagingfile %usage"
     ],
     "object_name": "PagingFile_%Usage",
     "object_type": "object",
@@ -35,7 +35,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-Processor_%InterruptTime"
+        "windows-perfcounter-processor %interrupt time"
     ],
     "object_name": "Processor_%InterruptTime",
     "object_type": "object",
@@ -46,7 +46,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-DiskQueueLength"
+        "windows-perfcounter-disk queue length"
     ],
     "object_name": "DiskQueueLength",
     "object_type": "object",
@@ -57,7 +57,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-DiskReadBytes\/sec"
+        "windows-perfcounter-disk read bytes/sec"
     ],
     "object_name": "DiskReadBytes\/sec",
     "object_type": "object",
@@ -68,7 +68,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-DiskWriteBytes\/sec"
+        "windows-perfcounter-disk write bytes\/sec"
     ],
     "object_name": "DiskWriteBytes\/sec",
     "object_type": "object",
@@ -79,7 +79,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-Processor_%PrivilegedTime"
+        "windows-perfcounter-processor %privileged time"
     ],
     "object_name": "Processor_%PrivilegedTime",
     "object_type": "object",
@@ -90,7 +90,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-Processor_%ProcessorTime"
+        "windows-perfcounter-processor %processor time"
     ],
     "object_name": "Processor_%ProcessorTime",
     "object_type": "object",
@@ -101,7 +101,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-Processor_Interrupts\/sec"
+        "windows-perfcounter-processor interrupts\/sec"
     ],
     "object_name": "Processor_Interrupts\/sec",
     "object_type": "object",
@@ -112,7 +112,7 @@ icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "PerfCounter-PagingFile_%UsagePeak"
+        "windows-perfcounter-pagingfile %usagePeak"
     ],
     "object_name": "PagingFile_%UsagePeak",
     "object_type": "object",

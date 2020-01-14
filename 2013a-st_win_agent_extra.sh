@@ -1,17 +1,17 @@
 # 
 #Service templates
-# HowTo Export: icingacli director service show Agent_WinDisk_FileAge --json --no-defaults
+# HowTo Export: icingacli director service show windows-file age --json --no-defaults
 #
 
 ######
 ## Extra Windows Services based on Icinga Agent
-## 1) Agent_WinDisk_FileAge
+## 1) windows-file age
 ######
 
-RES=`icingacli director service exists "Agent_WinDisk_FileAge"`
+RES=`icingacli director service exists "windows-file age"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_WinDisk_FileAge' does not exists"
+   echo "Service 'windows-file age' does not exists"
    icingacli director service create --json '
 {
     "check_command": "nscp-local",
@@ -19,7 +19,7 @@ then
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_WinDisk_FileAge",
+    "object_name": "windows-file age",
     "object_type": "template",
     "vars": {
         "nscp_arguments": [

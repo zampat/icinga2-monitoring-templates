@@ -20,13 +20,13 @@ icingacli director serviceset create --json '
 
 
 ####
-# Service Objects: MSSQL Connections, MSSQL_Transactions/sec
+# Service Objects: MSSQL Connections, windows-mssql-transactions/sec
 ####
    icingacli director service create --json '
 {
     "disabled": false,
     "imports": [
-        "MSSQL_Connections"
+        "windows-mssql-connections"
     ],
     "object_name": "MSSQL Connections",
     "object_type": "object",
@@ -39,9 +39,9 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
-        "MSSQL_Transactions/sec"
+        "windows-mssql-transactions/sec"
     ],
-    "object_name": "MSSQL_Transactions/sec",
+    "object_name": "windows-mssql-transactions/sec",
     "object_type": "object",
     "service_set": "Windows_MSSQL-Server",
     "use_agent": true
@@ -52,7 +52,7 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
-        "Agent_Win_Service"
+        "windows-generic-service"
     ],
     "object_name": "MSSQL Services",
     "object_type": "object",

@@ -16,16 +16,16 @@ fi
    
 # Example of NSCP Service Query
 #
-RES=`icingacli director service exists "AX AOS Services"`
+RES=`icingacli director service exists "windows-nscp-service-ax aos"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'AX AOS Services' does not exists"
+   echo "Service 'windows-nscp-service-ax aos' does not exists"
    icingacli director service create --json '
 {
     "imports": [
-        "Agent_Win_NscpServiceQuery"
+        "windows-nscp-service"
     ],
-    "object_name": "AX AOS Services",
+    "object_name": "windows-nscp-service-ax aos",
     "object_type": "template",
     "vars": {
         "nscp_service_arguments": "filter=name like \"AOS\"",
@@ -38,16 +38,16 @@ fi
 ######
 ## Counters for Windows AX AOS Monitoring
 ######
-RES=`icingacli director service exists "AOS_Active_Sessions"`
+RES=`icingacli director service exists "windows-perfcounter-ax aos active sessions"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'AOS_Active_Sessions' does not exists"
+   echo "Service 'windows-perfcounter-ax aos active sessions' does not exists"
    icingacli director service create --json '
    {
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "AOS_Active_Sessions",
+    "object_name": "windows-perfcounter-ax aos active sessions",
     "object_type": "template",
     "use_agent": true,
     "vars": {
@@ -57,16 +57,16 @@ then
 '
 fi
 
-RES=`icingacli director service exists "AOS_BYTES_RECEIVED_BY_SERVER"`
+RES=`icingacli director service exists "windows-perfcounter-ax aos bytes received by server"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'AOS_BYTES_RECEIVED_BY_SERVER' does not exists"
+   echo "Service 'windows-perfcounter-ax aos bytes received by server' does not exists"
    icingacli director service create --json '
    {
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "AOS_BYTES_RECEIVED_BY_SERVER",
+    "object_name": "windows-perfcounter-ax aos bytes received by server",
     "object_type": "template",
     "use_agent": true,
     "vars": {
@@ -76,16 +76,16 @@ then
 '
 fi
 
-RES=`icingacli director service exists "AOS_BYTES_SENT_BY_SERVER"`
+RES=`icingacli director service exists "windows-perfcounter-ax aos bytes sent by server"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'AOS_BYTES_SENT_BY_SERVER' does not exists"
+   echo "Service 'windows-perfcounter-ax aos bytes sent by server' does not exists"
    icingacli director service create --json '
   {
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "AOS_BYTES_SENT_BY_SERVER",
+    "object_name": "windows-perfcounter-ax aos bytes sent by server",
     "object_type": "template",
     "use_agent": true,
     "vars": {
@@ -95,16 +95,16 @@ then
 '
 fi
 
-RES=`icingacli director service exists "AOS_CLIENT_REQUESTS"`
+RES=`icingacli director service exists "windows-perfcounter-ax aos client requests"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'AOS_CLIENT_REQUESTS' does not exists"
+   echo "Service 'windows-perfcounter-ax aos client requests' does not exists"
    icingacli director service create --json '
   {
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "AOS_CLIENT_REQUESTS",
+    "object_name": "windows-perfcounter-ax aos client requests",
     "object_type": "template",
     "use_agent": true,
     "vars": {
@@ -115,16 +115,16 @@ then
 fi
 
 
-RES=`icingacli director service exists "AOS_CLIENT_REQUESTS/SEC"`
+RES=`icingacli director service exists "windows-perfcounter-ax aos client requests/sec"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'AOS_CLIENT_REQUESTS/SEC' does not exists"
+   echo "Service 'windows-perfcounter-ax aos client requests/sec' does not exists"
    icingacli director service create --json '
   {
     "imports": [
         "generic-agent-windows-perfcounter"
     ],
-    "object_name": "AOS_CLIENT_REQUESTS/SEC",
+    "object_name": "windows-perfcounter-ax aos client requests/sec",
     "object_type": "template",
     "use_agent": true,
     "vars": {

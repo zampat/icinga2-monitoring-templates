@@ -23,7 +23,7 @@ then
 fi
 
 # Service Template for Service Template
-OBJ="SNMP-NWC Hardware Health"
+OBJ="snmp-nwc-hardware-health"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -33,7 +33,7 @@ then
     "imports": [
         "snmp_nwc_health"
     ],
-    "object_name": "SNMP-NWC Hardware Health",
+    "object_name": "snmp-nwc-hardware-health",
     "object_type": "template",
     "vars": {
         "nwc_health_mode": "hardware-health"

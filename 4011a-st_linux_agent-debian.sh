@@ -2,7 +2,7 @@
 # 
 #Service Templates for particular linux distriutions (as template)
 # HowTo Export:
-# # icingacli director service show Agent_Win_Service --json
+# # icingacli director service show windows-generic-service --json
 #
 
 
@@ -11,17 +11,17 @@
 ######
 
 # Service Template for Service Set
-RES=`icingacli director service exists "Agent_Debian_APT-Update_available"`
+RES=`icingacli director service exists "linux-debian-apt-update-available"`
 if [[ $RES =~ "does not exist" ]]
 then
-   echo "Service 'Agent_Debian_APT-Update_available' does not exists"
+   echo "Service 'linux-debian-apt-update-available' does not exists"
    icingacli director service create --json '
 {
     "check_command": "apt",
     "imports": [
         "generic-agent"
     ],
-    "object_name": "Agent_Debian_APT-Update_available",
+    "object_name": "linux-debian-apt-update-available",
     "object_type": "template",
     "vars": {
         "apt_only_critical": false

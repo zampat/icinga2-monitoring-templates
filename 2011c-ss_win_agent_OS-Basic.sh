@@ -35,7 +35,7 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
-        "Agent_connected"
+        "agent-connected"
     ],
     "object_name": "Icinga Agent connected",
     "object_type": "object",
@@ -48,7 +48,7 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
-        "Agent_Win_Memory"
+        "windows-memory"
     ],
     "object_name": "Agent Win Memory",
     "object_type": "object",
@@ -61,7 +61,7 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
-        "Agent_Win_CPU"
+        "windows-cpu"
     ],
     "object_name": "Agent Win CPU",
     "object_type": "object",
@@ -76,7 +76,7 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
-        "Agent_Win_Diskspace"
+        "windows-diskspace"
     ],
     "object_name": "Agent Win Diskspace",
     "object_type": "object",
@@ -90,7 +90,7 @@ icingacli director serviceset create --json '
 {
     "disabled": false,
     "imports": [
-        "Agent_Win_Service"
+        "windows-generic-service"
     ],
     "object_name": "Agent WinService Spooler",
     "object_type": "object",
