@@ -1,7 +1,7 @@
 # Update advice !
 
 Advice: The icinga2 director templates had been refactored completely. Naming conventions had been introduced.
-        The import of objects is now controled by parameter - choose one from below.
+        The import of objects is now controled by parameter - see help below.
 
 
 Legacy advice: If you would like to use the old templates checkout branch legacy_templates_v1
@@ -50,7 +50,6 @@ Info: Import is performed using Icingacli and sql queries. Make sure to have Mar
 ```
 ./run_import.sh <action>
 ./run_import.sh full           import of all icinga2 objects
-./run_import.sh full_legacy    import of all legacy icinga2 objects
 ./run_import.sh fields         icinga2 director fields only
 ```
 
