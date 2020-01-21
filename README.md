@@ -1,3 +1,12 @@
+# Update advice !
+
+Advice: The icinga2 director templates had been refactored completely. Naming conventions had been introduced.
+        The import of objects is now controled by parameter - choose one from below.
+
+
+Legacy advice: If you would like to use the old templates checkout branch legacy_templates_v1
+        https://github.com/zampat/icinga2-monitoring-templates/tree/legacy_templates_v1
+        
 # Introduction
 
 This Repository provides a list of monitoring objects to be imported to Icinga2 Director to accelerate the start of your project.
@@ -37,9 +46,12 @@ git clone https://github.com/zampat/icinga2-monitoring-templates.git
 
 2) Perform import im templates and fields
 
-Advice: Import is performed using Icingacli and sql queries. Make sure to have Mariadb up and running and module "director" enabled.
+Info: Import is performed using Icingacli and sql queries. Make sure to have Mariadb up and running and module "director" enabled.
 ```
-./run_import.sh
+./run_import.sh <action>
+./run_import.sh full           import of all icinga2 objects
+./run_import.sh full_legacy    import of all legacy icinga2 objects
+./run_import.sh fields         icinga2 director fields only
 ```
 
 3) Consult import logs
