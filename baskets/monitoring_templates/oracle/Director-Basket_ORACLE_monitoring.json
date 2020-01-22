@@ -1,0 +1,342 @@
+{
+    "ServiceTemplate": {
+        "generic_ORACLE": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_oracle_health",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 652,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10049,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 651,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10047,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10048,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 656,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10050,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10051,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10052,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 655,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 650,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_ORACLE",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "oracle_health_password": "brutal",
+                "oracle_health_username": "neteye"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "ORACLE_ConnectionTime": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_ORACLE"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "ORACLE_ConnectionTime",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "oracle_health_critical": "2",
+                "oracle_health_mode": "connection-time",
+                "oracle_health_warning": "1"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "ORACLE_SGABufferHitRatio": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_ORACLE"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "ORACLE_SGABufferHitRatio",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "oracle_health_mode": "sga-data-buffer-hit-ratio"
+            },
+            "volatile": null,
+            "zone": null
+        },
+        "ORACLE_TablespaceUsage": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_ORACLE"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "ORACLE_TablespaceUsage",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "oracle_health_critical": "99",
+                "oracle_health_mode": "tablespace-usage",
+                "oracle_health_warning": "98"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "Datafield": {
+        "652": {
+            "varname": "oracle_health_connect",
+            "caption": "Oracle Health Connect",
+            "description": "Connect-String",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "652",
+            "settings": {}
+        },
+        "10049": {
+            "varname": "oracle_health_critical",
+            "caption": "Oracle Health Critical",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10049",
+            "settings": {}
+        },
+        "651": {
+            "varname": "oracle_health_mode",
+            "caption": "Oracle Health Mode",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "651",
+            "settings": {}
+        },
+        "10047": {
+            "varname": "oracle_health_name",
+            "caption": "Oracle Health Name",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10047",
+            "settings": {}
+        },
+        "10048": {
+            "varname": "oracle_health_name2",
+            "caption": "Oracle Health Name2",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10048",
+            "settings": {}
+        },
+        "656": {
+            "varname": "oracle_health_password",
+            "caption": "Oracle Health Password",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "656",
+            "settings": {}
+        },
+        "10050": {
+            "varname": "oracle_health_regexp",
+            "caption": "Oracle Health Regexp",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10050",
+            "settings": {}
+        },
+        "10051": {
+            "varname": "oracle_health_report",
+            "caption": "Oracle Health Report",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10051",
+            "settings": {}
+        },
+        "10052": {
+            "varname": "oracle_health_units",
+            "caption": "Oracle Health Units",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10052",
+            "settings": {}
+        },
+        "655": {
+            "varname": "oracle_health_username",
+            "caption": "Oracle Health Username",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "655",
+            "settings": {}
+        },
+        "650": {
+            "varname": "oracle_health_warning",
+            "caption": "Oracle Health Warning",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "650",
+            "settings": {}
+        }
+    }
+}
