@@ -226,6 +226,7 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (1104,'by_ssh_port','BySSH port','Check by SSH: port number','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (1105,'by_ssh_options','BySSH options','Check by SSH: additional options','Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
 (1106,'by_ssh_quiet','BySSH quiet','Tell ssh to suppress warning and diagnostic messages','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(1201,'tcp_port','TCP port number',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (2001,'cluster_lag_warning','Icinga cluster zone lag warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (2002,'cluster_lag_critical','Icinga cluster zone lag critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
