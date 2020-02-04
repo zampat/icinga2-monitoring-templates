@@ -18,7 +18,7 @@ then
         },
         "-command": {
             "skip_key": true,
-            "value": "try { $powershell_script$ $powershell_args$ } catch { echo Unknown_General_Exception ;exit 3 }",
+            "value": "try { $powershell_script$ $powershell_args$ } catch { echo $$_.Exception ;exit 3 }",
             "order": "-2"
         }
     },
