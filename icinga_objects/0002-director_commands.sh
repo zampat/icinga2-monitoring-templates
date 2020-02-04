@@ -13,14 +13,12 @@ then
 {
     "arguments": {
         "(no key)": {
-            "command_id": "221",
             "skip_key": true,
             "value": "; exit ($$lastexitcode)"
         },
         "-command": {
-            "command_id": "221",
             "skip_key": true,
-            "value": "try { $powershell_script$ $powershell_args$ } catch { echo 'Unknown: General Exception' ;exit 3 }",
+            "value": "try { $powershell_script$ $powershell_args$ } catch { echo Unknown_General_Exception ;exit 3 }",
             "order": "-2"
         }
     },
