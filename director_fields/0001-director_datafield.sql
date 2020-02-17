@@ -228,7 +228,10 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (1106,'by_ssh_quiet','BySSH quiet','Tell ssh to suppress warning and diagnostic messages','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (1201,'tcp_port','TCP port number',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (2001,'cluster_lag_warning','Icinga cluster zone lag warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
-(2002,'cluster_lag_critical','Icinga cluster zone lag critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL);
+(2002,'cluster_lag_critical','Icinga cluster zone lag critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
+(4031,'nscp_disk_warning','NSCP Disk Warning ',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(4032,'nscp_disk_critical','NSCP Disk Critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(4033,'nscp_disk_drive','NSCP Disk Drive',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
