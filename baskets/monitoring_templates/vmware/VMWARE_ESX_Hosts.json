@@ -1,0 +1,365 @@
+{
+    "ServiceTemplate": {
+        "generic-vmware-host": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_vmware_api",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 1008,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1006,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1002,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1007,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1003,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic-active-service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic-vmware-host",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "esx_authfile": "\/neteye\/shared\/monitoring\/configs\/vmware_hosts_auth_poc.cfg"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "ServiceSet": {
+        "VMWare Host health": {
+            "assign_filter": "host.vars.host_os=%22ESX%22",
+            "description": null,
+            "object_name": "VMWare Host health",
+            "object_type": "template",
+            "services": {
+                "ESX: CPU": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic-vmware-host"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "ESX: CPU",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "esx_command": "CPU",
+                        "esx_critical": "99",
+                        "esx_subcommand": "usage",
+                        "esx_warning": "90"
+                    },
+                    "volatile": null,
+                    "zone": null
+                },
+                "ESX: MEM": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic-vmware-host"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "ESX: MEM",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "esx_command": "MEM",
+                        "esx_critical": "99",
+                        "esx_subcommand": "usage",
+                        "esx_warning": "90"
+                    },
+                    "volatile": null,
+                    "zone": null
+                },
+                "ESX: NET": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic-vmware-host"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "ESX: NET",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "esx_command": "NET",
+                        "esx_subcommand": "usage"
+                    },
+                    "volatile": null,
+                    "zone": null
+                },
+                "ESX: Storage Luns": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic-vmware-host"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "ESX: Storage Luns",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "esx_command": "STORAGE",
+                        "esx_subcommand": "lun"
+                    },
+                    "volatile": null,
+                    "zone": null
+                },
+                "ESX: VMFS": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic-vmware-host"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "ESX: VMFS",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "esx_command": "VMFS",
+                        "esx_critical": "2000:",
+                        "esx_warning": "5000:"
+                    },
+                    "volatile": null,
+                    "zone": null
+                }
+            }
+        }
+    },
+    "Datafield": {
+        "1008": {
+            "varname": "esx_authfile",
+            "caption": "ESX authentication file",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1008",
+            "settings": {}
+        },
+        "1006": {
+            "varname": "esx_command",
+            "caption": "ESX command",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeDatalist",
+            "format": null,
+            "originalId": "1006",
+            "settings": {
+                "behavior": "strict",
+                "data_type": "string",
+                "datalist": "ESX command"
+            }
+        },
+        "1002": {
+            "varname": "esx_critical",
+            "caption": "ESX critical value",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1002",
+            "settings": {}
+        },
+        "1007": {
+            "varname": "esx_subcommand",
+            "caption": "ESX subcommand",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1007",
+            "settings": {}
+        },
+        "1003": {
+            "varname": "esx_warning",
+            "caption": "ESX waning value",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1003",
+            "settings": {}
+        }
+    }
+}
