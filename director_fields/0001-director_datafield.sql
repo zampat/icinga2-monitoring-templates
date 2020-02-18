@@ -196,6 +196,7 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (733,'mssql_health_units','MSSQL Units',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (734,'mssql_health_lookback','MSSQL Lookback',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (735,'mssql_health_nooffline','MSSQL NoOffline',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(736,'mssql_health_report','MSSQL Report',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (801,'mem_critical','Linux memory percent free/used critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (802,'mem_warning','Linux memory percent free/used warning',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (803,'mem_used','Linux Check USED memory',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
@@ -231,7 +232,9 @@ ifIpInfo: the ip configuration for the interface','Icinga\\Module\\Director\\Dat
 (2002,'cluster_lag_critical','Icinga cluster zone lag critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (4031,'nscp_disk_warning','NSCP Disk Warning ',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (4032,'nscp_disk_critical','NSCP Disk Critical',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
-(4033,'nscp_disk_drive','NSCP Disk Drive',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL);
+(4033,'nscp_disk_drive','NSCP Disk Drive',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
+(4034,'nscp_disk_arguments','NSCP Disk arguments',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeArray',NULL),
+(4035,'nscp_disk_op','NSCP Disk Used/Free',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL);
 /*!40000 ALTER TABLE `director_datafield` ENABLE KEYS */;
 ALTER TABLE `director_datafield` AUTO_INCREMENT=10001;
 UNLOCK TABLES;
@@ -317,12 +320,13 @@ INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`,
 (705,'transactions','transactions','string',NULL),
 (172,'CheckSystem','CheckSystem','string',NULL),
 (172,'CheckDisk','CheckDisk','string',NULL),
-(175,'check_memory','Check free/used memory on the system.','string',NULL),
-(175,'check_os_version','Check the version of the underlaying OS.','string',NULL),
-(175,'check_pagefile','Check the size of the system pagefile(s).','string',NULL),
-(175,'check_pdh','Check the value of a performance (PDH) counter on the local or remote system','string',NULL),
-(175,'check_process','Check state/metrics of one or more of the processes running on the computer.','string',NULL),
-(175,'check_service','Check the state of one or more of the computer services.','string',NULL),
+(175,'check_memory','check_memory: Check free/used memory on the system.','string',NULL),
+(175,'check_os_version','check_os_version: Check the version of the underlaying OS.','string',NULL),
+(175,'check_pagefile','check_pagefile: Check the size of the system pagefile(s).','string',NULL),
+(175,'check_pdh','check_pdh: Check the value of a performance (PDH) counter on the local or remote system','string',NULL),
+(175,'check_process','check_process: Check state/metrics of one or more of the processes running on the computer.','string',NULL),
+(175,'check_service','check_service: Check the state of one or more of the computer services.','string',NULL),
+(175,'check_files','Check files: Files and folders','string',NULL),
 (177,'<','<','string',NULL),
 (177,'=','=','string',NULL),
 (177,'>','>','string',NULL),
