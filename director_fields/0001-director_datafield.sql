@@ -340,7 +340,8 @@ INSERT IGNORE `director_datalist_entry` (`list_id`, `entry_name`, `entry_value`,
 (1006,'NET','NET','string',NULL),
 (1006,'MEM','MEM','string',NULL),
 (1006,'RUNTIME','RUNTIME','string',NULL),
-(1006,'VMFS','VM FileSystem','string',NULL);
+(1006,'STORAGE','STORAGE','string',NULL),
+(1006,'VMFS','VMFS','string',NULL);
 /*!40000 ALTER TABLE `director_datalist_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 
