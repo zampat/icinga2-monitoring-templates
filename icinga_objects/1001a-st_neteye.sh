@@ -235,6 +235,7 @@ then
     }
 }
 '
+fi
 
 OBJ="neteye mysql"
 RES=`icingacli director service exists "$OBJ"`
