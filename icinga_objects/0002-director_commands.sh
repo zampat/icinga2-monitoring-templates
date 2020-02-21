@@ -13,12 +13,10 @@ then
 {
     "arguments": {
         "(no key)": {
-            "command_id": "242",
             "skip_key": true,
             "value": "; exit ($$lastexitcode)"
         },
         "-command": {
-            "command_id": "242",
             "skip_key": true,
             "value": {
                 "type": "Function",
