@@ -16,12 +16,15 @@ then
             "skip_key": true,
             "value": "; exit ($$lastexitcode)"
         },
-        "-command": {
-            "skip_key": true,
-            "value": "try { $powershell_script$ $powershell_args$ } catch { echo $$_.Exception ;exit 3 }",
-            "order": "-2"
-        }
-    },
+         "-command": {
+                    "skip_key": true,
+                    "value": {
+                        "type": "Function",
+                        "body": "var powershell_script = macro(\"$powershell_script$\");\r\nvar powershell_args = macro(\"$powershell_args$\");\r\n\r\nresult = \"try { \\\" & ' \" + powershell_script + \" ' \\\" \";\r\nif (powershell_args) {\r\n    result += powershell_args;\r\n}\r\nresult += \"} catch { echo $$_.Exception ;exit 3 }\";\r\nreturn result;"
+                    },
+                    "order": "-2"
+                }
+            },
     "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy ByPass",
     "methods_execute": "PluginCheck",
     "object_name": "powershell",
