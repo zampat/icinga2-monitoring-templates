@@ -124,6 +124,7 @@ INSERT IGNORE `director_datafield` (`id`, `varname`, `caption`, `description`, `
 (313,'interfaces_perfdata','Interfaces Perfdata','last check perfdata','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (314,'interfaces_down_is_ok','Interfaces down-is-ok','Disables critical alerts for down interfaces','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (315,'interface_use64bit','SNMP use 64bit counters',Null,'Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
+(316,'interfaces_trim','Trim IF description','Trim given number of characters from begin of IF description','Icinga\\Module\\Director\\DataType\\DataTypeNumber',NULL),
 (320,'interface_table_track_property','Interf.Table: Define tracked properties','ifAlias: the interface alias
 ifType: the type of the interface
 ifAdminStatus: the administrative status of the interface
