@@ -124,7 +124,6 @@ then
     "object_name": "windows-exchange2016 mailbox health",
     "object_type": "template",
     "vars": {
-        "exchange2016_powershell": "exchange-QueueHealth.ps1",
         "powershell_script": "MailboxHealth.ps1"
     }
 }
@@ -144,7 +143,6 @@ then
     "object_name": "windows-exchange2016 full backup",
     "object_type": "template",
     "vars": {
-        "exchange2016_powershell": "exchange-QueueHealth.ps1",
         "powershell_script": "exchange-FullBackupMonitoring.ps1"
     }
 }
@@ -164,7 +162,6 @@ then
     "object_name": "windows-exchange2016 incremental backup",
     "object_type": "template",
     "vars": {
-        "exchange2016_powershell": "exchange-QueueHealth.ps1",
         "powershell_script": "exchange-IncrementalBackupMonitoring.ps1"
     }
 }
@@ -184,7 +181,6 @@ then
     "object_name": "windows-exchange2016 queue health",
     "object_type": "template",
     "vars": {
-        "exchange2016_powershell": "exchange-QueueHealth.ps1",
         "powershell_script": "exchange-QueueHealth.ps1"
     }
 }
