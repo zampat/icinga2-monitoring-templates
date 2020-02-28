@@ -32,8 +32,8 @@
       "scopedVars": {
         "hostname": {
           "selected": true,
-          "text": "sws211",
-          "value": "sws211"
+          "text": "host",
+          "value": "host"
         }
       },
       "title": "$hostname",
@@ -82,8 +82,8 @@
         },
         "hostname": {
           "selected": true,
-          "text": "sws211",
-          "value": "sws211"
+          "text": "host",
+          "value": "host"
         }
       },
       "seriesOverrides": [
@@ -250,9 +250,9 @@
         "current": {
           "selected": true,
           "tags": [],
-          "text": "sws211",
+          "text": "host",
           "value": [
-            "sws211"
+            "host"
           ]
         },
         "datasource": "icinga2-influxdb",
