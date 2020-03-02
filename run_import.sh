@@ -4,6 +4,7 @@
 #Variables
 ACTION="help"
 ACTION=$1
+ARG2=$2
 
 # #Constants
 FILES_IMPORT="import_files.tmp"
@@ -44,9 +45,9 @@ then
 elif [ "$ACTION" == "fields" ]
 then
    echo "Import option: icinga2 director fields only"
-elif [ "$ACTION" == "full_legacy" ]
+elif [ "$ACTION" == "basket" ]
 then
-   echo "Import option: import of all legacy icinga2 objects"
+   echo "Import option: import from provided basket"
 else
    echo "Advice: The icinga2 director templates had been refactored completely. Naming conventions had been introduced."
    echo "        The import of objects is now controled by parameter - choose one from below."
@@ -54,8 +55,8 @@ else
    echo "        https://github.com/zampat/icinga2-monitoring-templates/tree/legacy_templates_v1"
    echo ""
    echo "./run_import.sh full           import of all icinga2 objects"
-   echo "./run_import.sh full_legacy    import of all legacy icinga2 objects"
    echo "./run_import.sh fields         icinga2 director fields only"
+   echo "./run_import.sh basket         import from provided basket"
    exit 3
 fi
 
@@ -81,7 +82,7 @@ fi
 
 echo ">> Start of import procedure. Date: " `date` >> $IMPORT_LOG 2>&1
 echo "- Logs are written to $IMPORT_LOG."
-echo "- Import mode $ACTION"
+echo "- Import mode: $ACTION"
 
 
 #### mode: Import fields
@@ -92,7 +93,7 @@ then
    import2icinga
 fi
 
-#### mode: Import fields
+#### mode: Import full
 if [ "$ACTION" == "full" ]
 then
 
@@ -101,3 +102,15 @@ then
    import2icinga
 fi
 
+#### mode: Import basket
+if [ "$ACTION" == "basket" ]
+then
+   BASKET=$ARG2
+   if [ -s $BASKET ]
+   then
+      echo "Going to import basket: $BASKET"
+      /usr/bin/icingacli director basket restore < $BASKET
+   else
+      echo "Provided file not found: $BASKET"
+   fi
+fi
