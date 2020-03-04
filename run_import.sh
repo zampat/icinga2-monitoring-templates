@@ -54,9 +54,9 @@ else
    echo "Legacy advice: If you would like to use the old templates checkout branch legacy_templates_v1"
    echo "        https://github.com/zampat/icinga2-monitoring-templates/tree/legacy_templates_v1"
    echo ""
-   echo "./run_import.sh full           import of all icinga2 objects"
-   echo "./run_import.sh fields         icinga2 director fields only"
-   echo "./run_import.sh basket         import from provided basket"
+   echo "./run_import.sh full                      import of all icinga2 objects"
+   echo "./run_import.sh fields                    icinga2 director fields only"
+   echo "./run_import.sh basket <path/file.json>   import from provided basket"
    exit 3
 fi
 
