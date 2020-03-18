@@ -19,7 +19,7 @@ icingacli director serviceset create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye disk"
+        "neteye-disk"
     ],
     "object_name": "NetEye diskspace",
     "object_type": "object",
@@ -30,7 +30,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye icinga cluster"
+        "neteye-icinga-cluster"
     ],
     "object_name": "NetEye icinga cluster",
     "object_type": "object",
@@ -40,7 +40,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye icinga ido"
+        "neteye-icinga-ido"
     ],
     "object_name": "NetEye icinga ido",
     "object_type": "object",
@@ -51,7 +51,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye proc procname"
+        "neteye-proc-procname"
     ],
     "object_name": "NetEye Influxdb running",
     "object_type": "object",
@@ -62,7 +62,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye load"
+        "neteye-load"
     ],
     "object_name": "NetEye load",
     "object_type": "object",
@@ -73,7 +73,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye processes"
+        "neteye-processes"
     ],
     "object_name": "NetEye running processes",
     "object_type": "object",
@@ -85,7 +85,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye memory"
+        "neteye-memory"
     ],
     "object_name": "NetEye memory",
     "object_type": "object",
@@ -96,7 +96,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye smtp"
+        "neteye-smtp"
     ],
     "object_name": "NetEye smtp",
     "object_type": "object",
@@ -124,7 +124,7 @@ icingacli director serviceset create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye disk"
+        "neteye-disk"
     ],
     "object_name": "NetEye diskspace",
     "object_type": "object",
@@ -134,7 +134,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye icinga zone"
+        "neteye-icinga-zone"
     ],
     "object_name": "Neteye icinga cluster zone connected",
     "object_type": "object",
@@ -144,7 +144,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye load"
+        "neteye-load"
     ],
     "object_name": "NetEye load",
     "object_type": "object",
@@ -154,9 +154,9 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye proc procname"
+        "neteye-proc-procname"
     ],
-    "object_name": "neteye proc icinga2",
+    "object_name": "neteye-proc-icinga2",
     "object_type": "object",
     "service_set": "NetEye Satellite",
     "vars": {
@@ -170,7 +170,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye processes"
+        "neteye-processes"
     ],
     "object_name": "NetEye running processes",
     "object_type": "object",
@@ -180,7 +180,7 @@ icingacli director service create --json '
 icingacli director service create --json '
 {
     "imports": [
-        "neteye memory"
+        "neteye-memory"
     ],
     "object_name": "NetEye memory",
     "object_type": "object",

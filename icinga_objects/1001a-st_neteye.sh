@@ -25,7 +25,7 @@ then
 fi
 
 
-OBJ="neteye load"
+OBJ="neteye-load"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -36,13 +36,13 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye load",
+    "object_name": "neteye-load",
     "object_type": "template"
 }
 '
 fi
 
-OBJ="neteye disk"
+OBJ="neteye-disk"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -53,13 +53,13 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye disk",
+    "object_name": "neteye-disk",
     "object_type": "template"
 }
 '
 fi
 
-OBJ="neteye icinga cluster"
+OBJ="neteye-icinga-cluster"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -70,14 +70,14 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye icinga cluster",
+    "object_name": "neteye-icinga-cluster",
     "object_type": "template",
     "use_agent": true
 }
 '
 fi
 
-OBJ="neteye icinga ido"
+OBJ="neteye-icinga-ido"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -88,7 +88,7 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye icinga ido",
+    "object_name": "neteye-icinga-ido",
     "object_type": "template",
     "use_agent": true,
     "vars": {
@@ -99,7 +99,7 @@ then
 '
 fi
 
-OBJ="neteye icinga zone"
+OBJ="neteye-icinga-zone"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -110,14 +110,14 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye icinga zone",
+    "object_name": "neteye-icinga-zone",
     "object_type": "template",
     "use_agent": false
 }
 '
 fi
 
-OBJ="neteye load"
+OBJ="neteye-load"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -128,13 +128,13 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye load",
+    "object_name": "neteye-load",
     "object_type": "template"
 }
 '
 fi
 
-OBJ="neteye proc procname"
+OBJ="neteye-proc-procname"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -145,7 +145,7 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye proc procname",
+    "object_name": "neteye-proc-procname",
     "object_type": "template",
     "vars": {
         "procs_command": "influxd",
@@ -156,7 +156,7 @@ then
 '
 fi
 
-OBJ="neteye processes"
+OBJ="neteye-processes"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -167,7 +167,7 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye processes",
+    "object_name": "neteye-processes",
     "object_type": "template",
     "vars": {
         "procs_critical": "2000",
@@ -177,7 +177,7 @@ then
 '
 fi
 
-OBJ="neteye stats"
+OBJ="neteye-stats"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -188,14 +188,14 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye stats",
+    "object_name": "neteye-stats",
     "object_type": "template"
 }
 '
 fi
 
 
-OBJ="neteye memory"
+OBJ="neteye-memory"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -206,7 +206,7 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye memory",
+    "object_name": "neteye-memory",
     "object_type": "template",
     "vars": {
         "mem_critical": "100",
@@ -217,7 +217,7 @@ then
 '
 fi
 
-OBJ="neteye smtp"
+OBJ="neteye-smtp"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -228,15 +228,16 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye smtp",
+    "object_name": "neteye-smtp",
     "object_type": "template",
     "vars": {
         "check_address": "localhost"
     }
 }
 '
+fi
 
-OBJ="neteye mysql"
+OBJ="neteye-mysql"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -247,7 +248,7 @@ then
     "imports": [
         "generic-neteye"
     ],
-    "object_name": "neteye mysql",
+    "object_name": "neteye-mysql",
     "object_type": "template",
     "vars": {
         "check_address": "mariadb.neteyelocal",
