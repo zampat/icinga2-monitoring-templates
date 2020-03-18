@@ -1,0 +1,192 @@
+{
+    "Command": {
+        "check_iftraffic": {
+            "arguments": {
+                "-C": {
+                    "description": "SNMP community. Defaults to 'public' if omitted.",
+                    "value": "$snmp_community$"
+                },
+                "-H": {
+                    "description": "Check interface on the indicated host.",
+                    "required": true,
+                    "value": "$address$"
+                },
+                "-M": {
+                    "description": "Max counter value of net devices in kilo\/mega\/giga\/bytes.",
+                    "value": "$iftraffic_max_counter$"
+                },
+                "-b": {
+                    "description": "Interface maximum speed in kilo\/mega\/giga\/bits per second.",
+                    "required": true,
+                    "value": "$iftraffic_bandwidth$"
+                },
+                "-c": {
+                    "description": "% of bandwidth usage necessary to result in critical status (default: 98)",
+                    "value": "$iftraffic_crit$"
+                },
+                "-i": {
+                    "description": "Interface name.",
+                    "required": true,
+                    "value": "$iftraffic_interface$"
+                },
+                "-u": {
+                    "description": "g=gigabits\/s,m=megabits\/s,k=kilobits\/s,b=bits\/s.",
+                    "value": "$iftraffic_units$"
+                },
+                "-w": {
+                    "description": "% of bandwidth usage necessary to result in warning status (default: 85)",
+                    "value": "$iftraffic_warn$"
+                }
+            },
+            "command": "PluginDir + \/check_iftraffic.pl",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginCheck",
+            "object_name": "check_iftraffic",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {
+                "check_address": {
+                    "arguments": [],
+                    "deprecated": false,
+                    "name": "<anonymous>",
+                    "side_effect_free": false,
+                    "type": "Function"
+                },
+                "check_ipv4": false,
+                "check_ipv6": false,
+                "iftraffic_address": "$check_address$",
+                "iftraffic_crit": "98",
+                "iftraffic_warn": "85"
+            },
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "generic-iftraffic": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_iftraffic",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 143,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 145,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 147,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 150,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 151,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic-snmp"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic-iftraffic",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "custom_analytics_dashboard": "..\/d\/igPD9HlZz\/if-traffic",
+                "iftraffic_bandwidth": "10",
+                "iftraffic_interface": "10",
+                "iftraffic_units": "m"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "Datafield": {
+        "143": {
+            "varname": "iftraffic_bandwidth",
+            "caption": "iftraffic bandwidth",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "143",
+            "settings": {}
+        },
+        "145": {
+            "varname": "iftraffic_crit",
+            "caption": "iftraffic critical",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "145",
+            "settings": {}
+        },
+        "147": {
+            "varname": "iftraffic_interface",
+            "caption": "iftraffic interface",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "147",
+            "settings": {}
+        },
+        "150": {
+            "varname": "iftraffic_units",
+            "caption": "iftraffic units",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeDatalist",
+            "format": null,
+            "originalId": "150",
+            "settings": {
+                "data_type": "string",
+                "datalist": "iftraffic units"
+            }
+        },
+        "151": {
+            "varname": "iftraffic_warn",
+            "caption": "iftraffic warning",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "151",
+            "settings": {}
+        }
+    }
+}

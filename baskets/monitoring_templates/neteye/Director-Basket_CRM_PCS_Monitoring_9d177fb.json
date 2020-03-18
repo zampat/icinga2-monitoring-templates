@@ -1,0 +1,119 @@
+{
+    "Command": {
+        "check_crm": {
+            "arguments": [],
+            "command": "PluginContribDir + \/check_crm",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginCheck",
+            "object_name": "check_crm",
+            "object_type": "object",
+            "timeout": null,
+            "vars": {},
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "CRM Cluster Status": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_crm",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic_service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "CRM Cluster Status",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {},
+            "volatile": null,
+            "zone": "master"
+        },
+        "generic_service": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": "180",
+            "check_period": null,
+            "check_timeout": "60",
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": true,
+            "enable_event_handler": true,
+            "enable_flapping": true,
+            "enable_notifications": true,
+            "enable_passive_checks": true,
+            "enable_perfdata": true,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 40,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [],
+            "max_check_attempts": "3",
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_service",
+            "object_type": "template",
+            "retry_interval": "60",
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": false,
+            "use_var_overrides": null,
+            "vars": {},
+            "volatile": false,
+            "zone": null
+        }
+    },
+    "Datafield": {
+        "40": {
+            "varname": "custom_analytics_dashboard",
+            "caption": "ITOA Custom Dashboard",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "40",
+            "settings": {}
+        }
+    }
+}

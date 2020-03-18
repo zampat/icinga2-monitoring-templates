@@ -38,6 +38,7 @@ then
     "vars": {
         "mssql_health_hostname": "$address$",
         "mssql_health_mode": "connection-time",
+        "mssql_health_report": "long",
         "mssql_health_password": "secret",
         "mssql_health_username": "username"
     }
@@ -53,7 +54,6 @@ then
    echo "Service 'windows-mssql-connections' does not exists"
    icingacli director service create --json '
 {
-    "check_command": "mssql_health",
     "imports": [
         "generic-mssql"
     ],
@@ -73,11 +73,9 @@ fi
 RES=`icingacli director service exists "windows-mssql-transactions/sec"`
 if [[ $RES =~ "does not exist" ]]
 then
-
    echo "Service 'windows-mssql-transactions/sec' does not exists"
    icingacli director service create --json '
 {
-    "check_command": "mssql_health",
     "imports": [
         "generic-mssql"
     ],
@@ -85,6 +83,30 @@ then
     "object_type": "template",
     "vars": {
         "mssql_health_mode": "transactions"
+    }
+}
+'
+fi
+
+
+# Service Template windows-mssql-database_free
+RES=`icingacli director service exists "windows-mssql-database_free"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service 'windows-mssql-database_free' does not exists"
+   icingacli director service create --json '
+{
+    "imports": [
+        "generic-mssql"
+    ],
+    "object_name": "windows-mssql-database_free",
+    "object_type": "template",
+    "vars": {
+        "mssql_health_critical": "3:",
+        "mssql_health_mode": "database-data-free",
+        "mssql_health_name": "database_name",
+        "mssql_health_units": "%",
+        "mssql_health_warning": "8:"
     }
 }
 '
