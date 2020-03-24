@@ -37,7 +37,15 @@ then
         "generic-neteye"
     ],
     "object_name": "neteye-load",
-    "object_type": "template"
+    "object_type": "template",
+    "vars": {
+        "load_cload1": "15",
+        "load_cload15": "9",
+        "load_cload5": "12",
+        "load_wload1": "10",
+        "load_wload15": "5",
+        "load_wload5": "8"
+    }
 }
 '
 fi
