@@ -178,8 +178,8 @@ then
     "object_name": "neteye-processes",
     "object_type": "template",
     "vars": {
-        "procs_critical": "2000",
-        "procs_warning": "800"
+        "procs_critical": "5000",
+        "procs_warning": "1800"
     }
 }
 '
