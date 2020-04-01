@@ -1,9 +1,9 @@
 
 ###
-# Create Service Set: "Windows Agent OS-Basic"
+# Create Service Set: "Windows-OS-Basic"
 ###
 # Service Template for Service Set
-RES=`icingacli director serviceset exists "Windows Agent OS-Basic"`
+RES=`icingacli director serviceset exists "Windows-OS-Basic"`
 if [[ $RES =~ "does not exist" ]]
 then
 
@@ -16,7 +16,7 @@ icingacli director serviceset create --json '
     "imports": [
 
     ],
-    "object_name": "Windows Agent OS-Basic",
+    "object_name": "Windows-OS-Basic",
     "object_type": "template",
     "vars": {
 
@@ -39,7 +39,7 @@ icingacli director serviceset create --json '
     ],
     "object_name": "Icinga Agent connected",
     "object_type": "object",
-    "service_set": "Windows Agent OS-Basic",
+    "service_set": "Windows-OS-Basic",
     "use_agent": false
 }
 '
@@ -52,7 +52,7 @@ icingacli director serviceset create --json '
     ],
     "object_name": "Agent Win Memory",
     "object_type": "object",
-    "service_set": "Windows Agent OS-Basic",
+    "service_set": "Windows-OS-Basic",
     "use_agent": true
 }
 '
@@ -65,7 +65,7 @@ icingacli director serviceset create --json '
     ],
     "object_name": "Agent Win CPU",
     "object_type": "object",
-    "service_set": "Windows Agent OS-Basic",
+    "service_set": "Windows-OS-Basic",
     "use_agent": true
 }
 '
@@ -80,7 +80,7 @@ icingacli director serviceset create --json '
     ],
     "object_name": "Agent Win Diskspace",
     "object_type": "object",
-    "service_set": "Windows Agent OS-Basic",
+    "service_set": "Windows-OS-Basic",
     "use_agent": true
 }
 '
@@ -94,7 +94,7 @@ icingacli director serviceset create --json '
     ],
     "object_name": "Agent WinService Spooler",
     "object_type": "object",
-    "service_set": "Windows Agent OS-Basic",
+    "service_set": "Windows-OS-Basic",
     "use_agent": true
 }
 '

@@ -1,15 +1,15 @@
 ###
-# Create Service Set: "WinAgent_OS-Performance"
+# Create Service Set: "Windows-OS-Performance"
 ###
 # Service Template for Service Set
-RES=`icingacli director serviceset exists "WinAgent_OS-Performance"`
+RES=`icingacli director serviceset exists "Windows-OS-Performance"`
 if [[ $RES =~ "does not exist" ]]
 then
 icingacli director serviceset create --json '
 {
     "assign_filter": null,
     "description": null,
-    "object_name": "WinAgent_OS-Performance",
+    "object_name": "Windows-OS-Performance",
     "object_type": "template",
     "vars": {
     }
@@ -28,7 +28,7 @@ icingacli director service create --json '
     ],
     "object_name": "PagingFile_%Usage",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -39,7 +39,7 @@ icingacli director service create --json '
     ],
     "object_name": "Processor_%InterruptTime",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -50,7 +50,7 @@ icingacli director service create --json '
     ],
     "object_name": "DiskQueueLength",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -61,7 +61,7 @@ icingacli director service create --json '
     ],
     "object_name": "DiskReadBytes\/sec",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -72,7 +72,7 @@ icingacli director service create --json '
     ],
     "object_name": "DiskWriteBytes\/sec",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -83,7 +83,7 @@ icingacli director service create --json '
     ],
     "object_name": "Processor_%PrivilegedTime",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -94,7 +94,7 @@ icingacli director service create --json '
     ],
     "object_name": "Processor_%ProcessorTime",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -105,7 +105,7 @@ icingacli director service create --json '
     ],
     "object_name": "Processor_Interrupts\/sec",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 icingacli director service create --json '
@@ -116,7 +116,7 @@ icingacli director service create --json '
     ],
     "object_name": "PagingFile_%UsagePeak",
     "object_type": "object",
-	"service_set": "WinAgent_OS-Performance"
+	"service_set": "Windows-OS-Performance"
 }'
 
 echo "Done: 2012c-ss_win_agent_OS-Performance"
