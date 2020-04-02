@@ -185,8 +185,7 @@ icingacli director service create --json '
     ],
     "object_name": "NetEye memory",
     "object_type": "object",
-    "service_set": "NetEye Satellite",
-    "use_agent": false
+    "service_set": "NetEye Satellite"
 }'
 
 
