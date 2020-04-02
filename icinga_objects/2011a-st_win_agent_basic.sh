@@ -197,5 +197,45 @@ then
 '
 fi
 
+OBJ="windows-nscp-generic-process-availability"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "nscp-local-process",
+    "imports": [
+        "generic-agent"
+    ],
+    "object_name": "windows-nscp-generic-process-availability",
+    "object_type": "template"
+}'
+fi
+
+OBJ="windows-nscp-generic-process-availability-maxMemory"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "nscp-local-process",
+    "imports": [
+        "windows-nscp-generic-process-availability"
+    ],
+    "object_name": "windows-nscp-generic-process-availability-maxMemory",
+    "object_type": "template",
+    "vars": {
+        "nscp_arguments": [
+            "process=explorer.exe",
+            "warn=working_set > 1g",
+            "crit=working_set > 2g",
+            "filter=state='\''started'\''"
+        ]
+    }
+}'
+fi
+
 echo "Services created"
 exit 0
