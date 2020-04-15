@@ -1,0 +1,128 @@
+{
+    "Command": {
+        "eventhandler_windows_service_restart_safed": {
+            "arguments": {
+                "(no key)": {
+                    "skip_key": true,
+                    "value": "; exit ($$lastexitcode)"
+                },
+                "-command": {
+                    "skip_key": true,
+                    "value": "try { $powershell_script$ $powershell_args$ } catch { echo $$_.Exception ;exit 3 }",
+                    "order": "-2"
+                }
+            },
+            "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy ByPass",
+            "disabled": false,
+            "fields": [
+                {
+                    "datafield_id": 133,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 134,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginEvent",
+            "object_name": "eventhandler_windows_service_restart_safed",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {
+                "powershell_args": "safed",
+                "powershell_script": "C:\\Progra~1\\ICINGA2\\sbin\\scripts\\restart_service.ps1"
+            },
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "windows-generic-service-safed": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "service-windows",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": "eventhandler_windows_service_restart_safed",
+            "fields": [
+                {
+                    "datafield_id": 156,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "windows-generic-service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "windows-generic-service-safed",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "service_win_service": [
+                    "safedv64"
+                ]
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "Datafield": {
+        "133": {
+            "category_id": null,
+            "varname": "powershell_args",
+            "caption": "Powershell Arguments",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "133",
+            "settings": {}
+        },
+        "134": {
+            "category_id": null,
+            "varname": "powershell_script",
+            "caption": "Powershell Script",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "134",
+            "settings": {}
+        },
+        "156": {
+            "category_id": null,
+            "varname": "service_win_service",
+            "caption": "Service Win Name",
+            "description": "Service to check",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "156",
+            "settings": {}
+        }
+    }
+}
