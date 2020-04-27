@@ -1,0 +1,383 @@
+{
+    "Command": {
+        "check_pcmeasure2": {
+            "arguments": {
+                "-H": {
+                    "value": "$host.address$"
+                },
+                "-S": {
+                    "value": "$check_pcmeasure2_sensor_port$"
+                },
+                "-c": {
+                    "value": "$check_pcmeasure2_critical$"
+                },
+                "-l": {
+                    "value": "$check_pcmeasure2_label$"
+                },
+                "-w": {
+                    "value": "$check_pcmeasure2_warning$"
+                }
+            },
+            "command": "PluginContribDir + \/check_pcmeasure2.pl",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginCheck",
+            "object_name": "check_pcmeasure2",
+            "object_type": "object",
+            "timeout": null,
+            "vars": {},
+            "zone": null
+        }
+    },
+    "HostTemplate": {
+        "generic-ethernet-box": {
+            "accept_config": null,
+            "action_url": null,
+            "address": null,
+            "address6": null,
+            "api_key": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "has_agent": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic-host"
+            ],
+            "master_should_connect": null,
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic-ethernet-box",
+            "object_type": "template",
+            "retry_interval": null,
+            "template_choice": null,
+            "vars": {
+                "sms_notification": true,
+                "tipologia": "switch"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "generic_pcmeasure2": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_pcmeasure2",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 10041,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10040,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10042,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10043,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic-service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_pcmeasure2",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "check_pcmeasure2_label": "my_label",
+                "check_pcmeasure2_sensor_port": "com1.XXX"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "ServiceSet": {
+        "EthernetBox PCMEASURE": {
+            "assign_filter": null,
+            "description": "EthernetBox PCMEASURE",
+            "object_name": "EthernetBox PCMEASURE",
+            "object_type": "template",
+            "services": {
+                "Humidity": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic_pcmeasure2"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "Humidity",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "check_pcmeasure2_critical": "85",
+                        "check_pcmeasure2_label": "humidity",
+                        "check_pcmeasure2_sensor_port": "com1.4",
+                        "check_pcmeasure2_warning": "65"
+                    },
+                    "volatile": null,
+                    "zone": null
+                },
+                "Smoke": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic_pcmeasure2"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "Smoke",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "check_pcmeasure2_critical": "0",
+                        "check_pcmeasure2_label": "smoke",
+                        "check_pcmeasure2_sensor_port": "com1.2"
+                    },
+                    "volatile": null,
+                    "zone": null
+                },
+                "Water": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic_pcmeasure2"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "Water",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "check_pcmeasure2_critical": "0",
+                        "check_pcmeasure2_label": "water",
+                        "check_pcmeasure2_sensor_port": "com1.3"
+                    },
+                    "volatile": null,
+                    "zone": null
+                },
+                "Temperature": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic_pcmeasure2"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "Temperature",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "check_pcmeasure2_critical": "32",
+                        "check_pcmeasure2_label": "temperature",
+                        "check_pcmeasure2_sensor_port": "com1.1",
+                        "check_pcmeasure2_warning": "26"
+                    },
+                    "volatile": null,
+                    "zone": null
+                }
+            }
+        }
+    },
+    "Datafield": {
+        "10041": {
+            "varname": "check_pcmeasure2_critical",
+            "caption": "check_pcmeasure2_critical",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10041",
+            "settings": {}
+        },
+        "10040": {
+            "varname": "check_pcmeasure2_label",
+            "caption": "check_pcmeasure2_label",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10040",
+            "settings": {}
+        },
+        "10042": {
+            "varname": "check_pcmeasure2_sensor_port",
+            "caption": "check_pcmeasure2_sensor_port",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10042",
+            "settings": {}
+        },
+        "10043": {
+            "varname": "check_pcmeasure2_warning",
+            "caption": "check_pcmeasure2_warning",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10043",
+            "settings": {}
+        }
+    }
+}
