@@ -64,7 +64,6 @@ then
     "object_type": "template",
     "vars": {
         "disk_win_crit": "5%",
-        "disk_win_path": "c:",
         "disk_win_warn": "8%"
     }
 }
