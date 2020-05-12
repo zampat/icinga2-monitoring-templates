@@ -21,7 +21,10 @@ then
         "generic-agent"
     ],
     "object_name": "linux-diskspace",
-    "object_type": "template"
+    "object_type": "template",
+    "vars": {
+        "disk_errors_only": true
+    }
 }
 '
 fi

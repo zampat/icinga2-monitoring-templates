@@ -49,6 +49,7 @@ INSERT IGNORE `director_datafield` (`id`, `varname`, `caption`, `description`, `
 (101,'disk_partition','Disk Linux Partition',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (102,'disk_cfree','Disk Linux Critical','Exit with CRITICAL status if less than INTEGER units of disk are free or Exit with CRITCAL status if less than PERCENT of disk space is free','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (103,'disk_wfree','Disk Linux Warning','Exit with WARNING status if less than PERCENT of inode space is free','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
+(104,'disk_errors_only','Disk display errors only','Display only devices/mountpoints with errors','Icinga\\Module\\Director\\DataType\\DataTypeBoolean',NULL),
 (108,'ups_type','UPS Type',NULL,'Icinga\\Module\\Director\\DataType\\DataTypeDatalist',NULL),
 (111,'load_cload1','Load crit load1','Exit with CRITICAL status if load average exceed CLOADn; the load average format is the same used by \'uptime\' and \'w\'','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),
 (112,'load_cload15','Load crit load15','Exit with CRITICAL status if load average exceed CLOADn; the load average format is the same used by \'uptime\' and \'w\'','Icinga\\Module\\Director\\DataType\\DataTypeString',NULL),

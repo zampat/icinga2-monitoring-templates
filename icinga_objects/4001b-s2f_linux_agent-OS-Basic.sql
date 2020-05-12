@@ -3,6 +3,8 @@
 -- For default deployment
 --
 
+INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_type = "template" AND object_name = "linux-diskspace"),(select id from director_datafield where varname = "disk_errors_only"),'n');
+
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_type = "template" AND object_name = "linux-load"),(select id from director_datafield where varname = "load_wload1"),'n');
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_type = "template" AND object_name = "linux-load"),(select id from director_datafield where varname = "load_wload5"),'n');
 INSERT IGNORE icinga_service_field (service_id, datafield_id, is_required) VALUES ((select id from icinga_service where object_type = "template" AND object_name = "linux-load"),(select id from director_datafield where varname = "load_wload15"),'n');
