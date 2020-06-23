@@ -1,0 +1,75 @@
+{
+    "Command": {
+        "powershell_winservice_restart": {
+            "arguments": {
+                "(no key)": {
+                    "skip_key": true,
+                    "value": "; exit ($$lastexitcode)"
+                },
+                "-command": {
+                    "description": "service_win_service",
+                    "skip_key": true,
+                    "value": "try { Get-Service -Name $service.vars.service_win_service$| Restart-Service } catch { echo $$_.Exception ;exit 3 }",
+                    "order": "-2"
+                }
+            },
+            "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy ByPass",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginEvent",
+            "object_name": "powershell_winservice_restart",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {},
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "Agent WinService Generic With Eventhandler": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": null,
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": "powershell_winservice_restart",
+            "fields": [],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "windows-service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "Agent WinService Generic With Eventhandler",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {
+                "service_win_service": "spooler"
+            },
+            "volatile": null,
+            "zone": null
+        }
+    }
+}
