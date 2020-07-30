@@ -1,0 +1,17 @@
+Oracle Health monitoring with vip management
+
+Requirements:
+- 2 existing host group: "linux servers" and "oracle servers"
+
+From the generic-agent-linux-oracle host template you must manage "host_oracle_vip_mgm" custom var
+
+From the generic_oracle_health service template you can manage:
+
+"oracle_health_SID": "SIDNAME",
+"oracle_health_connect": "\"(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=$host_oracle_vip_mgm$)(Port=$oracle_health_port$))(CONNECT_DATA=(SID=$oracle_health_SID$)))\"",
+"oracle_health_method": "sqlplus",
+"oracle_health_password": "mypassword",
+"oracle_health_port": 1523,
+"oracle_health_username": "myusername",
+"oracle_home": "\/usr\/lib\/oracle\/12.2\/client64",
+"oracle_ld_library_path": "\/usr\/lib\/oracle\/12.2\/client64\/lib\/"
