@@ -1,0 +1,120 @@
+{
+    "Command": {
+        "check_vmd_object": {
+            "arguments": {
+                "--override-max-value": {
+                    "repeat_key": true,
+                    "required": false,
+                    "skip_key": false,
+                    "value": "$vmd_max_value_override$"
+                },
+                "--override-min-value": {
+                    "repeat_key": true,
+                    "required": false,
+                    "skip_key": false,
+                    "value": "$vmd_min_value_override$"
+                },
+                "-c": {
+                    "repeat_key": true,
+                    "value": "$vmd_critical_thresholds$"
+                },
+                "-i": {
+                    "repeat_key": true,
+                    "value": "$vmd_metrics_to_include$"
+                },
+                "-m": {
+                    "value": "$vmd_state_calculation_method$"
+                },
+                "-n": {
+                    "required": true,
+                    "value": "$vmd_object_name$"
+                },
+                "-s": {
+                    "required": true,
+                    "value": "$vmd_vcsa_servername$"
+                },
+                "-t": {
+                    "required": true,
+                    "value": "$vmd_object_type$"
+                },
+                "-w": {
+                    "repeat_key": true,
+                    "value": "$vmd_warning_thresholds$"
+                },
+                "-x": {
+                    "repeat_key": true,
+                    "value": "$vmd_metrics_to_exclude$"
+                }
+            },
+            "command": "PluginContribDir + \/check_vmd_object.py",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginCheck",
+            "object_name": "check_vmd_object",
+            "object_type": "object",
+            "timeout": "10",
+            "vars": {},
+            "zone": null
+        }
+    },
+    "DataList": {
+        "VMD Object Types List": {
+            "list_name": "VMD Object Types List",
+            "owner": "root",
+            "originalId": "1012",
+            "entries": [
+                {
+                    "entry_name": "Datastore",
+                    "entry_value": "Datastore",
+                    "format": "string",
+                    "allowed_roles": null
+                },
+                {
+                    "entry_name": "HostSystem",
+                    "entry_value": "Host System",
+                    "format": "string",
+                    "allowed_roles": null
+                },
+                {
+                    "entry_name": "ResourcePool",
+                    "entry_value": "Resource Pool",
+                    "format": "string",
+                    "allowed_roles": null
+                },
+                {
+                    "entry_name": "VirtualMachine",
+                    "entry_value": "Virtual Machine",
+                    "format": "string",
+                    "allowed_roles": null
+                }
+            ]
+        },
+        "VMD State Calculation Methods List": {
+            "list_name": "VMD State Calculation Methods List",
+            "owner": "root",
+            "originalId": "1013",
+            "entries": [
+                {
+                    "entry_name": "Both",
+                    "entry_value": "Worth case between VCSA and Metrics",
+                    "format": "string",
+                    "allowed_roles": null
+                },
+                {
+                    "entry_name": "Metrics",
+                    "entry_value": "Metrics",
+                    "format": "string",
+                    "allowed_roles": null
+                },
+                {
+                    "entry_name": "VCSA",
+                    "entry_value": "VCSA",
+                    "format": "string",
+                    "allowed_roles": null
+                }
+            ]
+        }
+    }
+}
