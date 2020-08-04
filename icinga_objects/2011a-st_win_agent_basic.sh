@@ -196,6 +196,28 @@ then
 '
 fi
 
+OBJ="windows-nscp-generic-all-service"
+RES=`icingacli director service exists "$OBJ"`
+if [[ $RES =~ "does not exist" ]]
+then
+   echo "Service '$OBJ' does not exists"
+   icingacli director service create --json '
+{
+    "check_command": "nscp-local-service",
+    "imports": [
+        "windows-nscp-generic-service"
+    ],
+    "object_name": "windows-nscp-generic-all-service",
+    "object_type": "template",
+    "vars": {
+               "nscp_service_arguments": "filter=state='running'",
+               "nscp_service_name": [
+                   "*"
+               ]
+           }
+}'
+fi
+
 OBJ="windows-nscp-generic-process-availability"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
@@ -235,6 +257,8 @@ then
     }
 }'
 fi
+
+
 
 echo "Services created"
 exit 0
