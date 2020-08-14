@@ -62,7 +62,11 @@ then
         "generic-neteye"
     ],
     "object_name": "neteye-disk",
-    "object_type": "template"
+    "object_type": "template",
+    "vars": {
+        "custom_analytics_dashboard": "..\/d\/cus0000040\/service-diskspace-linux",
+        "disk_errors_only": true
+    }
 }
 '
 fi
