@@ -134,7 +134,13 @@
             "template_choice": null,
             "use_agent": null,
             "use_var_overrides": null,
-            "vars": {},
+            "vars": {
+                "by_ssh_command": "\/usr\/lib64\/neteye\/monitoring\/plugins\/check_chrony -w 1 -c 2",
+                "by_ssh_logname": "nagios",
+                "by_ssh_options": [
+                    "StrictHostKeyChecking=no"
+                ]
+            },
             "volatile": null,
             "zone": null
         }
