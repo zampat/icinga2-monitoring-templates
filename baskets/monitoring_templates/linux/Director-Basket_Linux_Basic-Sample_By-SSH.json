@@ -1,0 +1,225 @@
+{
+    "Command": {
+        "check_by_ssh": {
+            "arguments": {
+                "-6": {
+                    "description": "Use IPv6 only",
+                    "set_if": "$by_ssh_ipv6$"
+                },
+                "-4": {
+                    "description": "Use IPv4 only",
+                    "set_if": "$by_ssh_ipv4$"
+                },
+                "-C": {
+                    "value": "$by_ssh_command$"
+                },
+                "-E": {
+                    "description": "Ignore all or (if specified) first n lines on STDERR [optional]",
+                    "value": "$by_ssh_skip_stderr$"
+                },
+                "-H": {
+                    "description": "Host name, IP Address, or unix socket (must be an absolute path)",
+                    "value": "$address$"
+                },
+                "-c": {
+                    "description": "Response time to result in critical status (seconds)",
+                    "value": "$by_ssh_crit$"
+                },
+                "-i": {
+                    "description": "identity of an authorized key [optional]",
+                    "value": "$by_ssh_identity$"
+                },
+                "-l": {
+                    "description": "SSH user name on remote host [optional]",
+                    "value": "$by_ssh_logname$"
+                },
+                "-o": {
+                    "description": "Provide ssh options (may be repeated)",
+                    "value": "$by_ssh_options$"
+                },
+                "-p": {
+                    "description": "Port number (default: none)",
+                    "value": "$by_ssh_port$"
+                },
+                "-q": {
+                    "description": "Tell ssh to suppress warning and diagnostic messages [optional]",
+                    "set_if": "$by_ssh_quiet$"
+                },
+                "-t": {
+                    "description": "Seconds before connection times out (default: 10)",
+                    "value": "$by_ssh_timeout$"
+                },
+                "-w": {
+                    "description": "Response time to result in warning status (seconds)",
+                    "value": "$by_ssh_warn$"
+                }
+            },
+            "command": "check_by_ssh",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginCheck",
+            "object_name": "check_by_ssh",
+            "object_type": "object",
+            "timeout": "60",
+            "vars": {
+                "by_ssh_address": "$check_address$",
+                "by_ssh_quiet": false,
+                "check_address": {
+                    "arguments": [],
+                    "deprecated": false,
+                    "name": "<anonymous>",
+                    "side_effect_free": false,
+                    "type": "Function"
+                },
+                "check_ipv4": "$by_ssh_ipv4$",
+                "check_ipv6": "$by_ssh_ipv6$"
+            },
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "generic_by_ssh": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_by_ssh",
+            "check_interval": null,
+            "check_period": null,
+            "check_timeout": null,
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": null,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 1101,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1102,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 1105,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic-service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic_by_ssh",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {},
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "ServiceSet": {
+        "Linux OS Basic By-SSH": {
+            "assign_filter": null,
+            "description": null,
+            "object_name": "Linux OS Basic By-SSH",
+            "object_type": "template",
+            "services": {
+                "SSH: Time synchronization": {
+                    "action_url": null,
+                    "apply_for": null,
+                    "assign_filter": null,
+                    "check_command": null,
+                    "check_interval": null,
+                    "check_period": null,
+                    "check_timeout": null,
+                    "command_endpoint": null,
+                    "disabled": false,
+                    "display_name": null,
+                    "enable_active_checks": null,
+                    "enable_event_handler": null,
+                    "enable_flapping": null,
+                    "enable_notifications": null,
+                    "enable_passive_checks": null,
+                    "enable_perfdata": null,
+                    "event_command": null,
+                    "fields": [],
+                    "flapping_threshold_high": null,
+                    "flapping_threshold_low": null,
+                    "groups": [],
+                    "host": null,
+                    "icon_image": null,
+                    "icon_image_alt": null,
+                    "imports": [
+                        "generic_by_ssh"
+                    ],
+                    "max_check_attempts": null,
+                    "notes": null,
+                    "notes_url": null,
+                    "object_name": "SSH: Time synchronization",
+                    "object_type": "object",
+                    "retry_interval": null,
+                    "service_set": null,
+                    "template_choice": null,
+                    "use_agent": null,
+                    "use_var_overrides": null,
+                    "vars": {
+                        "by_ssh_logname": "nagios"
+                    },
+                    "volatile": null,
+                    "zone": null
+                }
+            }
+        }
+    },
+    "Datafield": {
+        "1101": {
+            "varname": "by_ssh_command",
+            "caption": "BySSH command",
+            "description": "Check by SSH: Command to execute on remote machine",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1101",
+            "settings": {}
+        },
+        "1102": {
+            "varname": "by_ssh_logname",
+            "caption": "BySSH identity",
+            "description": "Check by SSH: user name on remote host",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "1102",
+            "settings": {}
+        },
+        "1105": {
+            "varname": "by_ssh_options",
+            "caption": "BySSH options",
+            "description": "Check by SSH: additional options",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeArray",
+            "format": null,
+            "originalId": "1105",
+            "settings": {}
+        }
+    }
+}
