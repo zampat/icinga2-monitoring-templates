@@ -1,0 +1,268 @@
+{
+    "Command": {
+        "check_idrac": {
+            "arguments": {
+                "--no-alert": {
+                    "description": "always return with exit code 0",
+                    "set_if": "$service.vars.always_return_ok$",
+                    "set_if_format": "string"
+                },
+                "-A": {
+                    "description": "set authentication protocol passphrase",
+                    "value": "$service.vars.snmp_auth_passphrase$"
+                },
+                "-H": {
+                    "description": "Hostname",
+                    "value": "$host.address$"
+                },
+                "-X": {
+                    "description": "set privacy protocol passphrase",
+                    "value": "$service.vars.snmp_priv_password$"
+                },
+                "-a": {
+                    "description": "set athentication protocol (MD5|SHA)",
+                    "value": "$service.vars.snmp_authprotocol$"
+                },
+                "-c": {
+                    "description": "SNMPv2 community string",
+                    "value": "$service.vars.snmp_community$"
+                },
+                "-f": {
+                    "description": "configuration file. COMMAND LINE WILL OVERWRITE CONFIGURATION FILE PARAMETERS",
+                    "value": "$service.vars.configuration_file$"
+                },
+                "-l": {
+                    "description": "set security level (noAuthPriv|authNoPriv|authPriv)",
+                    "value": "$service.vars.snmp_security_level$"
+                },
+                "-m": {
+                    "description": "Mib File",
+                    "value": "$service.vars.snmp_mib_file$"
+                },
+                "-p": {
+                    "set_if": "$service.vars.snmp_enable_perfdata$",
+                    "set_if_format": "string"
+                },
+                "-u": {
+                    "description": "user name",
+                    "value": "$service.vars.snmp_user$"
+                },
+                "-v": {
+                    "value": "$service.vars.snmp_version$"
+                },
+                "-w": {
+                    "value": "$service.vars.idrac_hardware$"
+                },
+                "-x": {
+                    "description": "set privacy protocol",
+                    "value": "$service.vars.snmp_privprotocol$"
+                }
+            },
+            "command": "PluginContribDir + \/check_idrac\/idrac_2.2rc4",
+            "disabled": false,
+            "fields": [],
+            "imports": [],
+            "is_string": null,
+            "methods_execute": "PluginCheck",
+            "object_name": "check_idrac",
+            "object_type": "object",
+            "timeout": null,
+            "vars": {},
+            "zone": null
+        }
+    },
+    "ServiceTemplate": {
+        "generic-snmp-idrac-service": {
+            "action_url": null,
+            "apply_for": null,
+            "assign_filter": null,
+            "check_command": "check_idrac",
+            "check_interval": "3600",
+            "check_period": null,
+            "check_timeout": "120",
+            "command_endpoint": null,
+            "disabled": false,
+            "display_name": null,
+            "enable_active_checks": null,
+            "enable_event_handler": null,
+            "enable_flapping": null,
+            "enable_notifications": false,
+            "enable_passive_checks": null,
+            "enable_perfdata": null,
+            "event_command": null,
+            "fields": [
+                {
+                    "datafield_id": 10021,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10019,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 333,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 332,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 300,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 306,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 10022,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 336,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 334,
+                    "is_required": "n",
+                    "var_filter": null
+                },
+                {
+                    "datafield_id": 308,
+                    "is_required": "n",
+                    "var_filter": null
+                }
+            ],
+            "flapping_threshold_high": null,
+            "flapping_threshold_low": null,
+            "groups": [],
+            "host": null,
+            "icon_image": null,
+            "icon_image_alt": null,
+            "imports": [
+                "generic-service"
+            ],
+            "max_check_attempts": null,
+            "notes": null,
+            "notes_url": null,
+            "object_name": "generic-snmp-idrac-service",
+            "object_type": "template",
+            "retry_interval": null,
+            "service_set": null,
+            "template_choice": null,
+            "use_agent": null,
+            "use_var_overrides": null,
+            "vars": {},
+            "volatile": null,
+            "zone": null
+        }
+    },
+    "Datafield": {
+        "10021": {
+            "varname": "always_return_ok",
+            "caption": "Return Always OK",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeBoolean",
+            "format": null,
+            "originalId": "10021",
+            "settings": {}
+        },
+        "10019": {
+            "varname": "idrac_hardware",
+            "caption": "IDRAC Hardware",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10019",
+            "settings": {
+                "visibility": "visible"
+            }
+        },
+        "333": {
+            "varname": "snmp_auth_passphrase",
+            "caption": "SNMPv3 auth. passphrase",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "333",
+            "settings": {}
+        },
+        "332": {
+            "varname": "snmp_authprotocol",
+            "caption": "SNMPv3 auth.Protocol",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "332",
+            "settings": {}
+        },
+        "300": {
+            "varname": "snmp_community",
+            "caption": "SNMP Community",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "300",
+            "settings": {}
+        },
+        "306": {
+            "varname": "snmp_enable_perfdata",
+            "caption": "SNMP Enable Perfdata",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeBoolean",
+            "format": null,
+            "originalId": "306",
+            "settings": {}
+        },
+        "10022": {
+            "varname": "snmp_mib_file",
+            "caption": "SNMP MIB FILE",
+            "description": "Custom MIB FILE",
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "10022",
+            "settings": {
+                "visibility": "visible"
+            }
+        },
+        "336": {
+            "varname": "snmp_priv_password",
+            "caption": "SNMPv3 priv.Password",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "336",
+            "settings": {}
+        },
+        "334": {
+            "varname": "snmp_privprotocol",
+            "caption": "SNMPv3 priv.Protocol",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeString",
+            "format": null,
+            "originalId": "334",
+            "settings": {}
+        },
+        "308": {
+            "varname": "snmp_version",
+            "caption": "SNMP Version",
+            "description": null,
+            "datatype": "Icinga\\Module\\Director\\DataType\\DataTypeDatalist",
+            "format": null,
+            "originalId": "308",
+            "settings": {
+                "data_type": "string",
+                "datalist": "SNMP Version"
+            }
+        }
+    }
+}
