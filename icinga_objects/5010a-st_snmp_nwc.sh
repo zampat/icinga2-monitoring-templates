@@ -5,7 +5,7 @@
 #
 
 # Service Template for Service Template
-OBJ="snmp_nwc_health"
+OBJ="snmp-nwc-health"
 RES=`icingacli director service exists "$OBJ"`
 if [[ $RES =~ "does not exist" ]]
 then
@@ -16,7 +16,7 @@ then
     "imports": [
         "generic-snmp"
     ],
-    "object_name": "snmp_nwc_health",
+    "object_name": "snmp-nwc-health",
     "object_type": "template"
 }
 '
@@ -31,7 +31,7 @@ then
    icingacli director service create --json '
 {
     "imports": [
-        "snmp_nwc_health"
+        "snmp-nwc-health"
     ],
     "object_name": "snmp-nwc-hardware-health",
     "object_type": "template",
