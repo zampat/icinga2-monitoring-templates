@@ -1,0 +1,265 @@
+{
+    "ImportSource": {
+        "Net3_contactgroups": {
+            "description": null,
+            "key_column": "name",
+            "modifiers": [],
+            "originalId": "8",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "name",
+                "query": "SELECT distinct(CG.name)\r\nFROM contacts C\r\nJOIN contactgroup_contact RC ON RC.contact_id = C.contact_id\r\nJOIN contactgroups CG ON RC.contactgroup_id = CG.contactgroup_id \r\nWHERE `contacttemplate_id` NOT IN(2,4,5,7) AND CG.name IN (\r\n\tSELECT distinct(CG.name) AS cgname FROM `contactgroups` CG\r\n\tJOIN contactgroup_hostgroup RCG ON CG.contactgroup_id = RCG.contactgroup_id \r\n\tJOIN hostgroups HG ON RCG.hostgroup_id = HG.hostgroup_id\r\n\tORDER BY cgname\r\n)\r\nORDER BY CG.name ASC",
+                "resource": "NetEye3_monarch"
+            },
+            "source_name": "Net3_contactgroups"
+        },
+        "Net3_contacts": {
+            "description": null,
+            "key_column": "contact_name",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "alias",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "name",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRegexReplace",
+                    "settings": {
+                        "pattern": "\/email_(.*)\/",
+                        "replacement": "$1"
+                    },
+                    "target_property": "contact_name"
+                },
+                {
+                    "description": null,
+                    "priority": "3",
+                    "property_name": "json",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "4",
+                    "property_name": "json",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierJsonDecode",
+                    "settings": {
+                        "on_failure": "null"
+                    },
+                    "target_property": "arr_groups"
+                }
+            ],
+            "originalId": "9",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "contact_id, name, alias, email, pager, contacttemplate_id, status, comment, json",
+                "query": "SELECT C.*, CONCAT('[', GROUP_CONCAT( CONCAT('\"', `CG`.`name`, '\"'  ) ), ']' ) json\r\nFROM `contacts` C\r\nJOIN contactgroup_contact RC ON RC.contact_id = C.contact_id\r\nJOIN contactgroups CG ON RC.contactgroup_id = CG.contactgroup_id \r\nWHERE `contacttemplate_id` NOT IN(2,4,5,7) AND CG.name IN (\r\n\tSELECT distinct(CG.name) AS cgname FROM `contactgroups` CG\r\n\tJOIN contactgroup_hostgroup RCG ON CG.contactgroup_id = RCG.contactgroup_id \r\n\tJOIN hostgroups HG ON RCG.hostgroup_id = HG.hostgroup_id\r\n\tORDER BY cgname\r\n)\r\nGROUP BY C.name",
+                "resource": "NetEye3_monarch"
+            },
+            "source_name": "Net3_contacts"
+        },
+        "Ne3_notificationApply_contactgroup2hostgroup": {
+            "description": "Erstelle notification apply rule\r\nF\u00fcr jede contactgroup wird eine apply rule erstellt\r\nDer contactgroup werden alle hostgroups als Zuweisungs-Rule gegeben",
+            "key_column": "cgname_service",
+            "modifiers": [
+                {
+                    "description": null,
+                    "priority": "1",
+                    "property_name": "json_hg",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierFromLatin1",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "2",
+                    "property_name": "json_hg",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierLowercase",
+                    "settings": {},
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "8",
+                    "property_name": "json_hg",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRegexReplace",
+                    "settings": {
+                        "pattern": "\/,\/",
+                        "replacement": ""
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "9",
+                    "property_name": "json_hg",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRegexReplace",
+                    "settings": {
+                        "pattern": "\/\\|$\/",
+                        "replacement": ""
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "10",
+                    "property_name": "cgname",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierRejectOrSelect",
+                    "settings": {
+                        "filter_method": "regex",
+                        "filter_string": "\/ESX-Host-Admins|Frontrange-DSM-Discovery|Koordinatoren-ECFR|Koordinatoren-ECNE|Koordinatoren-ECUK|Koordinatoren-EPCZ|Sektorleiter-WWA|Treasury Managment Software TM5|View-.*|Zutrittskontrollsystem SiPass\/",
+                        "policy": "reject"
+                    },
+                    "target_property": null
+                },
+                {
+                    "description": null,
+                    "priority": "11",
+                    "property_name": "cgname",
+                    "provider_class": "Icinga\\Module\\Director\\PropertyModifier\\PropertyModifierCombine",
+                    "settings": {
+                        "pattern": "${cgname}: Hosts"
+                    },
+                    "target_property": "cgname_service"
+                }
+            ],
+            "originalId": "10",
+            "provider_class": "Icinga\\Module\\Director\\Import\\ImportSourceSql",
+            "settings": {
+                "column_cache": "cgname, json_hg",
+                "query": "SELECT CG.name AS cgname, CONCAT('', GROUP_CONCAT( CONCAT('\"', `HG`.`name`, '\"=host.groups|'  ) ), '' ) json_hg\r\nFROM `contactgroups` CG\r\nJOIN contactgroup_hostgroup RCG ON CG.contactgroup_id = RCG.contactgroup_id \r\nJOIN hostgroups HG ON RCG.hostgroup_id = HG.hostgroup_id\r\nGROUP BY CG.name",
+                "resource": "NetEye3_monarch"
+            },
+            "source_name": "Ne3_notificationApply_contactgroup2hostgroup"
+        }
+    },
+    "SyncRule": {
+        "Ne3_notificationApply_contactgroup2hostgroup Services": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "notification",
+            "originalId": "10106",
+            "properties": [
+                {
+                    "destination_field": "object_name",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "Ne3_notificationApply_contactgroup2hostgroup",
+                    "source_expression": "${cgname}: Services"
+                },
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "Ne3_notificationApply_contactgroup2hostgroup",
+                    "source_expression": "email all service events: Daily"
+                },
+                {
+                    "destination_field": "object_type",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "3",
+                    "source": "Ne3_notificationApply_contactgroup2hostgroup",
+                    "source_expression": "apply"
+                },
+                {
+                    "destination_field": "user_groups",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "4",
+                    "source": "Ne3_notificationApply_contactgroup2hostgroup",
+                    "source_expression": "${cgname}"
+                },
+                {
+                    "destination_field": "assign_filter",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "5",
+                    "source": "Ne3_notificationApply_contactgroup2hostgroup",
+                    "source_expression": "${json_hg}"
+                },
+                {
+                    "destination_field": "apply_to",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "6",
+                    "source": "Ne3_notificationApply_contactgroup2hostgroup",
+                    "source_expression": "service"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "Ne3_notificationApply_contactgroup2hostgroup Services",
+            "update_policy": "override"
+        },
+        "Net3_contactgroups": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "usergroup",
+            "originalId": "10103",
+            "properties": [
+                {
+                    "destination_field": "display_name",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "Net3_contactgroups",
+                    "source_expression": "${name}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "Net3_contactgroups",
+            "update_policy": "merge"
+        },
+        "Net3_contacts": {
+            "description": null,
+            "filter_expression": null,
+            "object_type": "user",
+            "originalId": "10104",
+            "properties": [
+                {
+                    "destination_field": "import",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "1",
+                    "source": "Net3_contacts",
+                    "source_expression": "notify-allEvents"
+                },
+                {
+                    "destination_field": "display_name",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "2",
+                    "source": "Net3_contacts",
+                    "source_expression": "${alias}"
+                },
+                {
+                    "destination_field": "groups",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "3",
+                    "source": "Net3_contacts",
+                    "source_expression": "${arr_groups}"
+                },
+                {
+                    "destination_field": "email",
+                    "filter_expression": null,
+                    "merge_policy": "override",
+                    "priority": "4",
+                    "source": "Net3_contacts",
+                    "source_expression": "${email}"
+                }
+            ],
+            "purge_existing": "n",
+            "rule_name": "Net3_contacts",
+            "update_policy": "merge"
+        }
+    }
+}
